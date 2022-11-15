@@ -1,0 +1,20 @@
+#checkout {
+  font-weight: bold;
+}
+
+#nav1 {
+  margin-right: 10px;
+}
+
+#check1 {
+  border-radius: 10px;
+}
+#check2 {
+  height: 150px;
+  border-radius: 10px;
+}
+
+.image {
+  margin-top: 25px;
+  margin-left: 10px;
+}
