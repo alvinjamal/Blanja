@@ -1,11 +1,13 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import Dropdown from "react-bootstrap/esm/DropdownItem";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Form from "react-bootstrap/Form";
 import "./style.css";
-// import Christian from "../../img/christian.png";
-// import Vector1 from "../../img/Vector(1).png";
-// import Vector2 from "../../img/Vector(9).png";
-// import Vector3 from "../../img/Vector(10).png";
+import Christian from "../../img/christian.png";
+import Vector1 from "../../img/Vector(1).png";
+import Vector2 from "../../img/Vector(9).png";
+import Vector3 from "../../img/Vector(10).png";
 
 export default function Selling() {
   return (
@@ -13,185 +15,185 @@ export default function Selling() {
       <div className="container-fluid p-3 mb-2 bg-new">
         <div className="container">
           <div className="wrapper">
-            {/* <div className="sidebar">
-              <section>
-                <div className="container">
-                  <div className="card-body p-4">
-                    <div className="d-flex text-black">
-                      <div className="flex-shrink-0">
-                        <img
-                          src={Christian}
-                          alt="Christian"
-                          className="img-fluid"
+            <div className="sidebar">
+              <div className="container">
+                <div className="card-body p-4">
+                  <div className="d-flex text-black">
+                    <div className="flex-shrink-0">
+                      <img
+                        src={Christian}
+                        alt="Christian"
+                        className="img-fluid"
+                        style={{
+                          verticalAlign: "middle",
+                          width: "65px",
+                          height: "65px",
+                          borderRadius: "50%",
+                          marginLeft: "20px",
+                        }}
+                      />
+                    </div>
+                    <div className="flex-grow-1 ms-3">
+                      <h5
+                        className="mb-1"
+                        style={{
+                          marginLeft: "20px",
+                          marginBottom: "10px",
+                          marginTop: "5px",
+                        }}
+                      >
+                        Johanes Mikael
+                      </h5>
+                      <p className="mb-2 pb-1 ">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 512 512"
                           style={{
-                            verticalAlign: "middle",
-                            width: "65px",
-                            height: "65px",
-                            borderRadius: "50%",
+                            width: "19px",
+                            height: "19px",
                             marginLeft: "20px",
-                          }}
-                        />
-                      </div>
-                      <div className="flex-grow-1 ms-3">
-                        <h5
-                          className="mb-1"
-                          style={{
-                            marginLeft: "20px",
-                            marginBottom: "10px",
-                            marginTop: "5px",
-                            color: "black",
+                            color: "#9b9b9b",
                           }}
                         >
-                          Johanes Mikael
-                        </h5>
-                        <p className="mb-2 pb-1" style={{ color: "#9b9b9b" }}>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 512 512"
-                            style={{
-                              width: "19px",
-                              height: "19px",
-                              marginLeft: "20px",
-                              color: "#9b9b9b",
-                            }}
-                          >
-                            <path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
-                          </svg>
-                          Ubah profile
-                        </p>
-                      </div>
+                          <path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 0zm-71 71L58.6 323.5c-10.4 10.4-18 23.3-22.2 37.4L1 481.2C-1.5 489.7 .8 498.8 7 505s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L421.7 220.3 291.7 90.3z" />
+                        </svg>
+                        Ubah profile
+                      </p>
                     </div>
                   </div>
-                  <div className="card-body-1 p-4">
-                    <div className="d-flex text-black">
-                      <div className="flex-shrink-0">
-                        <Button
-                          className="btn clr-btn"
-                          type="submit"
-                          style={{
-                            borderRadius: "50%",
-                            backgroundColor: "#456bf3",
-                          }}
-                        >
-                          <img src={Vector2} alt="vector" />
-                        </Button>
-                      </div>
-                      <div className="flex-grow-1 ms-3">
-                        <div className="btn-group">
-                          <Button
-                            type="Button"
-                            className="btn dropdown-toggle"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            style={{ color: "#9b9b9b" }}
-                          >
-                            Store
-                          </Button>
-                          <div className="dropdown-menu dropdown-menu-right">
-                            <Button className="dropdown-item" type="Button">
-                              Store1
-                            </Button>
-                            <Button className="dropdown-item" type="Button">
-                              Store2
-                            </Button>
-                            <Button className="dropdown-item" type="Button">
-                              Store3
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
+                </div>
+                <div className="card-body-1 p-4">
+                  <div className="d-flex text-black">
+                    <div className="flex-shrink-0">
+                      <Button
+                        className="btn clr-btn"
+                        type="submit"
+                        style={{
+                          borderRadius: "50%",
+                          backgroundColor: "#456bf3",
+                          width: "50px",
+                        }}
+                      >
+                        <img src={Vector2} alt="vector" />
+                      </Button>
                     </div>
-                  </div>
-                  <div className="card-body-1 p-4">
-                    <div className="d-flex text-black">
-                      <div className="flex-shrink-0">
-                        <Button
-                          className="btn clr-btn"
-                          type="submit"
-                          style={{
-                            borderRadius: "50%",
-                            backgroundClor: "#f36f45",
-                          }}
-                        >
-                          <img src={Vector3} alt="vector" />
-                        </Button>
-                      </div>
-                      <div className="flex-grow-1 ms-3">
-                        <div className="btn-group">
-                          <Button
-                            type="Button"
-                            className="btn dropdown-toggle"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            style={{ color: "black" }}
-                          >
-                            Product
-                          </Button>
-                          <div className="dropdown-menu dropdown-menu-right">
-                            <Button
-                              className="dropdown-item"
-                              type="Button"
-                              style={{ color: "#9b9b9b" }}
-                            >
-                              My products
-                            </Button>
-                            <Button className="dropdown-item" type="Button">
-                              Selling products
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card-body-1 p-4">
-                    <div className="d-flex text-black">
-                      <div className="flex-shrink-0">
-                        <Button
-                          className="btn clr-btn"
-                          type="submit"
-                          style={{
-                            borderRadius: "50%",
-                            backgroundColor: "#f3456f",
-                          }}
-                        >
-                          <img src={Vector1} alt="vector" />
-                        </Button>
-                      </div>
-                      <div className="flex-grow-1 ms-3">
-                        <div className="btn-group">
-                          <Button
-                            type="Button"
-                            className="btn dropdown-toggle"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            style={{ color: "#9b9b9b" }}
-                          >
-                            Order
-                          </Button>
-                          <div className="dropdown-menu dropdown-menu-right">
-                            <Button
-                              className="dropdown-item"
-                              type="Button"
-                              style={{ color: "#9b9b9b" }}
-                            >
-                              Order1
-                            </Button>
-                            <Button className="dropdown-item" type="Button">
-                              Order2
-                            </Button>
-                          </div>
-                        </div>
+                    <div className="flex-grow-1 ms-3">
+                      <div className="btn-group">
+                        <Dropdown as={ButtonGroup}>
+                          <Button variant="success">Store</Button>
+
+                          <Dropdown.Toggle
+                            split
+                            variant="success"
+                            id="dropdown-split-basic"
+                          />
+
+                          <Dropdown.Menu>
+                            <Dropdown.Item href="#/action-1">
+                              Action
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">
+                              Another action
+                            </Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">
+                              Something else
+                            </Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
                       </div>
                     </div>
                   </div>
                 </div>
-              </section>
-            </div> */}
+              </div>
+              <div className="card-body-1 p-4">
+                <div className="d-flex text-black">
+                  <div className="flex-shrink-0">
+                    <Button
+                      className="btn clr-btn"
+                      type="submit"
+                      style={{
+                        borderRadius: "50%",
+                        width: "50px",
+                      }}
+                    >
+                      <img src={Vector3} alt="vector" />
+                    </Button>
+                  </div>
+                  <div className="flex-grow-1 ms-3">
+                    <div className="btn-group">
+                      <Button
+                        type="Button"
+                        className="btn dropdown-toggle text-light"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        style={{}}
+                      >
+                        Product
+                      </Button>
+                      <div className="dropdown-menu dropdown-menu-right">
+                        <Button
+                          className="dropdown-item"
+                          type="Button"
+                          style={{ color: "#9b9b9b" }}
+                        >
+                          My products
+                        </Button>
+                        <Button className="dropdown-item" type="Button">
+                          Selling products
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="card-body-1 p-4">
+                <div className="d-flex text-black">
+                  <div className="flex-shrink-0">
+                    <Button
+                      className="btn clr-btn"
+                      type="submit"
+                      style={{
+                        borderRadius: "50%",
+                        backgroundColor: "#f3456f",
+                        width: "50px",
+                      }}
+                    >
+                      <img src={Vector1} alt="vector" />
+                    </Button>
+                  </div>
+                  <div className="flex-grow-1 ms-3">
+                    <div className="btn-group">
+                      <Button
+                        type="Button"
+                        className="btn dropdown-toggle text-light"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        style={{}}
+                      >
+                        Order
+                      </Button>
+                      <div className="dropdown-menu dropdown-menu-right">
+                        <Button
+                          className="dropdown-item"
+                          type="Button"
+                          style={{ color: "#9b9b9b" }}
+                        >
+                          Order1
+                        </Button>
+                        <Button className="dropdown-item" type="Button">
+                          Order2
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
         <div
           className="container-left shadow p-3 mb-5 bg-body rounded"
           style={{

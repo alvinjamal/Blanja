@@ -1,0 +1,24 @@
+.btn3 {
+  background-color: #db3022;
+}
+
+.logo {
+  margin-right: 20px;
+  height: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+  .input-wrap {
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+  .input-wrap {
+    width: 60%;
+  }
+}
+@media only screen and (min-width: 800px) {
+  .input-wrap {
+    width: 30%;
+  }
+}

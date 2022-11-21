@@ -11,27 +11,32 @@ export default function login() {
           <img
             src={Toko}
             alt="Logo"
-            style={{ width: "60px", height: "50px", marginRight: "10px" }}
+            style={{ width: "60px", height: "50px" }}
           />
           <h1 className="text-danger text-center">Store.id</h1>
         </div>
       </div>
       <div className="d-flex justify-content-center mt-5">
-        <h4 className="mb-5">Please login with your account</h4>
+        <h4 className="mb-4" style={{ fontWeight: "bold" }}>
+          Please login with your account
+        </h4>
       </div>
       <div
         className="d-flex mt-2 justify-content-center container"
         style={{ width: "30%" }}
       >
-        <Button href="/login" className="btn1 btn-danger btn-lg" id="button1">
+        <Button
+          href="/loginCostumer"
+          className="btn btn-light btn-block btn-lg"
+          variant="outline-danger"
+          style={{ borderRadius: "13px" }}
+        >
           Customer
         </Button>
 
         <Button
-          href="/login"
-          className="btn btn-light btn-block btn-lg"
-          id="button"
-          variant="outline-danger"
+          className="btn1 btn-danger btn-lg"
+          style={{ borderRadius: "13px", marginLeft: "10px" }}
         >
           {" "}
           Seller
@@ -56,7 +61,7 @@ export default function login() {
           aria-describedby="basic=addon1"
           id="input-margin"
         />
-        <a href="http://" className="text-danger" id="text1">
+        <a href="/reset" className="text-danger" id="text1">
           Forgot password?{" "}
         </a>
       </div>

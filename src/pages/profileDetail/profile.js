@@ -12,19 +12,19 @@ import Vector6 from "../../img/Vector(6).png";
 export default function profile() {
   return (
     <header>
-      <div class="container-fluid p-3 mb-2 bg-new">
-        <div class="container">
-          <div class="wrapper">
-            <div class="sidebar">
+      <div className="container-fluid p-3 mb-2 bg-new">
+        <div className="container">
+          <div className="wrapper">
+            <div className="sidebar">
               <section>
-                <div class="container">
-                  <div class="card-body p-4">
-                    <div class="d-flex text-black">
-                      <div class="flex-shrink-0">
+                <div className="container">
+                  <div className="card-body p-4">
+                    <div className="d-flex text-black">
+                      <div className="flex-shrink-0">
                         <img
                           src={Christian}
                           alt=""
-                          class="img-fluid"
+                          className="img-fluid"
                           style={{
                             verticalAlign: "middle",
                             width: "65px",
@@ -34,9 +34,9 @@ export default function profile() {
                           }}
                         />
                       </div>
-                      <div class="flex-grow-1 ms-3">
+                      <div className="flex-grow-1 ms-3">
                         <h5
-                          class="mb-1"
+                          className="mb-1"
                           style={{
                             marginLeft: "20px",
                             marginBottom: "10px",
@@ -46,7 +46,7 @@ export default function profile() {
                         >
                           Johanes Mikael
                         </h5>
-                        <p class="mb-2 pb-1" style={{ color: "#9b9b9b" }}>
+                        <p className="mb-2 pb-1" style={{ color: "#9b9b9b" }}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512"
@@ -64,11 +64,11 @@ export default function profile() {
                       </div>
                     </div>
                   </div>
-                  <div class="card-body-1 p-4">
-                    <div class="d-flex text-black">
-                      <div class="flex-shrink-0">
+                  <div className="card-body-1 p-4">
+                    <div className="d-flex text-black">
+                      <div className="flex-shrink-0">
                         <Button
-                          class="btn clr-btn"
+                          className="btn clr-btn"
                           type="submit"
                           style={{
                             borderRadius: "50%",
@@ -78,9 +78,9 @@ export default function profile() {
                           <img src={Vector4} alt="vector" />
                         </Button>
                       </div>
-                      <div class="flex-grow-1 ms-3">
+                      <div className="flex-grow-1 ms-3">
                         <h5
-                          class="mb-1"
+                          className="mb-1"
                           style={{
                             marginLeft: "20px",
                             marginBottom: "10px",
@@ -93,11 +93,11 @@ export default function profile() {
                       </div>
                     </div>
                   </div>
-                  <div class="card-body-1 p-4">
-                    <div class="d-flex text-black">
-                      <div class="flex-shrink-0">
+                  <div className="card-body-1 p-4">
+                    <div className="d-flex text-black">
+                      <div className="flex-shrink-0">
                         <Button
-                          class="btn clr-btn"
+                          className="btn clr-btn"
                           type="submit"
                           style={{
                             borderRadius: "50%",
@@ -107,9 +107,9 @@ export default function profile() {
                           <img src={Vector5} alt="vector" />
                         </Button>
                       </div>
-                      <div class="flex-grow-1 ms-3">
+                      <div className="flex-grow-1 ms-3">
                         <h5
-                          class="mb-1"
+                          className="mb-1"
                           style={{
                             marginLeft: "20px",
                             marginBottom: "10px",
@@ -122,11 +122,11 @@ export default function profile() {
                       </div>
                     </div>
                   </div>
-                  <div class="card-body-1 p-4">
-                    <div class="d-flex text-black">
-                      <div class="flex-shrink-0">
+                  <div className="card-body-1 p-4">
+                    <div className="d-flex text-black">
+                      <div className="flex-shrink-0">
                         <button
-                          class="btn clr-btn"
+                          className="btn clr-btn"
                           type="submit"
                           style={{
                             borderRadius: "50%",
@@ -136,9 +136,9 @@ export default function profile() {
                           <img src={Vector6} alt="vector" />
                         </button>
                       </div>
-                      <div class="flex-grow-1 ms-3">
+                      <div className="flex-grow-1 ms-3">
                         <h5
-                          class="mb-1"
+                          className="mb-1"
                           style={{
                             marginLeft: "20px",
                             marginBottom: "10px",
@@ -157,7 +157,7 @@ export default function profile() {
           </div>
         </div>
         <div
-          class="container-left shadow p-3 mb-5 bg-body rounded"
+          className="container-left shadow p-3 mb-5 bg-body rounded"
           style={{
             backgroundColor: "white",
             width: "890px",
@@ -166,17 +166,17 @@ export default function profile() {
           }}
         >
           <div
-            class="container text-left"
+            className="container text-left"
             style={{ marginBottom: "40px", marginTop: "25px", width: "30rem" }}
           >
-            <div class="row align-items-center">
-              <div class="col">
+            <div className="row align-items-center">
+              <div className="col">
                 <h3>My Profile</h3>
                 <h6 style={{ color: "#9b9b9b" }}>
                   Manage your profile information
                 </h6>
                 <hr />
-                <div class="input-group mb-3">
+                <div className="input-group mb-3">
                   <h6
                     style={{
                       color: "#9b9b9b",
@@ -189,13 +189,13 @@ export default function profile() {
                   </h6>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Johanes Mikael"
                     aria-label="Username"
                     aria-describedby="basic-addon1"
                   />
                 </div>
-                <div class="input-group mb-3">
+                <div className="input-group mb-3">
                   <h6
                     style={{
                       color: "#9b9b9b",
@@ -208,13 +208,13 @@ export default function profile() {
                   </h6>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="johanes@gmail.com"
                     aria-label="johanes@gmail.com"
                     aria-describedby="basic-addon1"
                   />
                 </div>
-                <div class="input-group mb-3">
+                <div className="input-group mb-3">
                   <h6
                     style={{
                       color: "#9b9b9b",
@@ -227,16 +227,16 @@ export default function profile() {
                   </h6>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="08901289012"
                     aria-label="Username"
                     aria-describedby="basic-addon1"
                   />
                 </div>
-                <div class="col">
-                  <div class="form-check">
+                <div className="col">
+                  <div className="form-check">
                     <label
-                      class="form-check-label"
+                      className="form-check-label"
                       for="flexRadioDefault1"
                       style={{
                         marginTop: "16px",
@@ -247,13 +247,13 @@ export default function profile() {
                       Gender
                     </label>
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="flexRadioDefault"
                       id="flexRadioDefault1"
                     />
                     <label
-                      class="form-check-label"
+                      className="form-check-label"
                       for="flexRadioDefault1"
                       style={{
                         marginTop: "16px",
@@ -264,13 +264,13 @@ export default function profile() {
                       Laki-laki
                     </label>
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
                       name="flexRadioDefault"
                       id="flexRadioDefault1"
                     />
                     <label
-                      class="form-check-label"
+                      className="form-check-label"
                       for="flexRadioDefault1"
                       style={{ marginTop: "16px", color: "#9b9b9b" }}
                     >
@@ -278,10 +278,10 @@ export default function profile() {
                     </label>
                   </div>
                 </div>
-                <div class="col">
-                  <div class="form-check">
+                <div className="col">
+                  <div className="form-check">
                     <label
-                      class="form-check-label"
+                      className="form-check-label"
                       for="flexRadioDefault1"
                       style={{
                         marginTop: "16px",
@@ -291,7 +291,7 @@ export default function profile() {
                     >
                       Date of birth
                     </label>
-                    <div class="btn-group">
+                    <div className="btn-group">
                       <DropdownButton
                         as={ButtonGroup}
                         title="Date"
@@ -332,7 +332,7 @@ export default function profile() {
                       </DropdownButton>
                     </div>
 
-                    <div class="btn-group">
+                    <div className="btn-group">
                       <DropdownButton
                         as={ButtonGroup}
                         title="month"
@@ -354,7 +354,7 @@ export default function profile() {
                       </DropdownButton>
                     </div>
 
-                    <div class="btn-group">
+                    <div className="btn-group">
                       <DropdownButton
                         as={ButtonGroup}
                         title="Year"
@@ -372,7 +372,7 @@ export default function profile() {
                   </div>
                   <a href="/login" id="link">
                     <Button
-                      class="btn-block btn-md"
+                      className="btn-block btn-md"
                       id="button-save"
                       variant="danger"
                       style={{

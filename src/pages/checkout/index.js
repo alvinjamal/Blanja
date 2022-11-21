@@ -11,8 +11,14 @@ export default function Checkout() {
           className="container"
           style={{ marginTop: "35px", marginLeft: "220px" }}
         >
-          <h3 id="checkout">Checkout</h3>
-          <h5 style={{ marginTop: "30px", marginBottom: "20px" }}>
+          <h2 id="checkout">Checkout</h2>
+          <h5
+            style={{
+              marginTop: "30px",
+              marginBottom: "20px",
+              fontWeight: "bold",
+            }}
+          >
             Shipping Address
           </h5>
         </div>
@@ -30,11 +36,11 @@ export default function Checkout() {
             style={{ marginBottom: "13px" }}
           >
             <div className="row align-items-center">
-              <h6>Andreas Jane</h6>
+              <h6 style={{ fontWeight: "bold" }}>Andreas Jane</h6>
               <p>
                 Perumahan Sapphire Mediterania, Wiradadi, Kec. Sokaraja,
-                Kabupaten Banyumas, Jawa Tengah, 53181 [Tokopedia Note: blok c
-                16] Sokaraja, Kab. Banyumas, 53181
+                Kabupaten Banyumas, Jawa Tengah, 53181 [ Note: blok c 16]
+                Sokaraja, Kab. Banyumas, 53181
               </p>
               <a href="/register" id="link">
                 <button
@@ -42,10 +48,11 @@ export default function Checkout() {
                   id="button-cust-3"
                   style={{
                     marginTop: "23px",
-                    height: "60px",
+                    height: "40px",
+                    width: "13rem",
                     borderRadius: "40px",
                     border: "1px solid",
-                    marginLeft: "20px",
+                    marginLeft: "30%",
                     color: "#9b9b9b",
                   }}
                 >
@@ -96,7 +103,7 @@ export default function Checkout() {
             style={{ marginBottom: "10px" }}
           >
             <div className="row align-items-center">
-              <div className="col">
+              <div className="col" style={{ height: "100px" }}>
                 <img src={Jaket} alt="jaket" id="check2" />
               </div>
               <div className="col">

@@ -1,290 +1,387 @@
-import React from "react";
-import { Container, Card, Row, Col, Figure } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import styles from "./product.module.css";
+import Alert from "../../components/alert";
+import { FaTrashAlt } from "react-icons/fa";
+import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import Jas from "../../img/jas.png";
-import Page from "../../img/page.png";
-import Page1 from "../../img/page1.png";
-import Page2 from "../../img/page2.png";
-import Page3 from "../../img/page3.png";
-import Page4 from "../../img/page4.png";
-import Page5 from "../../img/page5.png";
+import Modal from "react-bootstrap/Modal";
 
-export default function product() {
+export default function Product() {
+  const [data, setData] = useState([]);
+  const [photo, setPhoto] = useState(null);
+  const [message, setMessage] = useState({
+    title: "",
+    text: "",
+    type: "success",
+  });
+  const [messageShow, setMessageShow] = useState(true);
+  const [inputData, setInputData] = useState({
+    name: "",
+    stock: "",
+    price: "",
+    category_id: "1",
+    search: "",
+  });
+  const [sortBy, setSortBy] = useState("name");
+  const [sort, setSort] = useState("asc");
+  const [selected, setSelected] = useState(null);
+  const [onedit, setOnedit] = useState(false);
+  const [temp, setTemp] = useState(null);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const deleteData = () => {
+    axios
+      .delete(`http://localhost:3500/products/${selected}`)
+      .then((res) => {
+        handleClose();
+        console.log("delete data success");
+        console.log(res);
+        setMessageShow(true);
+        setMessage({
+          title: "success",
+          text: "delete data success",
+          type: "success",
+        });
+        messageTime();
+        getData();
+      })
+      .catch((err) => {
+        console.log("delete data fail");
+        console.log(err);
+        setMessageShow(true);
+        setMessage({ title: "fail", text: "delete data fail", type: "danger" });
+        messageTime();
+      });
+  };
+
+  const editForm = (item) => {
+    console.log(item);
+    setTemp(item);
+    setInputData({
+      ...inputData,
+      name: item.name,
+      stock: item.stock,
+      price: item.price,
+    });
+  };
+
+  useEffect(() => {
+    selected ? setOnedit(true) : setOnedit(false);
+    !selected &&
+      setInputData({
+        ...inputData,
+        name: "",
+        stock: "",
+        price: "",
+      });
+    !selected && setPhoto(null);
+  }, [selected]);
+
+  const messageTime = () => {
+    setTimeout(() => setMessageShow(false), 3000);
+  };
+  useEffect(() => {
+    console.log("checked", sortBy);
+    getData();
+  }, [sortBy, sort, inputData.search]);
+  useEffect(() => {
+    getData();
+  }, []);
+
+  let users = `http://localhost:3500/products?sortby=${sortBy}&sort=${sort}&search=${inputData.search}`;
+  const getData = () => {
+    axios
+      .get(users)
+      .then((res) => {
+        console.log("get data success");
+        console.log(res.data.data);
+        res.data && setData(res.data.data);
+        !selected && setMessageShow(true);
+        !selected &&
+          setMessage({
+            title: "success",
+            text: "get data success",
+            type: "success",
+          });
+        !selected && messageTime();
+        setSelected(null);
+      })
+      .catch((err) => {
+        console.log("get data fail");
+        console.log(err);
+        setData([]);
+        setMessageShow(true);
+        setMessage({ title: "fail", text: "get data fail", type: "danger" });
+        messageTime();
+      });
+  };
+
+  const postForm = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", inputData.name);
+    formData.append("stock", inputData.stock);
+    formData.append("price", inputData.price);
+    formData.append("category_id", inputData.category_id);
+    formData.append("photo", photo);
+    console.log(formData);
+    if (!selected) {
+      axios
+        .post("http://localhost:3500/products", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((res) => {
+          console.log("input data success");
+          console.log(res);
+          setMessageShow(true);
+          setMessage({
+            title: "success",
+            text: "post data success",
+            type: "success",
+          });
+          messageTime();
+          getData();
+        })
+        .catch((err) => {
+          console.log("input data fail");
+          setMessageShow(true);
+          setMessage({ title: "fail", text: "post data fail", type: "danger" });
+          messageTime();
+          console.log(err);
+        });
+    } else {
+      axios
+        .put(`http://localhost:3500/products/${selected}`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((res) => {
+          console.log("input data success");
+          console.log(res);
+          setMessageShow(true);
+          setMessage({
+            title: "success",
+            text: "update data success",
+            type: "success",
+          });
+          messageTime();
+          getData();
+        })
+        .catch((err) => {
+          console.log("input data fail");
+          setMessageShow(true);
+          setMessage({ title: "fail", text: "post data fail", type: "danger" });
+          messageTime();
+          console.log(err);
+        });
+    }
+  };
+  const handlePhoto = (e) => {
+    setPhoto(e.target.files[0]);
+  };
+
+  const handleChange = (e) => {
+    setInputData({
+      ...inputData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
-    <header>
-      <div class="container-fluid p-3 mb-2 bg-new" />
-      <div class="container" />
-      <div>
-        <h6
-          style={{ color: "#9b9b9b", marginTop: "30px", marginBottom: "30px" }}
-        >
-          Home category T-Shirt
-        </h6>
-      </div>
-      <div>
-        <div class="card-new2 mb-3" style={{ maxidth: "540px" }}>
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img
-                src={Page}
-                class="img-fluid rounded-start card-top"
-                alt="..."
-              />
-              <div>
-                <img src={Page1} alt="Page1" class="card-bottom" />
-                <img src={Page2} alt="Page2" class="card-bottom" />
-                <img src={Page3} alt="Page3" class="card-bottom" />
-                <img src={Page4} alt="Page4" class="card-bottom" />
-                <img src={Page5} alt="Page5" class="card-bottom" />
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h3 class="card-title">Baju Muslim Pria</h3>
-                  <p class="card-text" style={{ color: "#9b9b9b" }}>
-                    Zalora Cloth
-                  </p>
-                  {/* <p class="card-text">
-                    <small class="text-muted">
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="rating">(10)</span>
-                    </small>
-                  </p> */}
-                  <p style={{ color: "#9b9b9b" }}>Price</p>
-                  <h4>$ 20.0</h4>
-                  <p style={{ color: "#9b9b9b" }}>Color</p>
-                  <div class="row">
-                    <Button
-                      class="btn-dark clr-btn"
-                      type="submit"
-                      style={{ borderRadius: "50%" }}
-                    />
-                    <Button
-                      class="btn-danger clr-btn"
-                      type="submit"
-                      style={{ borderRadius: "50%" }}
-                    />
-                    <Button
-                      class="btn-primary clr-btn"
-                      type="submit"
-                      style={{ borderRadius: "50%" }}
-                    />
-                    <Button
-                      class="btn-success clr-btn"
-                      type="submit"
-                      style={{ borderRadius: "50%" }}
-                    />
-                  </div>
-                  <div class="row" style={{ marginTop: "20px" }}>
-                    <h4 style={{ marginRight: "150px", marginLeft: "30px" }}>
-                      Size
-                    </h4>
-                    <h4>Jumlah</h4>
-                  </div>
-                  <div class="row" style={{ marginTop: "20px" }}>
-                    <div class="counter1" style={{ marginRight: "108px" }}>
-                      <div class="btn-1">-</div>
-                      <div class="count1">28</div>
-                      <div class="btn-2">
-                        <img src="/img/tokoe.png" alt="..." />
-                      </div>
-                      <div class="counter1">
-                        <div class="btn-1">-</div>
-                        <div class="count1">1</div>
-                        <div class="btn-2">
-                          <img src="/img/tokoe.png" alt="..." />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <a href="http//" id="link">
-                        <Button
-                          class="btn btn-outline-dark btn-block btn-md"
-                          id="button-cust-2"
-                          style={{
-                            marginTop: "23px",
-                            height: "45px",
-                            borderRadius: "40px",
-                            marginRight: "30px",
-                          }}
-                        >
-                          Chat
-                        </Button>
-                      </a>
-                      <div class="row">
-                        <a href="http//" id="link">
-                          <Button
-                            class="btn btn-outline-dark btn-block btn-md"
-                            id="button-cust-2"
-                            style={{
-                              marginTop: "23px",
-                              height: "45px",
-                              borderRadius: "40px",
-                              marginRight: "30px",
-                            }}
-                          >
-                            Add bag
-                          </Button>
-                        </a>
-                      </div>
-                      <div class="row">
-                        <a href="http//" id="link">
-                          <Button
-                            class="btn btn-danger btn-block btn-md"
-                            id="button-cust-2"
-                            style={{
-                              marginTop: "23px",
-                              height: "45px",
-                              borderRadius: "40px",
-                              marginLeft: "20px",
-                              width: "350px",
-                            }}
-                          >
-                            Buy Now
-                          </Button>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <div>
+      {/* post data */}
+      <form onSubmit={postForm} className="container mt-4 p-2 border border-3 ">
+        <h5 className="text">Add Product</h5>
+        <div className="d-flex flex-row ">
+          <input
+            className="form-control"
+            type="text"
+            value={inputData.name}
+            name="name"
+            onChange={handleChange}
+            placeholder="Nama"
+          />
+          <input
+            className="form-control"
+            type="number"
+            value={inputData.stock}
+            name="stock"
+            onChange={handleChange}
+            placeholder="Stock"
+            style={{ marginLeft: "10px" }}
+          />
+        </div>
+        <div className="d-flex flex-row">
+          <input
+            className="form-control"
+            type="number"
+            value={inputData.price}
+            name="price"
+            onChange={handleChange}
+            placeholder="Price"
+            style={{ marginTop: "10px" }}
+          />
+          <input
+            className="form-control"
+            type="file"
+            name="photo"
+            onChange={handlePhoto}
+            placeholder="Photo"
+            required
+            style={{ marginLeft: "10px", marginTop: "10px" }}
+          />
+        </div>
+        {onedit ? (
+          <button className="btn btn-primary" type="submit">
+            Update
+          </button>
+        ) : (
+          <button
+            className="btn btn-danger"
+            type="submit"
+            style={{ marginTop: "10px" }}
+          >
+            Post
+          </button>
+        )}
+      </form>
+
+      {/* filter */}
+      <div className="container  mt-2 p-2 rounded container mt-4 p-2 border border-3">
+        <h5 className="text">Filter</h5>
+        <div className="container d-flex flex-row">
+          <div className="">
+            <div
+              className={`btn ${
+                sortBy == "name" ? "btn-danger" : "btn-secondary"
+              } ms-1`}
+              onClick={() => setSortBy("name")}
+            >
+              Name
+            </div>
+            <div
+              className={`btn ${
+                sortBy == "stock" ? "btn-danger" : "btn-secondary"
+              } ms-1`}
+              onClick={() => setSortBy("stock")}
+            >
+              Stock
+            </div>
+            <div
+              className={`btn ${
+                sortBy == "price" ? "btn-danger" : "btn-secondary"
+              } ms-1`}
+              onClick={() => setSortBy("price")}
+            >
+              Price
             </div>
           </div>
-        </div>
-        <div className="mb-2">
-          <div>
-            <Container>
-              <div className="mb-2"></div>
-
-              <div className="mb-2">
-                <h3>You can also like this</h3>
-                <Figure>
-                  <Figure.Caption>You’ve never seen it before! </Figure.Caption>
-                </Figure>
-              </div>
-              <div>
-                <Row>
-                  <Col md={3} className="mb-2">
-                    <Card style={{ width: "18rem" }}>
-                      <Card.Img variant="top" src={Jas} alt="Jas" />
-                      <Card.Body>
-                        <Card.Title>
-                          Men's formal suit - Black & White
-                        </Card.Title>
-                        <Card.Text>$ 40.0</Card.Text>
-                        <Figure>
-                          <Figure.Caption>Zalora Cloth</Figure.Caption>
-                        </Figure>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={3} className="mb-2">
-                    <Card style={{ width: "18rem" }}>
-                      <Card.Img variant="top" src={Jas} alt="Jas" />
-                      <Card.Body>
-                        <Card.Title>
-                          Men's formal suit - Black & White
-                        </Card.Title>
-                        <Card.Text>$ 40.0</Card.Text>
-                        <Figure>
-                          <Figure.Caption>Zalora Cloth</Figure.Caption>
-                        </Figure>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={3} className="mb-2">
-                    <Card style={{ width: "18rem" }}>
-                      <Card.Img variant="top" src={Jas} alt="Jas" />
-                      <Card.Body>
-                        <Card.Title>
-                          Men's formal suit - Black & White
-                        </Card.Title>
-                        <Card.Text>$ 40.0</Card.Text>
-                        <Figure>
-                          <Figure.Caption>Zalora Cloth</Figure.Caption>
-                        </Figure>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={3} className="mb-2">
-                    <Card style={{ width: "18rem" }}>
-                      <Card.Img variant="top" src={Jas} alt="Jas" />
-                      <Card.Body>
-                        <Card.Title>
-                          Men's formal suit - Black & White
-                        </Card.Title>
-                        <Card.Text>$ 40.0</Card.Text>
-                        <Figure>
-                          <Figure.Caption>Zalora Cloth</Figure.Caption>
-                        </Figure>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={3} className="mb-2">
-                    <Card style={{ width: "18rem" }}>
-                      <Card.Img variant="top" src={Jas} alt="Jas" />
-                      <Card.Body>
-                        <Card.Title>
-                          Men's formal suit - Black & White
-                        </Card.Title>
-                        <Card.Text>$ 40.0</Card.Text>
-                        <Figure>
-                          <Figure.Caption>Zalora Cloth</Figure.Caption>
-                        </Figure>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={3} className="mb-2">
-                    <Card style={{ width: "18rem" }}>
-                      <Card.Img variant="top" src={Jas} alt="Jas" />
-                      <Card.Body>
-                        <Card.Title>
-                          Men's formal suit - Black & White
-                        </Card.Title>
-                        <Card.Text>$ 40.0</Card.Text>
-                        <Figure>
-                          <Figure.Caption>Zalora Cloth</Figure.Caption>
-                        </Figure>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={3} className="mb-2">
-                    <Card style={{ width: "18rem" }}>
-                      <Card.Img variant="top" src={Jas} alt="Jas" />
-                      <Card.Body>
-                        <Card.Title>
-                          Men's formal suit - Black & White
-                        </Card.Title>
-                        <Card.Text>$ 40.0</Card.Text>
-                        <Figure>
-                          <Figure.Caption>Zalora Cloth</Figure.Caption>
-                        </Figure>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                  <Col md={3} className="mb-2">
-                    <Card style={{ width: "18rem" }}>
-                      <Card.Img variant="top" src={Jas} alt="Jas" />
-                      <Card.Body>
-                        <Card.Title>
-                          Men's formal suit - Black & White
-                        </Card.Title>
-                        <Card.Text>$ 40.0</Card.Text>
-                        <Figure>
-                          <Figure.Caption>Zalora Cloth</Figure.Caption>
-                        </Figure>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                </Row>
-              </div>
-            </Container>
+          <div className="ms-1 border-start border-dark">
+            <div
+              className={`btn ${
+                sort == "asc" ? "btn-danger" : "btn-secondary"
+              } ms-1`}
+              onClick={() => setSort("asc")}
+            >
+              Asc
+            </div>
+            <div
+              className={`btn ${
+                sort == "desc" ? "btn-danger" : "btn-secondary"
+              } ms-1`}
+              onClick={() => setSort("desc")}
+            >
+              Desc
+            </div>
+          </div>
+          <div className="search ms-2">
+            <input
+              type="text"
+              className="form-control"
+              value={inputData.search}
+              name="search"
+              onChange={handleChange}
+              placeholder="Search"
+              style={{ marginLeft: "10px", borderRadius: "10px" }}
+            />
           </div>
         </div>
       </div>
-    </header>
+
+      {/* get data */}
+      <div className="container mt-4 p-2 border border-3 ">
+        <h5 className="text">Data Product</h5>
+        <Table className="striped bordered hover">
+          <thead>
+            <tr>
+              <th>Number</th>
+              <th>Nama</th>
+              <th>Stock</th>
+              <th>Harga</th>
+              <th>Photo</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={index + 1}>
+                <td>{index + 1}</td>
+                <td>{item.name}</td>
+                <td>{item.stock.toLocaleString()}</td>
+                <td>{item.price.toLocaleString()}</td>
+                <td>
+                  <img src={item.photo} className={styles.photo} alt="" />
+                </td>
+                <td>
+                  <FaTrashAlt
+                    color="red"
+                    onClick={() => {
+                      setSelected(item.id);
+                      handleShow();
+                    }}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+
+      {/* alert */}
+      {messageShow && (
+        <Alert title={message.title} text={message.text} type={message.type} />
+      )}
+      <div>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Are you sure?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Are you sure to delete this data? Deleted data cannot be recovered
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="danger" onClick={() => deleteData()}>
+              Yes
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    </div>
   );
 }

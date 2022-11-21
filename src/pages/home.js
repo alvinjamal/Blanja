@@ -69,7 +69,7 @@ export default function home() {
           </Carousel>
         </div>
         <div className="mb-2">
-          <h3>Category</h3>
+          <h3 id="category">Category</h3>
           <Figure>
             <Figure.Caption>What are you currently looking for</Figure.Caption>
           </Figure>

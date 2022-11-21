@@ -2,15 +2,14 @@
   font-weight: bold;
 }
 
-#nav1 {
-  margin-right: 10px;
-}
-
 #check1 {
   border-radius: 10px;
+  width: 12rem;
+  height: 130px;
 }
 #check2 {
-  height: 150px;
+  width: 12rem;
+  height: 130px;
   border-radius: 10px;
 }
 
