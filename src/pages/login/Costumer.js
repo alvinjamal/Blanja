@@ -26,7 +26,7 @@ export default function login() {
         style={{ width: "30%" }}
       >
         <Button
-          href="/login"
+          href="/loginCustomer"
           className="btn1 btn-danger btn-lg"
           style={{ borderRadius: "13px" }}
         >
@@ -34,7 +34,7 @@ export default function login() {
         </Button>
 
         <Button
-          href="/login"
+          href="/loginSeller"
           className="btn btn-light btn-block btn-lg"
           id="button"
           variant="outline-danger"

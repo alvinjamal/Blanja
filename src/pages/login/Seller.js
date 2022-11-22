@@ -1,11 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import "./style.css";
 import Toko from "../../img/toko.png";
+import axios from "axios";
+import Alert from "../../components/alert";
 
-export default function login() {
+export default function Login() {
+  const [inputData, setInputData] = useState({
+    email: "",
+    password: "",
+  });
+  const [message, setMessage] = useState({
+    title: "",
+    text: "",
+    type: "success",
+  });
+  const [messageShow, setMessageShow] = useState(false);
+
+  const handleLogin = (e) => {
+    axios
+      .post(
+        `http://localhost:3500/users/login`,
+        { email: inputData.email, password: inputData.password },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        localStorage.setItem("token", res.data.data.token);
+        setMessage({
+          title: "Success",
+          text: "Login success",
+          type: "success",
+        });
+        setTimeout(() => {
+          setMessageShow(true);
+        }, 500);
+        setTimeout(() => {
+          window.location = "/product";
+        }, 2000);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const handleChange = (e) => {
+    setInputData({
+      ...inputData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  console.log(message);
   return (
-    <header>
+    <div>
       <div className="container column mt-5 d">
         <div className="d-flex mt-5 justify-content-center row mx-auto">
           <img
@@ -35,6 +84,7 @@ export default function login() {
         </Button>
 
         <Button
+          href="/loginSeller"
           className="btn1 btn-danger btn-lg"
           style={{ borderRadius: "13px", marginLeft: "10px" }}
         >
@@ -50,12 +100,18 @@ export default function login() {
           type="email"
           className="form-control"
           placeholder="Email"
+          name="email"
+          value={inputData.email}
+          onChange={handleChange}
           aria-label="email"
           aria-describedby="basic=addon1"
         />
         <input
           type="password"
           className="form-control"
+          name="password"
+          value={inputData.password}
+          onChange={handleChange}
           placeholder="Password"
           aria-label="password"
           aria-describedby="basic=addon1"
@@ -71,6 +127,7 @@ export default function login() {
       >
         <Button
           className="btn3 btn-lg btn-round btn-danger text-light "
+          onClick={handleLogin}
           style={{ borderRadius: "15px", height: 50 }}
         >
           Login
@@ -82,6 +139,10 @@ export default function login() {
           </a>
         </p>
       </div>
-    </header>
+      {/* alert */}
+      {messageShow && (
+        <Alert title={message.title} text={message.text} type={message.type} />
+      )}
+    </div>
   );
 }

@@ -31,8 +31,8 @@ function NavbarComponent() {
           <Nav className="me-auto">
             <Nav.Link href="./home">Home</Nav.Link>
             <Nav.Link href="./product">Product</Nav.Link>
-            <Nav.Link href="./loginSeller">Login Seller</Nav.Link>
-            <Nav.Link href="./login">Login</Nav.Link>
+            {/* <Nav.Link href="./loginSeller">Login Seller</Nav.Link> */}
+            {/* <Nav.Link href="./login">Login</Nav.Link> */}
           </Nav>
           <Form className="d-flex ">
             <Form.Control
@@ -67,7 +67,7 @@ function NavbarComponent() {
             />
           </Button>
           <Button
-            href="/login"
+            href="/loginSeller"
             className="btn-1"
             variant="danger"
             size="sm"
@@ -76,7 +76,7 @@ function NavbarComponent() {
             Login
           </Button>
           <Button
-            href="/register"
+            href="/registerSeller"
             className="btn-1"
             variant="outline-danger"
             size="sm"

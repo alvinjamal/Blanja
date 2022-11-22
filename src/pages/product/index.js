@@ -261,7 +261,7 @@ export default function Product() {
           <div className="">
             <div
               className={`btn ${
-                sortBy == "name" ? "btn-danger" : "btn-secondary"
+                sortBy === "name" ? "btn-danger" : "btn-secondary"
               } ms-1`}
               onClick={() => setSortBy("name")}
             >
@@ -269,7 +269,7 @@ export default function Product() {
             </div>
             <div
               className={`btn ${
-                sortBy == "stock" ? "btn-danger" : "btn-secondary"
+                sortBy === "stock" ? "btn-danger" : "btn-secondary"
               } ms-1`}
               onClick={() => setSortBy("stock")}
             >
@@ -277,7 +277,7 @@ export default function Product() {
             </div>
             <div
               className={`btn ${
-                sortBy == "price" ? "btn-danger" : "btn-secondary"
+                sortBy === "price" ? "btn-danger" : "btn-secondary"
               } ms-1`}
               onClick={() => setSortBy("price")}
             >
@@ -287,7 +287,7 @@ export default function Product() {
           <div className="ms-1 border-start border-dark">
             <div
               className={`btn ${
-                sort == "asc" ? "btn-danger" : "btn-secondary"
+                sort === "asc" ? "btn-danger" : "btn-secondary"
               } ms-1`}
               onClick={() => setSort("asc")}
             >
@@ -295,7 +295,7 @@ export default function Product() {
             </div>
             <div
               className={`btn ${
-                sort == "desc" ? "btn-danger" : "btn-secondary"
+                sort === "desc" ? "btn-danger" : "btn-secondary"
               } ms-1`}
               onClick={() => setSort("desc")}
             >
@@ -323,9 +323,9 @@ export default function Product() {
           <thead>
             <tr>
               <th>Number</th>
-              <th>Nama</th>
+              <th>Name</th>
               <th>Stock</th>
-              <th>Harga</th>
+              <th>Price</th>
               <th>Photo</th>
               <th>Action</th>
             </tr>
