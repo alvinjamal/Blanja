@@ -1,0 +1,67 @@
+#costum-switch {
+  width: 20rem;
+}
+
+.bg {
+  background-color: #abcfe1;
+  padding-top: 5px;
+}
+
+.wrapp {
+  background-color: #f6f6f6;
+}
+
+.card {
+  background: #ffffff;
+}
+
+.total {
+  margin-left: 2rem;
+}
+.payment {
+  font-weight: bold;
+  padding-left: 6rem;
+}
+
+.flight {
+  font-weight: bold;
+}
+
+.airlines {
+  margin-right: 7rem;
+  margin-top: 3rem;
+  font-weight: bold;
+}
+
+.fly {
+  text-align: center;
+  font-weight: bold;
+}
+
+.txt {
+  padding-top: 1rem;
+  padding-left: 1rem;
+}
+
+.main {
+  padding-top: 2rem;
+  padding-right: 1rem;
+  color: #2395ff;
+}
+
+.info {
+  background-color: #f0cec3;
+  margin-left: 7rem;
+  width: 34rem;
+  height: 2rem;
+  padding-left: 1rem;
+  border-radius: 5px;
+}
+
+.tick {
+  margin-left: 2rem;
+}
+
+.btn {
+  font-weight: bold;
+}
