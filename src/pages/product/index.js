@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./product.module.css";
-import Alert from "../../components/alert";
+import Alert from "../../Components/alert";
 import { FaTrashAlt } from "react-icons/fa";
 import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import { Button, Modal, Form } from "react-bootstrap";
+import swal from "sweetalert";
 
 export default function Product() {
   const [data, setData] = useState([]);
@@ -42,19 +42,19 @@ export default function Product() {
         console.log("delete data success");
         console.log(res);
         setMessageShow(true);
-        setMessage({
+        swal({
           title: "success",
-          text: "delete data success",
-          type: "success",
+          text: "Delete data success",
+          type: "danger",
         });
         messageTime();
         getData();
       })
       .catch((err) => {
-        console.log("delete data fail");
+        console.log("Delete data fail");
         console.log(err);
         setMessageShow(true);
-        setMessage({ title: "fail", text: "delete data fail", type: "danger" });
+        setMessage({ title: "Fail", text: "Delete data fail", type: "danger" });
         messageTime();
       });
   };
@@ -90,6 +90,9 @@ export default function Product() {
     getData();
   }, [sortBy, sort, inputData.search]);
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+    }
     getData();
   }, []);
 
@@ -129,7 +132,8 @@ export default function Product() {
     formData.append("price", inputData.price);
     formData.append("category_id", inputData.category_id);
     formData.append("photo", photo);
-    console.log(formData);
+    formData.append("search", inputData.search);
+
     if (!selected) {
       axios
         .post("http://localhost:3500/products", formData, {
@@ -138,23 +142,28 @@ export default function Product() {
           },
         })
         .then((res) => {
-          console.log("input data success");
+          handleClose();
+          console.log("Post data success");
           console.log(res);
           setMessageShow(true);
-          setMessage({
+          swal({
             title: "success",
-            text: "post data success",
-            type: "success",
+            text: "Post data success",
+            type: "danger",
           });
           messageTime();
           getData();
         })
         .catch((err) => {
-          console.log("input data fail");
-          setMessageShow(true);
-          setMessage({ title: "fail", text: "post data fail", type: "danger" });
-          messageTime();
+          console.log("Post data failed please try again");
           console.log(err);
+          setMessageShow(true);
+          setMessage({
+            title: "failed",
+            text: "Post data failed please try again",
+            type: "danger",
+          });
+          messageTime();
         });
     } else {
       axios
@@ -198,7 +207,7 @@ export default function Product() {
   return (
     <div>
       {/* post data */}
-      <form onSubmit={postForm} className="container mt-4 p-2 border border-3 ">
+      <Form onSubmit={postForm} className="container mt-4 p-2 border border-3 ">
         <h5 className="text">Add Product</h5>
         <div className="d-flex flex-row ">
           <input
@@ -252,7 +261,7 @@ export default function Product() {
             Post
           </button>
         )}
-      </form>
+      </Form>
 
       {/* filter */}
       <div className="container  mt-2 p-2 rounded container mt-4 p-2 border border-3">
@@ -304,7 +313,7 @@ export default function Product() {
           </div>
           <div className="search ms-2">
             <input
-              type="text"
+              type="search"
               className="form-control"
               value={inputData.search}
               name="search"
@@ -356,9 +365,11 @@ export default function Product() {
       </div>
 
       {/* alert */}
-      {messageShow && (
+      {/* {messageShow && (
         <Alert title={message.title} text={message.text} type={message.type} />
-      )}
+      )} */}
+
+      {/* Modal */}
       <div>
         <Modal
           show={show}

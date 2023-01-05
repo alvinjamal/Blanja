@@ -2,6 +2,8 @@ import React from "react";
 import "./style.css";
 import Jas from "../../img/jas.png";
 import Jaket from "../../img/kemal.png";
+import { Button } from "react-bootstrap";
+import Modal from "../../Components/Modal/payment";
 
 export default function Checkout() {
   return (
@@ -42,23 +44,24 @@ export default function Checkout() {
                 Kabupaten Banyumas, Jawa Tengah, 53181 [ Note: blok c 16]
                 Sokaraja, Kab. Banyumas, 53181
               </p>
-              <a href="/register" id="link">
-                <button
-                  className="btn btn-gray btn-outline-light btn-block btn-md"
-                  id="button-cust-3"
-                  style={{
-                    marginTop: "23px",
-                    height: "40px",
-                    width: "13rem",
-                    borderRadius: "40px",
-                    border: "1px solid",
-                    marginLeft: "30%",
-                    color: "#9b9b9b",
-                  }}
-                >
-                  Choose another address
-                </button>
-              </a>
+
+              <Button
+                className="btn btn-gray btn-outline-light btn-block btn-md"
+                id="button-cust-3"
+                variant="outline-danger"
+                style={{
+                  marginTop: "23px",
+                  height: "40px",
+                  width: "13rem",
+                  borderRadius: "40px",
+                  border: "1px solid",
+                  marginLeft: "30%",
+                  color: "#9b9b9b",
+                }}
+              >
+                Choose another address
+                <Modal />
+              </Button>
             </div>
           </div>
         </div>

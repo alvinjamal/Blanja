@@ -1,87 +1,67 @@
-// import { useState } from "react";
-// import { Button } from "react-bootstrap";
-import { BrowserRouter, Route, Link, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/home";
-import MyBag from "./pages/mybag";
-import LoginCostumer from "./pages/login/Costumer";
-import LoginSeller from "./pages/login/Seller";
-import RegisterSeller from "./pages/register/Seller";
-import ProfileDetail from "./pages/profileDetail/profile";
-import Profile from "./pages/Profile";
-import ProductDetail from "./pages/productDetail/index";
+import RegisterSeller from "./pages/Register/Seller";
+import RegisterCustomer from "./pages/Register/Costumer";
+import Login from "./pages/Login/index";
+import Profile from "./pages/Profile/profile";
+import MyBag from "./pages/My-Bag";
+import ProductDetail from "./pages/Product-Detail/index";
 import Checkout from "./pages/checkout/index";
-import Selling from "./pages/selling/index";
-import NavbarComponent from "./components/Navbar";
-import Product from "./pages/product/index";
-import RegisterCustomer from "./pages/register/Costumer";
-import Reset from "./pages/reset/index";
-import ConfirmationPassword from "./pages/passKonfir/index";
-import Login from "./pages/login";
-// import AuthChecker from "./components/AuthChecker";
+import Selling from "./pages/Selling/index";
+// import NavbarComponent from "./components/Navbar";
+import Product from "./pages/Product/index";
+import Forgot from "./pages/Reset/index";
+import ConfirmationPassword from "./pages/Pass-Konfir/index";
+import AuthChecker from "./Components/AuthChecker";
+import VerifyOtp from "./pages/Verif-Otp";
 
 function App() {
   return (
     <div className="App">
-      <NavbarComponent />
+      {/* <NavbarComponent /> */}
       <BrowserRouter>
-        {/* <nav style={{ height: "50px" }}>
-          <Link to="/home">Home</Link>
-
-          <Link to="/product">Product</Link>
-
-          <Link to="/productDetail">Product Detail</Link>
-
-          <Link to="/loginSeller">Login Seller</Link>
-
-          <Link to="/registerSeller">Register Seller</Link>
-
-          <Link to="/loginCostumer">Login Costumer</Link>
-
-          <Link to="/registerCostumer">Register Costumer</Link>
-
-          <Link to="/profile">Profile</Link>
-
-          <Link to="/profileDetail">Profile Detail</Link>
-
-          <Link to="/reset">Reset Password</Link>
-
-          <Link to="/confirmationPassword">Confirmation Password</Link>
-
-          <Link to="/myBag">My Bag</Link>
-
-          <Link to="/checkout">Checkout</Link>
-
-          <Link to="/selling">Selling</Link>
-        </nav> */}
-
         <Routes>
-          <Route path="/" element={<Navigate to="/home" />} replace="true" />
-          <Route path="/home" element={<Home />} />
-          <Route path="/registerSeller" element={<RegisterSeller />} />
-          <Route path="/registerCostumer" element={<RegisterCustomer />} />
-          <Route path="/loginCostumer" element={<LoginCostumer />} />
-          <Route path="/loginSeller" element={<LoginSeller />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/mybag" element={<MyBag />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/profileDetail" element={<ProfileDetail />} />
-          <Route path="/productDetail" element={<ProductDetail />} />
-          <Route path="/selling" element={<Selling />} />
-          <Route path="/product" element={<Product />} />
-          <Route path="/reset" element={<Reset />} />
-          <Route
-            path="/confirmationPassword"
-            element={<ConfirmationPassword />}
-          />
-          <Route path="/profile" element={<Profile />} />
-          {/* { <Route
-            path="/product"
-            element={
-              <AuthChecker>
-                <Product />
-              </AuthChecker>
-            }
-          /> } */}
+          <Route path="/" element={<Navigate to="/Home" />} replace="true" />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/Register-Seller" element={<RegisterSeller />} />
+          <Route path="/Register-Customer" element={<RegisterCustomer />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Checkout" element={<Checkout />} />
+          <Route path="/Product-Detail" element={<ProductDetail />} />
+          <Route path="/Selling" element={<Selling />} />
+          <Route path="/Reset" element={<Forgot />} />
+          <Route path="/Reset-Pass" element={<ConfirmationPassword />} />
+          <Route path="/Verif-Otp" element={<VerifyOtp />} />
+          {
+            <Route
+              path="/My-Bag"
+              element={
+                <AuthChecker>
+                  <MyBag />{" "}
+                </AuthChecker>
+              }
+            />
+          }
+          {
+            <Route
+              path="/Profile"
+              element={
+                <AuthChecker>
+                  <Profile />
+                </AuthChecker>
+              }
+            />
+          }
+          {
+            <Route
+              path="/Product"
+              element={
+                <AuthChecker>
+                  <Product />
+                </AuthChecker>
+              }
+            />
+          }
         </Routes>
       </BrowserRouter>
     </div>

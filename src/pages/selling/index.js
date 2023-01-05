@@ -5,9 +5,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Form from "react-bootstrap/Form";
 import "./style.css";
 import Christian from "../../img/christian.png";
-import Vector1 from "../../img/Vector(1).png";
-import Vector2 from "../../img/Vector(9).png";
-import Vector3 from "../../img/Vector(10).png";
+import Bell from "../../img/page3.png";
 
 export default function Selling() {
   return (
@@ -74,7 +72,7 @@ export default function Selling() {
                           width: "50px",
                         }}
                       >
-                        <img src={Vector2} alt="vector" />
+                        <img src={Bell} alt="vector" />
                       </Button>
                     </div>
                     <div className="flex-grow-1 ms-3">
@@ -116,7 +114,7 @@ export default function Selling() {
                         width: "50px",
                       }}
                     >
-                      <img src={Vector3} alt="vector" />
+                      <img src={Bell} alt="vector" />
                     </Button>
                   </div>
                   <div className="flex-grow-1 ms-3">
@@ -159,7 +157,7 @@ export default function Selling() {
                         width: "50px",
                       }}
                     >
-                      <img src={Vector1} alt="vector" />
+                      <img src={Bell} alt="vector" />
                     </Button>
                   </div>
                   <div className="flex-grow-1 ms-3">

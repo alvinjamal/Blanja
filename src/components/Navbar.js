@@ -1,21 +1,28 @@
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
 import "./style.css";
-import Logo from "../img/toko.png";
 import Filter from "../img/vector.png";
-import Roll from "../img/Vector(1).png";
-// import ButtonLogin from "./components/ButtonLogin";
-// import MyButtonSignUp from "./components/MyButtonSignUp";
-// import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-// import { useSelector } from "react-redux";
+import Troli from "../img/troli.png";
+import Logo from "../img/toko.png";
+import Bell from "../img/bell.png";
+import Img from "../img/cris.png";
+import Mail from "../img/mail.png";
+import { Container, Dropdown, Navbar } from "react-bootstrap";
 
 function NavbarComponent() {
+  const token = localStorage.getItem("token");
+  const logout = () => {
+    localStorage.clear();
+    window.location.reload(false);
+  };
   return (
-    <Navbar bg="light" expand="lg" className="p-3">
+    <Navbar
+      bg="light"
+      expand="lg"
+      className="p-4"
+      id="responsive-navbar-nav"
+      style={{ justifyContent: "end" }}
+    >
       <Container fluid>
         <img
           src={Logo}
@@ -28,62 +35,111 @@ function NavbarComponent() {
           id="responsive-navbar-nav"
           style={{ justifyContent: "end" }}
         >
-          <Nav className="me-auto">
-            <Nav.Link href="./home">Home</Nav.Link>
-            <Nav.Link href="./product">Product</Nav.Link>
-            {/* <Nav.Link href="./loginSeller">Login Seller</Nav.Link> */}
-            {/* <Nav.Link href="./login">Login</Nav.Link> */}
-          </Nav>
-          <Form className="d-flex ">
+          <Form
+            className=" "
+            id="responsive-navbar-nav"
+            style={{ justifyContent: "left", marginRight: "15rem" }}
+          >
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
-              style={{ borderRadius: "13px", height: "40px" }}
-            />
-          </Form>
-          <Button
-            variant="light"
-            style={{ width: "40px", marginRight: "10px" }}
-          >
-            <img
-              src={Filter}
-              alt="Filter"
               style={{
-                width: "25px",
-                height: "20px",
-                marginRight: "20px",
-                paddingRight: "8px",
+                borderRadius: "10px",
+                height: "40px",
+                width: "25rem",
+                marginLeft: "10rem",
               }}
             />
-          </Button>
-          <Button variant="light">
-            <img
-              href="/myBag"
-              src={Roll}
-              alt="Roll"
-              style={{ marginLeft: "30px" }}
-            />
-          </Button>
-          <Button
-            href="/loginSeller"
-            className="btn-1"
-            variant="danger"
-            size="sm"
-            style={{ borderRadius: "13px" }}
-          >
-            Login
-          </Button>
-          <Button
-            href="/registerSeller"
-            className="btn-1"
-            variant="outline-danger"
-            size="sm"
-            style={{ borderRadius: "13px" }}
-          >
-            Sign Up
-          </Button>
+          </Form>
+          {token ? (
+            <>
+              <Button variant="light">
+                <img
+                  src={Filter}
+                  alt=""
+                  className="nav-1"
+                  style={{ marginLeft: "3px" }}
+                />
+              </Button>
+              <Button variant="light" href="/My-Bag">
+                <img
+                  src={Troli}
+                  alt=""
+                  className="nav-1"
+                  style={{ marginLeft: "3px" }}
+                />
+              </Button>
+              <Button variant="light">
+                <img
+                  src={Bell}
+                  alt=""
+                  className="nav-1"
+                  style={{ marginLeft: "3px" }}
+                />
+              </Button>
+              <Button variant="light">
+                <img
+                  src={Mail}
+                  alt=""
+                  className="nav-1"
+                  style={{ marginLeft: "3px" }}
+                />
+              </Button>
+              <Button variant="light" href="/Profile">
+                <img
+                  src={Img}
+                  alt=""
+                  className="nav-1"
+                  style={{ marginLeft: "3px" }}
+                />
+              </Button>
+              <div className="col-1" style={{ marginLeft: "5px" }}>
+                <Button
+                  className="btn btn-danger btn-small"
+                  onClick={() => logout()}
+                >
+                  Logout
+                </Button>
+              </div>
+            </>
+          ) : (
+            <>
+              <Button
+                href="/Login"
+                id="responsive-navbar-nav"
+                style={{
+                  justifyContent: "end",
+                  borderRadius: "7px",
+                  marginLeft: "14rem",
+                  marginRight: "3px",
+                  height: "36px",
+                }}
+                className="btn-1"
+                variant="danger"
+                size="sm"
+              >
+                Login
+              </Button>
+              <Dropdown
+                style={{
+                  marginleft: "10rem",
+                  borderRadius: "7px",
+                }}
+              >
+                <Dropdown.Toggle variant="outline-danger" id="dropdown-basic">
+                  Register
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="/Register-Seller">Seller</Dropdown.Item>
+                  <Dropdown.Item href="Register-Customer">
+                    Customer
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
