@@ -6,19 +6,17 @@ import Login from "./pages/Login/index";
 import Profile from "./pages/Profile/profile";
 import MyBag from "./pages/My-Bag";
 import ProductDetail from "./pages/Product-Detail/index";
-import Checkout from "./pages/checkout/index";
+import Checkout from "./pages/Checkout/index";
 import Selling from "./pages/Selling/index";
-// import NavbarComponent from "./components/Navbar";
 import Product from "./pages/Product/index";
-import Forgot from "./pages/Reset/index";
-import ConfirmationPassword from "./pages/Pass-Konfir/index";
+import Forgot from "./pages/Forgot/index";
+import ChangePassword from "./pages/Change-Password/index";
 import AuthChecker from "./Components/AuthChecker";
 import VerifyOtp from "./pages/Verif-Otp";
 
 function App() {
   return (
     <div className="App">
-      {/* <NavbarComponent /> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/Home" />} replace="true" />
@@ -26,12 +24,21 @@ function App() {
           <Route path="/Register-Seller" element={<RegisterSeller />} />
           <Route path="/Register-Customer" element={<RegisterCustomer />} />
           <Route path="/Login" element={<Login />} />
-          <Route path="/Checkout" element={<Checkout />} />
           <Route path="/Product-Detail" element={<ProductDetail />} />
           <Route path="/Selling" element={<Selling />} />
-          <Route path="/Reset" element={<Forgot />} />
-          <Route path="/Reset-Pass" element={<ConfirmationPassword />} />
           <Route path="/Verif-Otp" element={<VerifyOtp />} />
+          <Route path="/Forgot" element={<Forgot />} />
+          <Route path="/Change-Password" element={<ChangePassword />} />
+          {
+            <Route
+              path="/Checkout"
+              element={
+                <AuthChecker>
+                  <Checkout />
+                </AuthChecker>
+              }
+            />
+          }
           {
             <Route
               path="/My-Bag"

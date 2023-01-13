@@ -15,10 +15,11 @@ export const loginUser = (data, navigate) => async (dispact) => {
     }).then(() => {
       if (user.role === "seller") {
         console.log("Seller");
+        navigate("/Profile");
       } else {
         console.log("Customer");
+        navigate("/Home");
       }
-      navigate("/Home");
     });
     console.log("User Login Success");
   } catch (err) {
@@ -111,5 +112,60 @@ export const VerifOtp = (data, navigate) => async (dispacth) => {
     });
     console.log("User verificatin Fail");
     console.log(err);
+  }
+};
+
+export const ForgotPw = (data, navigate) => async (dispatch) => {
+  try {
+    dispatch({ type: "USER_FORGOT_PW_PENDING" });
+    const result = await axios.post(`http://localhost:3500/users/forgot`, data);
+    const user = result.data.data;
+    console.log(user);
+    console.log(result.data.data);
+    dispatch({ type: "CONFIRM_EMAIL_SUCCESS", payload: user });
+    swal({
+      title: "Good job!",
+      text: `${result.data.message}`,
+      icon: "success",
+    }).then(() => {
+      navigate("/Change-Password");
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: "CONFIRM_EMAIL_ERROR" });
+    swal({
+      title: "Oops!",
+      text: `${error.response.data.message}`,
+      icon: "error",
+    });
+  }
+};
+
+export const ChangePW = (data, navigate) => async (dispatch) => {
+  try {
+    dispatch({ type: "USER_CHANGE_PW_PENDING" });
+    const result = await axios.post(
+      `http://localhost:3500/users/forgot/`,
+      data
+    );
+    const user = result.data.data;
+    console.log(user);
+    console.log(result.data.data);
+    dispatch({ type: "CHANGE_PW_SUCCESS", payload: user });
+    swal({
+      title: "Good job!",
+      text: `${result.data.message}`,
+      icon: "success",
+    }).then(() => {
+      navigate("/Login");
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: "CHANGE_PW_ERROR" });
+    swal({
+      title: "Oops!",
+      text: `${error.response.data.message}`,
+      icon: "error",
+    });
   }
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Card,
@@ -12,8 +12,29 @@ import NavbarComponent from "../Components/Navbar";
 import Trend2 from "../img/trend2.png";
 import Trend3 from "../img/trend3.png";
 import Jas from "../img/jas.png";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Home() {
+  const [sortBy, setSortBy] = useState("name");
+  const [sort, setSort] = useState("asc");
+  const [data, setData] = useState([]);
+
+  console.log(process.env.REACT_APP_API_PRODUCT, "data");
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        let result = await axios.get(
+          `${process.env.REACT_APP_API_PRODUCT}?sortby=${sortBy}&sort=${sort}`
+        );
+        setData(result.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getData();
+  }, []);
   return (
     <div>
       <NavbarComponent />
@@ -129,102 +150,28 @@ export default function Home() {
           </div>
           <div>
             <Row>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
+              {data.map((item) => (
+                <Col className="mb-2">
+                  <Card
+                    style={{
+                      width: "18rem",
+                      color: "#000000",
+                      padding: " 5px",
+                      textDecoration: "none",
+                      marginBottom: "2rem",
+                    }}
+                    as={Link}
+                    to={`Product-Detail/${item.id}`}
+                  >
+                    <Card.Img variant="top" src={item.photo} alt="" />
+                    <p className="fs-4">{item.name}</p>
+                    <p className="text-danger fs-4">
+                      Rp. {item.price.toLocaleString()}
+                    </p>
+                    <p className="fs-6">(10)</p>
+                  </Card>
+                </Col>
+              ))}
             </Row>
           </div>
           <div className="mb-2">
@@ -235,90 +182,6 @@ export default function Home() {
           </div>
           <div>
             <Row>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col md={3} className="mb-2">
-                <Card style={{ width: "18rem" }}>
-                  <Card.Img variant="top" src={Jas} alt="Jas" />
-                  <Card.Body>
-                    <Card.Title>Men's formal suit - Black & White</Card.Title>
-                    <Card.Text>$ 40.0</Card.Text>
-                    <Figure>
-                      <Figure.Caption>Zalora Cloth</Figure.Caption>
-                    </Figure>
-                  </Card.Body>
-                </Card>
-              </Col>
               <Col md={3} className="mb-2">
                 <Card style={{ width: "18rem" }}>
                   <Card.Img variant="top" src={Jas} alt="Jas" />

@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import "./style.css";
 import Logo from "../../img/toko.png";
 
-export default function reset() {
+export default function ChangePassword() {
   return (
     <header>
       <div className="container column mt-5">
@@ -31,13 +31,6 @@ export default function reset() {
         id="input-wrp"
       >
         <input
-          type="email"
-          className="form-control"
-          placeholder="Email"
-          aria-label="email"
-          aria-describedby="basic=addon1"
-        />
-        <input
           type="password"
           className="form-control"
           placeholder="Password"
@@ -45,9 +38,6 @@ export default function reset() {
           aria-describedby="basic=addon1"
           id="input-margin"
         />
-        <a href="/reset" className="text-danger" id="text1">
-          Forgot password?{" "}
-        </a>
       </div>
       <div
         className="d-flex justify-content-center container flex-column"

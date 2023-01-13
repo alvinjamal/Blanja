@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
-import Button from "react-bootstrap/Button";
+import { Button, Col, Card } from "react-bootstrap";
 import "./style.css";
 import Jas from "../../img/jas.png";
 import Page from "../../img/page.png";
@@ -13,8 +15,55 @@ import Page4 from "../../img/page4.png";
 import Page5 from "../../img/page5.png";
 
 export default function ProductDetail() {
+  const { REACT_APP_API_PRODUCT } = process.env;
+  const [data, setData] = useState([]);
+  const [sortBy, setSortBy] = useState("name");
+  const [sort, setSort] = useState("asc");
+  const { id } = useParams();
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+    let token = localStorage.getItem("token");
+    console.log("my token", token);
+    axios
+      .get(process.env.REACT_APP_API_PRODUCT + `/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log("get data success");
+        setData(res.data.data);
+        console.log(res.data, "data products");
+        console.log(res.data.data[0].name, "res data");
+      })
+      .catch((err) => {
+        console.log("get data fail");
+        console.log(err);
+      });
+  };
+
+  const [dataCard, setDataCard] = useState([]);
+  console.log(process.env.REACT_APP_API_PRODUCT, "data");
+  useEffect(() => {
+    const getDataCard = async () => {
+      try {
+        let resultCard = await axios.get(
+          `${process.env.REACT_APP_API_PRODUCT}?sortby=${sortBy}&sort=${sort}`
+        );
+        setDataCard(resultCard.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getDataCard();
+  }, []);
   return (
     <div className="container-fluid bg-new">
+      {/* {data.map((item, i) => { */}
       <div className="container py-3">
         <div className="row py-4">
           <div className="col-1">
@@ -80,7 +129,7 @@ export default function ProductDetail() {
           </div>
           <div className="col-md-8">
             <div className="ml-2">
-              <h3 className="myfont">Baju muslim pria</h3>
+              <h3 className="myfont">zalora</h3>
               <h6 className="myfont3 color-font">Zalora Cloth</h6>
               <h6 className="mb-5">
                 <FaStar className="fastar" />
@@ -377,204 +426,63 @@ export default function ProductDetail() {
             className="row row-cols-1 row-cols-md-5 g-4"
             style={{ marginTop: "8px" }}
           >
-            <div className="col-2">
-              <div className="card" style={{ width: "210px" }}>
-                <img src={Jas} alt="" />
-                <div className="card-body">
-                  <Link to="/productDetail" className="product">
-                    <h3 className="text5">Men's formal suit - Black & White</h3>
-                  </Link>
-                  <h4 className="text-price">$ 40.0</h4>
-                  <h5 className="text-brand">Zalora Cloth</h5>
-                  <h6>
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                  </h6>
-                </div>
+            {dataCard.map((item) => (
+              <div className="col-2">
+                <Col className="mb-2">
+                  <Card
+                    style={{
+                      width: "18rem",
+                      color: "#000000",
+                      padding: " 5px",
+                      textDecoration: "none",
+                      marginBottom: "2rem",
+                    }}
+                    as={Link}
+                    to={`Product-Detail/${item.id}`}
+                  >
+                    <Card.Img variant="top" src={item.photo} alt="" />
+                    <p className="fs-4">{item.name}</p>
+                    <p className="text-danger fs-4">
+                      Rp. {item.price.toLocaleString()}
+                    </p>
+                    <p className="fs-6">(10)</p>
+                  </Card>
+                </Col>
               </div>
-            </div>
-            <div className="col-2">
-              <div className="card" style={{ width: "210px" }}>
-                <img src={Jas} alt="" />
-                <div className="card-body">
-                  <Link to="/productDetail" className="product">
-                    <h3 className="text5">Men's formal suit - Black & White</h3>
-                  </Link>
-                  <h4 className="text-price">$ 40.0</h4>
-                  <h5 className="text-brand">Zalora Cloth</h5>
-                  <h6>
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                  </h6>
-                </div>
-              </div>
-            </div>
-            <div className="col-2">
-              <div className="card" style={{ width: "210px" }}>
-                <img src={Jas} alt="" />
-                <div className="card-body">
-                  <Link to="/productDetail" className="product">
-                    <h3 className="text5">Men's formal suit - Black & White</h3>
-                  </Link>
-                  <h4 className="text-price">$ 40.0</h4>
-                  <h5 className="text-brand">Zalora Cloth</h5>
-                  <h6>
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                  </h6>
-                </div>
-              </div>
-            </div>
-            <div className="col-2">
-              <div className="card" style={{ width: "210px" }}>
-                <img src={Jas} alt="" />
-                <div className="card-body">
-                  <Link to="/productDetail" className="product">
-                    <h3 className="text5">Men's formal suit - Black & White</h3>
-                  </Link>
-                  <h4 className="text-price">$ 40.0</h4>
-                  <h5 className="text-brand">Zalora Cloth</h5>
-                  <h6>
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                  </h6>
-                </div>
-              </div>
-            </div>
-            <div className="col-2">
-              <div className="card" style={{ width: "210px" }}>
-                <img src={Jas} alt="" />
-                <div className="card-body">
-                  <Link to="/productDetail" className="product">
-                    <h3 className="text5">Men's formal suit - Black & White</h3>
-                  </Link>
-                  <h4 className="text-price">$ 40.0</h4>
-                  <h5 className="text-brand">Zalora Cloth</h5>
-                  <h6>
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                  </h6>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
           <div
             className="row row-cols-1 row-cols-md-5 g-4"
             style={{ marginTop: "8px" }}
           >
-            <div className="col-2">
-              <div className="card" style={{ width: "210px" }}>
-                <img src={Jas} alt="" />
-                <div className="card-body">
-                  <Link to="/productDetail" className="product">
-                    <h3 className="text5">Men's formal suit - Black & White</h3>
-                  </Link>
-                  <h4 className="text-price">$ 40.0</h4>
-                  <h5 className="text-brand">Zalora Cloth</h5>
-                  <h6>
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                  </h6>
-                </div>
+            {dataCard.map((item) => (
+              <div className="col-2">
+                <Col className="mb-2">
+                  <Card
+                    style={{
+                      width: "18rem",
+                      color: "#000000",
+                      padding: " 5px",
+                      textDecoration: "none",
+                      marginBottom: "2rem",
+                    }}
+                    as={Link}
+                    to={`Product-Detail/${item.id}`}
+                  >
+                    <Card.Img variant="top" src={item.photo} alt="" />
+                    <p className="fs-4">{item.name}</p>
+                    <p className="text-danger fs-4">
+                      Rp. {item.price.toLocaleString()}
+                    </p>
+                    <p className="fs-6">(10)</p>
+                  </Card>
+                </Col>
               </div>
-            </div>
-            <div className="col-2">
-              <div className="card" style={{ width: "210px" }}>
-                <img src={Jas} alt="" />
-                <div className="card-body">
-                  <Link to="/productDetail" className="product">
-                    <h3 className="text5">Men's formal suit - Black & White</h3>
-                  </Link>
-                  <h4 className="text-price">$ 40.0</h4>
-                  <h5 className="text-brand">Zalora Cloth</h5>
-                  <h6>
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                  </h6>
-                </div>
-              </div>
-            </div>
-            <div className="col-2">
-              <div className="card" style={{ width: "210px" }}>
-                <img src={Jas} alt="" />
-                <div className="card-body">
-                  <Link to="/productDetail" className="product">
-                    <h3 className="text5">Men's formal suit - Black & White</h3>
-                  </Link>
-                  <h4 className="text-price">$ 40.0</h4>
-                  <h5 className="text-brand">Zalora Cloth</h5>
-                  <h6>
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                  </h6>
-                </div>
-              </div>
-            </div>
-            <div className="col-2">
-              <div className="card" style={{ width: "210px" }}>
-                <img src={Jas} alt="" />
-                <div className="card-body">
-                  <Link to="/productDetail" className="product">
-                    <h3 className="text5">Men's formal suit - Black & White</h3>
-                  </Link>
-                  <h4 className="text-price">$ 40.0</h4>
-                  <h5 className="text-brand">Zalora Cloth</h5>
-                  <h6>
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                  </h6>
-                </div>
-              </div>
-            </div>
-            <div className="col-2">
-              <div className="card" style={{ width: "210px" }}>
-                <img src={Jas} alt="" />
-                <div className="card-body">
-                  <Link to="/productDetail" className="product">
-                    <h3 className="text5">Men's formal suit - Black & White</h3>
-                  </Link>
-                  <h4 className="text-price">$ 40.0</h4>
-                  <h5 className="text-brand">Zalora Cloth</h5>
-                  <h6>
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                    <FaStar className="fastar" />
-                  </h6>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
+      {/* // ))} */}
     </div>
   );
 }

@@ -1,17 +1,80 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
-// import Christian from "../../img/cris.png";
 import Chris from "../../img/mask.png";
+import axios from "axios";
+import Swal from "sweetalert";
 import "./style.css";
 import User from "../../img/user.png";
-import Map from "../../img/user1.png";
+import Prod from "../../img/prod.png";
 import Clip from "../../img/user2.png";
 import { Row, Col, Form } from "react-bootstrap";
 import NavbarComponent from "../../Components/Navbar";
 
 export default function Profile() {
+  // const user = {
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // };
+  const [data, setData] = useState(null);
+  let users = "http://localhost:3500/users/profile";
+  useEffect(() => {
+    axios
+      .get(users)
+      .then((res) => {
+        console.log("get data success");
+        console.log(res.data.data[0]);
+        res.data && setData(res.data.data[0]);
+      })
+      .catch((err) => {
+        console.log("get data fail");
+        console.log(err);
+      });
+  }, []);
+  // const [photo, setPhotoUser] = useState(null);
+  const [updateData, setUpdateData] = useState({
+    store: data?.store,
+    email: data?.email,
+    phone: data?.phone,
+    store_description: data?.store_description,
+  });
+
+  const handleChange = (e) => {
+    setUpdateData({
+      ...updateData,
+      [e.target.name]: e.target.value,
+    });
+    console.log(data);
+  };
+
+  const handleData = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("store_name", updateData.store_name);
+    formData.append("email", updateData.email);
+    formData.append("phone", updateData.phone);
+    formData.append("store_description", updateData.store_description);
+    console.log(formData);
+    axios
+      .put(`http://localhost:3500/users/edit-profile-seller`, formData, {
+        "content-type": "multipart/form-data",
+      })
+      .then((res) => {
+        console.log("Update profile succes");
+        console.log(res);
+        window.location.reload(false);
+        Swal.fire("Success", "Update profile success", "success");
+      })
+      .catch((err) => {
+        console.log("Update data profile failed");
+        console.log(err);
+        Swal.fire("Warning", "Update profile failed", "error");
+      });
+  };
+
   return (
-    <div className="container-fluid p-3 mb-2 bg-secondary">
+    <div className="container-fluid mb-2 bg-secondary">
       <NavbarComponent />
       <Row xs={6} md={8} lg={1}>
         <Col>
@@ -77,7 +140,7 @@ export default function Profile() {
                               backgroundColor: "#456bf3",
                             }}
                           >
-                            <img src={User} alt="vector" />
+                            <img src={Prod} alt="vector" />
                           </Button>
                         </div>
                         <div className="flex-grow-1 ms-3">
@@ -90,36 +153,7 @@ export default function Profile() {
                               color: "black",
                             }}
                           >
-                            My account
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="card-body-1 p-4">
-                      <div className="d-flex text-black">
-                        <div className="flex-shrink-0">
-                          <Button
-                            className="btn clr-btn"
-                            type="submit"
-                            style={{
-                              borderRadius: "50%",
-                              backgroundColor: "#f36f45",
-                            }}
-                          >
-                            <img src={Map} alt="vector" />
-                          </Button>
-                        </div>
-                        <div className="flex-grow-1 ms-3">
-                          <h5
-                            className="mb-1"
-                            style={{
-                              marginLeft: "20px",
-                              marginBottom: "10px",
-                              marginTop: "5px",
-                              color: "#9b9b9b",
-                            }}
-                          >
-                            Shipping Adrress
+                            Product
                           </h5>
                         </div>
                       </div>
@@ -148,7 +182,7 @@ export default function Profile() {
                               color: "#9b9b9b",
                             }}
                           >
-                            My order
+                            Order
                           </h5>
                         </div>
                       </div>
@@ -406,7 +440,7 @@ export default function Profile() {
                       color: "#9b9b9b",
                     }}
                   >
-                    Choose another addresss
+                    Select Image
                   </Button>
                 </Col>
               </div>

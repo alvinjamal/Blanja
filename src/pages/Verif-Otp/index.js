@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Button, Form, Dropdown } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { VerifOtp } from "../../redux/actions/users";
 import Toko from "../../img/toko.png";
 

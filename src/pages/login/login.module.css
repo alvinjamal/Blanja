@@ -1,36 +1,6 @@
-#button-cust {
-  color: #9b9b9b;
-  margin-top: 0px;
-  height: 48px;
-  width: 150px;
-  border: 1px solid #9b9b9b;
-  outline: none;
-}
-#button {
-  margin-top: 0px;
-  margin-left: 5px;
-  height: 48px;
-  width: 150px;
-  border-radius: 13px;
-  border: 1px solid #db0b0b;
-}
-#text1 {
-  margin: 26px 0;
-  text-align: right;
-}
-#button-login {
-  border-radius: 40px;
-}
-#input-wrap {
-  width: 30%;
-  margin-top: 40px;
-}
-#input-margin {
-  margin-top: 14px;
-}
-#container-login {
-  width: 30%;
-  margin-top: 40px;
+.container {
+  width: 100%;
+  min-height: 200px;
 }
 
 h4 {

@@ -79,7 +79,7 @@ function NavbarComponent() {
                   style={{ marginLeft: "3px" }}
                 />
               </Button>
-              <Button variant="light">
+              <Button variant="light" href={"/Product"}>
                 <img
                   src={Mail}
                   alt=""

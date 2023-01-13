@@ -3,9 +3,8 @@ import "./login.module.css";
 import { loginUser } from "../../redux/actions/users";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Button, Form, Container } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import Toko from "../../img/toko.png";
-// import Navbar from "../components/Navbar/NavbarBefore";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -67,38 +66,39 @@ export default function Login() {
             aria-describedby="basic-addon1"
             style={{ height: "48px", marginTop: "14px", width: "30rem" }}
           />
+          <a href={"/Forgot"} className="text-danger text-end mt-3" id="text1">
+            Forgot password?{" "}
+          </a>
         </div>
-        <div
-          className="input-wrap d-flex justify-content-center flex-column"
-          style={{ width: "30%", marginTop: "40px" }}
-        >
+        <div className="input-wrap d-flex justify-content-center flex-column mt-3">
           <Button
             type="submit"
-            className="input-wrap btn3 btn-lg text-light"
+            className="input-wrap btn-lg text-light"
             style={{
               borderRadius: "15px",
-              marginLeft: "29rem",
+              marginLeft: "27rem",
               height: "50px",
-              width: "25rem",
+              width: "28rem",
             }}
             variant="danger"
           >
             Login
           </Button>
-          <p
+
+          <div
             className="text-dark text-center mt-2"
             style={{
               borderRadius: "15px",
-              marginLeft: "29rem",
+              marginLeft: "27rem",
               height: "50px",
-              width: "25rem",
+              width: "28rem",
             }}
           >
             Done have a Store.id account?
-            <a href="/Login" className="text2 text-danger">
+            <a href="/Register" className="text2 text-danger">
               Register
             </a>
-          </p>
+          </div>
         </div>
       </Form>
       {/* </Container> */}

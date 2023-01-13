@@ -6,6 +6,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import Table from "react-bootstrap/Table";
 import { Button, Modal, Form } from "react-bootstrap";
 import swal from "sweetalert";
+import NavbarComponent from "../../Components/Navbar";
 
 export default function Product() {
   const [data, setData] = useState([]);
@@ -34,9 +35,10 @@ export default function Product() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // DELETE DATA
   const deleteData = () => {
     axios
-      .delete(`http://localhost:3500/products/${selected}`)
+      .delete(`${process.env.REACT_APP_API_PRODUCT}/${selected}`)
       .then((res) => {
         handleClose();
         console.log("delete data success");
@@ -46,6 +48,7 @@ export default function Product() {
           title: "success",
           text: "Delete data success",
           type: "danger",
+          icon: "success",
         });
         messageTime();
         getData();
@@ -59,6 +62,7 @@ export default function Product() {
       });
   };
 
+  // EDIT DATA
   const editForm = (item) => {
     console.log(item);
     setTemp(item);
@@ -96,7 +100,8 @@ export default function Product() {
     getData();
   }, []);
 
-  let users = `http://localhost:3500/products?sortby=${sortBy}&sort=${sort}&search=${inputData.search}`;
+  // GET DATA
+  let users = `${process.env.REACT_APP_API_PRODUCT}?sortby=${sortBy}&sort=${sort}&search=${inputData.search}`;
   const getData = () => {
     axios
       .get(users)
@@ -124,6 +129,7 @@ export default function Product() {
       });
   };
 
+  // POST DATA
   const postForm = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -136,7 +142,7 @@ export default function Product() {
 
     if (!selected) {
       axios
-        .post("http://localhost:3500/products", formData, {
+        .post(`${process.env.REACT_APP_API_PRODUCT}`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -150,6 +156,7 @@ export default function Product() {
             title: "success",
             text: "Post data success",
             type: "danger",
+            icon: "success",
           });
           messageTime();
           getData();
@@ -161,13 +168,14 @@ export default function Product() {
           setMessage({
             title: "failed",
             text: "Post data failed please try again",
-            type: "danger",
+            type: "Danger",
+            icon: "failed",
           });
           messageTime();
         });
     } else {
       axios
-        .put(`http://localhost:3500/products/${selected}`, formData, {
+        .put(`${process.env.REACT_APP_API_PRODUCT}/${selected}`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -180,6 +188,7 @@ export default function Product() {
             title: "success",
             text: "update data success",
             type: "success",
+            icon: "success",
           });
           messageTime();
           getData();
@@ -206,7 +215,7 @@ export default function Product() {
 
   return (
     <div>
-      {/* post data */}
+      <NavbarComponent />
       <Form onSubmit={postForm} className="container mt-4 p-2 border border-3 ">
         <h5 className="text">Add Product</h5>
         <div className="d-flex flex-row ">
@@ -249,17 +258,17 @@ export default function Product() {
           />
         </div>
         {onedit ? (
-          <button className="btn btn-primary" type="submit">
+          <Button className="btn btn-primary" type="submit">
             Update
-          </button>
+          </Button>
         ) : (
-          <button
+          <Button
             className="btn btn-danger"
             type="submit"
             style={{ marginTop: "10px" }}
           >
             Post
-          </button>
+          </Button>
         )}
       </Form>
 
