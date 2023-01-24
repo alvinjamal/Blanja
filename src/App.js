@@ -4,6 +4,7 @@ import RegisterSeller from "./pages/Register/Seller";
 import RegisterCustomer from "./pages/Register/Costumer";
 import Login from "./pages/Login/index";
 import Profile from "./pages/Profile/profile";
+import ProfileCust from "./pages/Profile-Cust/index";
 import MyBag from "./pages/My-Bag";
 import ProductDetail from "./pages/Product-Detail/index";
 import Checkout from "./pages/Checkout/index";
@@ -24,11 +25,20 @@ function App() {
           <Route path="/Register-Seller" element={<RegisterSeller />} />
           <Route path="/Register-Customer" element={<RegisterCustomer />} />
           <Route path="/Login" element={<Login />} />
-          <Route path="/Product-Detail" element={<ProductDetail />} />
           <Route path="/Selling" element={<Selling />} />
           <Route path="/Verif-Otp" element={<VerifyOtp />} />
           <Route path="/Forgot" element={<Forgot />} />
           <Route path="/Change-Password" element={<ChangePassword />} />
+          {
+            <Route
+              path="/Product-Detail"
+              element={
+                <AuthChecker>
+                  <ProductDetail />
+                </AuthChecker>
+              }
+            />
+          }
           {
             <Route
               path="/Checkout"
@@ -44,7 +54,7 @@ function App() {
               path="/My-Bag"
               element={
                 <AuthChecker>
-                  <MyBag />{" "}
+                  <MyBag />
                 </AuthChecker>
               }
             />
@@ -55,6 +65,16 @@ function App() {
               element={
                 <AuthChecker>
                   <Profile />
+                </AuthChecker>
+              }
+            />
+          }
+          {
+            <Route
+              path="/Profile-Cust"
+              element={
+                <AuthChecker>
+                  <ProfileCust />
                 </AuthChecker>
               }
             />

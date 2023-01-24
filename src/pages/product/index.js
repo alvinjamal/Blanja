@@ -7,10 +7,20 @@ import Table from "react-bootstrap/Table";
 import { Button, Modal, Form } from "react-bootstrap";
 import swal from "sweetalert";
 import NavbarComponent from "../../Components/Navbar";
+import { useParams } from "react-router-dom";
 
 export default function Product() {
   const [data, setData] = useState([]);
+  const token = localStorage.getItem("token");
   const [photo, setPhoto] = useState(null);
+  const { id_product } = useParams();
+
+  const user = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
   const [message, setMessage] = useState({
     title: "",
     text: "",
@@ -21,6 +31,7 @@ export default function Product() {
     name: "",
     stock: "",
     price: "",
+    brand: "",
     category_id: "1",
     search: "",
   });
@@ -38,7 +49,7 @@ export default function Product() {
   // DELETE DATA
   const deleteData = () => {
     axios
-      .delete(`${process.env.REACT_APP_API_PRODUCT}/${selected}`)
+      .delete(`${process.env.REACT_APP_API}/product/${id_product}`)
       .then((res) => {
         handleClose();
         console.log("delete data success");
@@ -71,6 +82,7 @@ export default function Product() {
       name: item.name,
       stock: item.stock,
       price: item.price,
+      bramd: item.brand,
     });
   };
 
@@ -136,13 +148,14 @@ export default function Product() {
     formData.append("name", inputData.name);
     formData.append("stock", inputData.stock);
     formData.append("price", inputData.price);
-    formData.append("category_id", inputData.category_id);
     formData.append("photo", photo);
-    formData.append("search", inputData.search);
+    formData.append("brand", inputData.brand);
+    formData.append("category_id", inputData.category_id);
+    // formData.append("search", inputData.search);
 
     if (!selected) {
       axios
-        .post(`${process.env.REACT_APP_API_PRODUCT}`, formData, {
+        .post(`http://localhost:3500/products/add`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -236,6 +249,16 @@ export default function Product() {
             placeholder="Stock"
             style={{ marginLeft: "10px" }}
           />
+
+          <input
+            className="form-control"
+            type="text"
+            value={inputData.brand}
+            name="brand"
+            onChange={handleChange}
+            placeholder="Brand"
+            style={{ marginLeft: "10px" }}
+          />
         </div>
         <div className="d-flex flex-row">
           <input
@@ -257,6 +280,7 @@ export default function Product() {
             style={{ marginLeft: "10px", marginTop: "10px" }}
           />
         </div>
+
         {onedit ? (
           <Button className="btn btn-primary" type="submit">
             Update
