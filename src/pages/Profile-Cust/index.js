@@ -1,20 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import Chris from "../../img/mask.png";
 import axios from "axios";
-import Swal from "sweetalert";
-// import "./style.css";
 import { Link } from "react-router-dom";
-import User from "../../img/user.png";
-import Prod from "../../img/prod.png";
-import Clip from "../../img/user2.png";
+import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import NavbarComponent from "../../Components/Navbar";
-import ModalNewAddress from "../../Components/Modal/new";
 
 export default function ProfileCustommer() {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-
   const user = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -35,7 +30,7 @@ export default function ProfileCustommer() {
         console.log(err);
       });
   }, []);
-  const [photo, setPhotoUser] = useState(null);
+  // const [photo, setPhotoUser] = useState(null);
   const [updateData, setUpdateData] = useState({
     fullname: data?.fullname,
     email: data?.email,
@@ -45,10 +40,10 @@ export default function ProfileCustommer() {
     address: data?.address,
   });
 
-  const handlePhotoChange = (e) => {
-    setPhotoUser(e.target.files[0]);
-    console.log(e.target.files[0]);
-  };
+  // const handlePhotoChange = (e) => {
+  //   setPhotoUser(e.target.files[0]);
+  //   console.log(e.target.files[0]);
+  // };
 
   const handleChange = (e) => {
     setUpdateData({
@@ -61,7 +56,7 @@ export default function ProfileCustommer() {
   const handleData = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("fullname", updateData.fullname);
+    formData.append("name", updateData.name);
     formData.append("email", updateData.email);
     formData.append("phone", updateData.phone);
     formData.append("gender", updateData.gender);
@@ -85,9 +80,8 @@ export default function ProfileCustommer() {
       });
   };
   return (
-    <div className="body">
+    <div>
       <NavbarComponent />
-
       <div className="bg-light w-100 h-100 d-flex flex-row">
         <div
           className="col-3 d-flex flex-column pt-5 "
@@ -96,14 +90,14 @@ export default function ProfileCustommer() {
           <div className="justify-content-center d-flex flex-row ">
             <div className="d-flex flex-row h-25 justify-content-center ">
               <img
-                src={data?.photo}
+                src={data?.photo_user}
                 alt=""
                 className="img rounded-pill"
                 style={{ height: "110px", width: "110px" }}
               />
               <div className="d-flex flex-column h-50 mt-3 ms-2">
-                <h6 className="myfont ms-3">{data?.fullname}</h6>
-                <ModalNewAddress />
+                <h6 className="myfont ms-3">{data?.fullname_user}</h6>
+                {/* <Modal /> */}
               </div>
             </div>
           </div>
@@ -119,7 +113,7 @@ export default function ProfileCustommer() {
                     width: "40px",
                   }}
                 >
-                  <img src={user} alt="" />
+                  {/* <img src={cube} alt="" /> */}
                 </div>
                 History
               </button>
@@ -134,7 +128,7 @@ export default function ProfileCustommer() {
                     width: "40px",
                   }}
                 >
-                  <img src={Prod} alt="" />
+                  {/* <img src={cart} alt="" /> */}
                 </div>
                 My Bag
               </button>
@@ -150,17 +144,16 @@ export default function ProfileCustommer() {
 
           <div className="container col-12 row">
             <div className="col col-8 row">
-              {/* form */}
               <div className="col col-12 row ">
                 <div className="col col-3 myfont3">Name</div>
                 <div className="col col-9">
                   <input
                     type="text"
                     className="form-control mb-3 myfont3"
-                    name="fullname"
-                    placeholder={data?.fullname}
+                    name="name"
+                    placeholder={data?.name}
                     onChange={(e) => handleChange(e)}
-                    value={updateData.fullname}
+                    value={updateData.name}
                   />
                 </div>
               </div>
@@ -228,14 +221,6 @@ export default function ProfileCustommer() {
                     />
                   </div>
                 </div>
-              </div>
-              <div className="col col-12 row mb-3">
-                <button
-                  className="col col-3  btn btn-danger rounded-pill"
-                  onClick={(e) => handleData(e)}
-                >
-                  <h6 className="myfont3 mt-1">Save</h6>
-                </button>
               </div>
             </div>
             <div className="col col-4">

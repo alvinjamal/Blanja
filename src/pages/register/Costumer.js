@@ -121,7 +121,7 @@ export default function Register() {
               borderRadius: "15px",
               height: "50px",
               width: "26rem",
-              marginLeft: "17%",
+              marginLeft: "13%",
             }}
             variant="danger"
           >

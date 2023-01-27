@@ -14,6 +14,9 @@ import Forgot from "./pages/Forgot/index";
 import ChangePassword from "./pages/Change-Password/index";
 import AuthChecker from "./Components/AuthChecker";
 import VerifyOtp from "./pages/Verif-Otp";
+import Order from "./pages/Order";
+import DetailOrder from "./pages/Detail-Order";
+import Hystory from "./pages/Hystory";
 
 function App() {
   return (
@@ -28,13 +31,34 @@ function App() {
           <Route path="/Selling" element={<Selling />} />
           <Route path="/Verif-Otp" element={<VerifyOtp />} />
           <Route path="/Forgot" element={<Forgot />} />
-          <Route path="/Change-Password" element={<ChangePassword />} />
+          <Route path="/Change-Password/:token" element={<ChangePassword />} />
+          <Route path="/Order" element={<Order />} />
           {
             <Route
-              path="/Product-Detail"
+              path="/Product-Detail/:id_product"
               element={
                 <AuthChecker>
                   <ProductDetail />
+                </AuthChecker>
+              }
+            />
+          }
+          {
+            <Route
+              path="/Detail-Order/:id_checkout"
+              element={
+                <AuthChecker>
+                  <DetailOrder />
+                </AuthChecker>
+              }
+            />
+          }
+          {
+            <Route
+              path="/Hystory"
+              element={
+                <AuthChecker>
+                  <Hystory />
                 </AuthChecker>
               }
             />

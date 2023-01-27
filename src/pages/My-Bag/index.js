@@ -8,59 +8,61 @@ import NavbarComponent from "../../Components/Navbar";
 
 function MyBag() {
   const [data, setData] = useState([]);
-  const token = localStorage.getItem("token");
   const [transaction_id, setTransactionId] = useState("");
-  // const [seller_id, setSellerId] = useState("");
   const [product_id, setProductId] = useState("");
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  const user = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API}/transaction/get-transaction`)
+      .get(`${process.env.REACT_APP_API}/transaction`, user)
       .then((res) => {
-        console.log("Get data bag success");
+        console.log("Get data MyBag success");
         console.log(res.data);
         setData(res.data.data);
         setTransactionId(res.data.data[0].id_transaction);
-        // setSellerId(res.data.data[0].seller_id);
         setProductId(res.data.data[0].product_id);
       })
       .catch((err) => {
-        console.log("Get data bag fail");
+        console.log("Get data MyBag fail");
         console.log(err);
       });
   }, []);
-  const DeleteBag = (id_transaction) => {
+  const DeleteMyBag = (id_transaction) => {
     axios
-      .delete(
-        `${process.env.REACT_APP_API}/transaction/delete/${id_transaction}`
-      )
+      .delete(`${process.env.REACT_APP_API}/transaction/${id_transaction}`)
       .then((res) => {
-        console.log("Delete bag success");
-        console.log(res);
-        Swal.fire("Success", "Delete bag success", "success");
+        console.log("Delete MyBag success");
+        console.log(res.data);
+        Swal.fire("Success", "Delete MyBag success", "success");
         window.location.reload(false);
       })
       .catch((err) => {
-        console.log("Delete bag failed");
+        console.log("Delete MyBag failed");
         console.log(err);
-        Swal.fire("Warning", "Delete bag failed", "error");
+        Swal.fire("Warning", "Delete MyBag failed", "error");
       });
   };
+
   const postData = async (e) => {
     e.preventDefault();
     let form = {
       transaction_id: transaction_id,
-      // seller_id: seller_id,
       product_id: product_id,
     };
     axios
-      .post(`${process.env.REACT_APP_API}/checkout/post-checkout`, form)
+      .post(`${process.env.REACT_APP_API}/checkout/post`, form, user)
       .then((res) => {
         console.log("Checkout success");
         console.log(res);
         Swal.fire("Success", "Checkout success", "success");
-        navigate("/checkout");
+        navigate("/Checkout");
       })
       .catch((err) => {
         console.log("Checkout failed");
@@ -71,10 +73,12 @@ function MyBag() {
   return (
     <div>
       <NavbarComponent />
-      <div className="body">
+      <di className="body">
         <div className="container-fluid bg-new">
           <div className="container py-3">
-            <h1 className="myfont text-title">My bag</h1>
+            <h2 className="myfont text-title" style={{ fontWeight: "bold" }}>
+              My Bag
+            </h2>
             <div className="container col-12 row py-3">
               <div className="col col-8 row">
                 <div className="container col-12 row">
@@ -89,50 +93,35 @@ function MyBag() {
                             src={item.photo}
                             style={{ height: "70px", width: "70px" }}
                             alt=""
-                            className="bag-pruduct"
+                            className="product"
                           />
                         </div>
-                        <div className="col-4 offset-1">
+                        <div className="col-2 offset-1">
                           <h6 className="myfont">{item.name}</h6>
-                          <div className="row">
-                            <div className="col-6">
-                              <h6 className="myfont3 color-font">
-                                {item.brand}
-                              </h6>
-                            </div>
-                            <div className="col-2">
-                              <h6
-                                className="myfont3 color-font"
-                                style={{ marginLeft: "-20px" }}
-                              >
-                                Rp.{item.price}
-                              </h6>
-                            </div>
+
+                          <div className="col-6">
+                            {/* <h6 className="myfont3 color-font">{item.brand}</h6> */}
                           </div>
                         </div>
-                        <div className=" col-2">
-                          {/* <MyButtonMin /> */}
-                          <span className="myfont3">
-                            {item.qty_transaction}
-                          </span>
-                          {/* <MyButtonPlus /> */}
+                        <div className=" col-1 ">
+                          <span className="myfont3">{item.qty}</span>
                         </div>
-                        <div className=" col-2 ">
+                        <div className=" col-3 ">
                           <h6 className="myfont">
-                            Rp.{item.total_transaction}
+                            Rp.{item.total.toLocaleString()}
                           </h6>
                         </div>
                         <div
-                          className=" col-1 text-danger btn "
+                          className=" col-1 offset-2 text-danger btn "
                           key={item.id_transaction}
-                          onClick={() => DeleteBag(item.id_transaction)}
+                          onClick={() => DeleteMyBag(item.id_transaction)}
                         >
                           <h6 className="myfont">Delete</h6>
                         </div>
                       </div>
                     ))
                   ) : (
-                    <h1>...Loading</h1>
+                    <h2>Please Wait...</h2>
                   )}
                 </div>
               </div>
@@ -144,16 +133,25 @@ function MyBag() {
                   <div className="col col-12">
                     <h6 className="myfont">Shopping Summary</h6>
                   </div>
-                  <div className="row py-3">
-                    <div className="col-6">
-                      <h6 className="myfont3" style={{ color: "#9B9B9B" }}>
-                        Total price
-                      </h6>
-                    </div>
-                    <div className="col-3 offset-3">
-                      <h6 className="myfont">$ 40.0</h6>
-                    </div>
-                  </div>
+                  {data ? (
+                    data.map((item) => (
+                      <div className="row py-3">
+                        <div className="col-6">
+                          <h6 className="myfont3" style={{ color: "#9B9B9B" }}>
+                            Total price
+                          </h6>
+                        </div>
+                        <div className="col-3 offset-3">
+                          <h6 className="myfont">
+                            {item.total.toLocaleString()}
+                          </h6>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <h2>Please Wait...</h2>
+                  )}
+
                   <div className="row align-items-center py-3">
                     <div className="col-12">
                       {/* <Link to="/checkout" className="link"> */}
@@ -178,7 +176,7 @@ function MyBag() {
             </div>
           </div>
         </div>
-      </div>
+      </di>
     </div>
   );
 }

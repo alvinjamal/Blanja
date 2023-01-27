@@ -144,8 +144,10 @@ export const ForgotPw = (data, navigate) => async (dispatch) => {
 export const ChangePW = (data, navigate) => async (dispatch) => {
   try {
     dispatch({ type: "USER_CHANGE_PW_PENDING" });
+    const token = localStorage.et("token");
+    console.log(token);
     const result = await axios.post(
-      `http://localhost:3500/users/forgot/`,
+      `http://localhost:3500/users/forgot/${token}`,
       data
     );
     const user = result.data.data;

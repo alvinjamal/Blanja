@@ -32,7 +32,7 @@ export default function Product() {
     stock: "",
     price: "",
     brand: "",
-    category_id: "1",
+    category_id: "",
     search: "",
   });
   const [sortBy, setSortBy] = useState("name");
@@ -82,7 +82,8 @@ export default function Product() {
       name: item.name,
       stock: item.stock,
       price: item.price,
-      bramd: item.brand,
+      brand: item.brand,
+      category_id: item.category_id,
     });
   };
 
@@ -94,6 +95,8 @@ export default function Product() {
         name: "",
         stock: "",
         price: "",
+        brand: "",
+        category_id: "",
       });
     !selected && setPhoto(null);
   }, [selected]);
@@ -155,7 +158,7 @@ export default function Product() {
 
     if (!selected) {
       axios
-        .post(`http://localhost:3500/products/add`, formData, {
+        .post(`${process.env.REACT_APP_API}/products/add`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -272,6 +275,15 @@ export default function Product() {
           />
           <input
             className="form-control"
+            type="text"
+            name="category"
+            value={inputData.category_id}
+            onChange={handleChange}
+            placeholder="Category"
+            style={{ marginLeft: "10px", marginTop: "10px" }}
+          />
+          <input
+            className="form-control"
             type="file"
             name="photo"
             onChange={handlePhoto}
@@ -366,8 +378,10 @@ export default function Product() {
             <tr>
               <th>Number</th>
               <th>Name</th>
+              <th>Category</th>
               <th>Stock</th>
               <th>Price</th>
+              <th>Brand</th>
               <th>Photo</th>
               <th>Action</th>
             </tr>
@@ -377,8 +391,10 @@ export default function Product() {
               <tr key={index + 1}>
                 <td>{index + 1}</td>
                 <td>{item.name}</td>
+                <td>{item.category_id.toLocaleString()}</td>
                 <td>{item.stock.toLocaleString()}</td>
                 <td>{item.price.toLocaleString()}</td>
+                <td>{item.brand}</td>
                 <td>
                   <img src={item.photo} className={styles.photo} alt="" />
                 </td>

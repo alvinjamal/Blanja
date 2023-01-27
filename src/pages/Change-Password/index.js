@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import Logo from "../../img/toko.png";
+import { ChangePW } from "../../redux/actions/users";
+import { Form } from "react-bootstrap";
 
 export default function ChangePassword() {
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
+
+  // const postData = (e) => {
+  //   e.preventDefault();
+  //   let data = {
+  //     email,
+  //     password,
+  //   };
+  //   dispatch(ChangePW(data, navigate));
+  // };
   return (
-    <header>
+    <div>
       <div className="container column mt-5">
         <div className="d-flex mt-5 justify-content-center row mx-auto">
           <img
@@ -26,14 +44,30 @@ export default function ChangePassword() {
       >
         You need to change your password to activate your account
       </p>
+      {/* <Form onSubmit={postData}> */}
       <div
         className="d-flex justify-content-center container flex-column input-wrap"
-        id="input-wrp"
+        style={{ marginTop: "40px" }}
       >
+        <input
+          type="email"
+          className="form-control d-flex justify-content-center container flex-column input-wrap"
+          placeholder="Email"
+          // value={email}
+          name="email"
+          // onChange={(e) => setEmail(e.target.value)}
+          aria-label="email"
+          aria-describedby="basic-addon1"
+          style={{ height: "48px", marginTop: "14px", width: "30rem" }}
+        />
+
         <input
           type="password"
           className="form-control"
-          placeholder="Password"
+          // value={password}
+          name="password"
+          // onChange={(e) => setPassword(e.target.value)}
+          placeholder="New Password"
           aria-label="password"
           aria-describedby="basic=addon1"
           id="input-margin"
@@ -44,7 +78,7 @@ export default function ChangePassword() {
         style={{ width: "30%", marginTop: "40px" }}
       >
         <Button
-          href="/loginCostumer"
+          type="submit"
           className="btn3 btn-lg btn-round text-light"
           style={{ borderRadius: "15px", height: "50px", width: "31rem" }}
           variant="danger"
@@ -53,6 +87,7 @@ export default function ChangePassword() {
           Confirmation
         </Button>
       </div>
-    </header>
+      {/* </Form> */}
+    </div>
   );
 }

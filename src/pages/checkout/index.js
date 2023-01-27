@@ -1,159 +1,221 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./checkout.module.css";
-import Jas from "../../img/jas.png";
-import Jaket from "../../img/kemal.png";
-import { Button, Row, Col } from "react-bootstrap";
-import Modal from "../../Components/Modal/payment";
-import { Link } from "react-router-dom";
-import ModalAddress from "../../Components/Modal/address";
+// import { Button, Row, Col } from "react-bootstrap";
+// import Modal from "../../Components/Modal/payment";
+import { Checkbox } from "@mui/material";
+import { red } from "@mui/material/colors";
+import Gopay from "../../img/gopay.png";
+import Pos from "../../img/pos.png";
+import Card from "../../img/card.png";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
+// import ModalAddress from "../../Components/Modal/address";
+import NavbarComponent from "../../Components/Navbar";
 
 export default function Checkout() {
+  const [data, setData] = useState([]);
+  const token = localStorage.getItem("token");
+  const [id_checkout, setIdCheckout] = useState("");
+  const navigate = useNavigate();
+  const user = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API}/checkout/all`, user)
+      .then((res) => {
+        console.log("Get data checkout success");
+        console.log(res.data);
+        setData(res.data.data[0]);
+        setIdCheckout(res.data.data[0].id_checkout);
+      })
+      .catch((err) => {
+        console.log("Get data checkout success");
+        console.log(err);
+      });
+  }, []);
+  const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  const postData = async (e) => {
+    e.preventDefault();
+    let form = {
+      id_checkout: id_checkout,
+    };
+    axios
+      .put(`${process.env.REACT_APP_API}/checkout/${id_checkout}`, form, user)
+      .then((res) => {
+        console.log("Checkout success");
+        console.log(res);
+        Swal.fire("Success", "Checkout success", "success");
+        navigate("/Hystory");
+      })
+      .catch((err) => {
+        console.log("Checkout failed");
+        console.log(err);
+        Swal.fire("Warning", "Checkout failed", "error");
+      });
+  };
   return (
-    <Row>
-      <Col>
-        <div className="container-fluid p-3 mb-2 bg-new">
-          <div
-            className="container"
-            style={{ marginTop: "35px", marginLeft: "220px" }}
-          >
-            <h2 id="checkout">Checkout</h2>
-            <h5
-              style={{
-                marginTop: "30px",
-                marginBottom: "20px",
-                fontWeight: "bold",
-              }}
-            >
-              Shipping Address
-            </h5>
-          </div>
-          <div
-            className="container-left shadow p-3 mb-5 bg-body rounded"
-            style={{
-              backgroundColor: "white",
-              width: "720px",
-              height: "190px",
-              marginLeft: "220px",
-            }}
-          >
-            <div
-              className="container text-start"
-              style={{ marginBottom: "13px" }}
-            >
-              <div className="row align-items-center">
-                <h6 style={{ fontWeight: "bold" }}>Andreas Jane</h6>
-                <p>
-                  Perumahan Sapphire Mediterania, Wiradadi, Kec. Sokaraja,
-                  Kabupaten Banyumas, Jawa Tengah, 53181 [ Note: blok c 16]
-                  Sokaraja, Kab. Banyumas, 53181
-                </p>
-
+    <div>
+      <NavbarComponent />
+      <div className="container-fluid bg-new">
+        <div className="container py-3">
+          <h1 className="myfont text-title">Checkout</h1>
+          <h5 className="text-title myfont3">Shipping Adress</h5>
+          <div className="container col-12 row py-3">
+            <div className="col col-8 row">
+              <div className="container col-12 row">
                 <div
-                  className="btn btn-gray btn-outline-light btn-block btn-md"
-                  style={{
-                    marginTop: "10px",
-                    height: "40px",
-                  }}
+                  className="col col-12 row container shadow py-3 align-items-center"
+                  style={{ backgroundColor: "white" }}
                 >
-                  <ModalAddress />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="container-left shadow p-3 mb-5 bg-body rounded"
-            style={{
-              backgroundColor: "white",
-              width: "720px",
-              height: "190px",
-              marginLeft: "220px",
-            }}
-          >
-            <div
-              className="container text-start"
-              style={{ marginBottom: "10px" }}
-            >
-              <div className="row align-items-center">
-                <div className="col">
-                  <img src={Jas} alt="jas" id="check1" />
-                </div>
-                <div className="col">
-                  <h6>Men's formal suit - Black</h6>
-                  <h6 style={{ color: "#9b9b9b" }}>Zalora Cloth</h6>
-                </div>
-                <div className="col">
-                  <h6 style={{ marginLeft: "130px" }}>$ 20.0</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="container-left shadow p-3 mb-5 bg-body rounded"
-            style={{
-              backgroundColor: "white",
-              width: "720px",
-              height: "190px",
-              marginLeft: "220px",
-            }}
-          >
-            <div
-              className="container text-start"
-              style={{ marginBottom: "10px" }}
-            >
-              <div className="row align-items-center">
-                <div className="col" style={{ height: "100px" }}>
-                  <img src={Jaket} alt="jaket" id="check2" />
-                </div>
-                <div className="col">
-                  <h6>Men's Jacket jeans</h6>
-                  <h6 style={{ color: "#9b9b9b" }}>Zalora Cloth</h6>
-                </div>
-                <div className="col">
-                  <h6 style={{ marginLeft: "130px" }}>$ 20.0</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Col>
-      <Col>
-        <div
-          className="container-left shadow p-3 bg-body rounded"
-          style={{
-            backgroundColor: "white",
-            width: "30rem",
-            marginTop: "10rem",
-          }}
-        >
-          <div className="container text-center">
-            <div className="row align-items-center">
-              <div className="col mb-4 mt-3">
-                <h6 style={{ width: "10rem", fontWeight: "bold" }}>
-                  Shopping summary
-                </h6>
-              </div>
-              <Row>
-                <Col>
-                  <div
-                    className="text-start text-secondary"
-                    style={{ borderBottom: "solid" }}
-                  >
-                    <h6 className="mb-3">Order</h6>
-                    <h6 className="mb-3">Delivery</h6>
+                  <div className="col-12">
+                    <h6 className="myfont">{data?.name}</h6>
                   </div>
-                </Col>
-              </Row>
-
-              <div>
-                <h6 className="text-start text-secondary mt-3 mb-3">
-                  Shopping summary
-                </h6>
+                  <div className="row py-4">
+                    <div className="col-12">
+                      <h6 className="myfont3">{data?.address}</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="container col-12 row py-3">
+                <div
+                  className="col col-12 row container shadow py-3 align-items-center"
+                  style={{ backgroundColor: "white" }}
+                >
+                  <div className="col-2">
+                    <img
+                      src={data?.photo}
+                      style={{ height: "70px", width: "70px" }}
+                      alt=""
+                      className="bag-pruduct"
+                    />
+                  </div>
+                  <div className="col-4">
+                    <h6 className="myfont">{data?.name}</h6>
+                    <h6 className="myfont3 color-font">
+                      {data?.brand_product}
+                    </h6>
+                  </div>
+                  <div className="col col-2">
+                    <h6 className="myfont">Qty: {data?.qty}</h6>
+                  </div>
+                  <div className="col col-2 offset-1">
+                    <h6 className="myfont">
+                      Rp. {data?.price.toLocaleString()}
+                    </h6>
+                  </div>
+                </div>
               </div>
             </div>
-            <Modal />
+            <div className="container col-4">
+              <div
+                className="col col-12 row container shadow py-3"
+                style={{ backgroundColor: "white" }}
+              >
+                <div className="col col-12">
+                  <h6 className="myfont" style={{ color: "black" }}>
+                    Shopping Summary
+                  </h6>
+                </div>
+
+                <div className="row align-items-center mb-3">
+                  <div className="col-4">
+                    <img src={Gopay} alt="" />
+                  </div>
+                  <div className="col-4">
+                    <h5 className="myfont3">Gopay</h5>
+                  </div>
+                  <div className="col-4">
+                    <Checkbox
+                      {...label}
+                      sx={{
+                        color: red[800],
+                        "&.Mui-checked": { color: red[600] },
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="row align-items-center mb-3">
+                  <div className="col-4">
+                    <img src={Pos} alt="" />
+                  </div>
+                  <div className="col-4">
+                    <h5 className="myfont3">Pos Indonesia</h5>
+                  </div>
+                  <div className="col-4">
+                    <Checkbox
+                      {...label}
+                      sx={{
+                        color: red[800],
+                        "&.Mui-checked": { color: red[600] },
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="row align-items-center mb-3">
+                  <div className="col-4">
+                    <img
+                      src={Card}
+                      alt=""
+                      style={{ width: "54px", height: "38px" }}
+                    />
+                  </div>
+                  <div className="col-4">
+                    <h5 className="myfont3">Mastercard</h5>
+                  </div>
+                  <div className="col-4">
+                    <Checkbox
+                      {...label}
+                      sx={{
+                        color: red[800],
+                        "&.Mui-checked": { color: red[600] },
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-12">
+                    <hr />
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-6">
+                    <h6 className="myfont" style={{ color: "black" }}>
+                      Shopping summary
+                    </h6>
+                  </div>
+                  <div className="col-3 offset-3">
+                    <h6 className="myfont text-danger">
+                      Rp.{data?.total.toLocaleString()}
+                    </h6>
+                  </div>
+                </div>
+                <div className="row align-items-center py-3">
+                  <div className="col-12">
+                    <button
+                      class="btn btn-danger myfont3"
+                      onClick={postData}
+                      style={{
+                        height: "50px",
+                        borderRadius: "40px",
+                        width: "350px",
+                      }}
+                    >
+                      <h6 className="myfont3" style={{ marginTop: "9px" }}>
+                        Buy
+                      </h6>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 }

@@ -51,10 +51,9 @@ export default function Profile() {
   const handleData = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("store_name", updateData.store_name);
+    formData.append("store", updateData.store);
     formData.append("email", updateData.email);
     formData.append("phone", updateData.phone);
-    formData.append("store_description", updateData.store_description);
     console.log(formData);
     axios
       .put(`http://localhost:3500/users/edit-profile-seller`, formData, {

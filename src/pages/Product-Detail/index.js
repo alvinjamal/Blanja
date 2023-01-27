@@ -12,14 +12,20 @@ export default function ProductDetail() {
   const [data, setData] = useState([]);
   const [dataProduct, setDataProduct] = useState([]);
   const [product_id, setProductId] = useState("");
+  const [status, setStatus] = useState("1");
   const [total, setTotalTransaction] = useState("");
-  // const [sellerId, setSellerId] = useState("");
-  // const [qty_transaction, setQtyTransaction] = useState(1);
-  const token = localStorage.getItem("token");
+  const [qty, setQtyTransaction] = useState(1);
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id_product } = useParams();
+  const token = localStorage.getItem("token");
 
-  const product = `${process.env.REACT_APP_API}/products`;
+  const user = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const product = `${process.env.REACT_APP_API_PRODUCT}`;
   useEffect(() => {
     const getdata = async () => {
       try {
@@ -34,14 +40,13 @@ export default function ProductDetail() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API}/products/detail/${id}`)
+      .get(`${process.env.REACT_APP_API}/products/${id_product}`)
       .then((res) => {
         console.log("Get detail product success");
         console.log(res.data);
         setDataProduct(res.data.data[0]);
-        setProductId(res.data.data[0].id);
+        setProductId(res.data.data[0].id_product);
         setTotalTransaction(res.data.data[0].price);
-        // setSellerId(res.data.data[0].user_id);
       })
       .catch((err) => {
         console.log("Get detail product fail");
@@ -52,16 +57,22 @@ export default function ProductDetail() {
     e.preventDefault();
     let form = {
       product_id: product_id,
-      // total_transaction: total_transaction * qty_transaction,
-      // qty_transaction: qty_transaction,
-      // seller_id: sellerId,
+      total: total * qty,
+      qty: qty,
+      status: status * 1,
     };
     axios
-      .post(`${process.env.REACT_APP_API}/transaction/post-transaction`, form)
+      .post(`${process.env.REACT_APP_API}/transaction/add`, form, user)
       .then((res) => {
         console.log("Add product To Bag Success");
         console.log(res);
-        Swal.fire("Success", "Add product To bag success", "success");
+
+        Swal.fire(
+          "Success",
+          "Add product To bag success",
+          "success",
+          navigate("/My-Bag")
+        );
       })
       .catch((err) => {
         console.log("Add product To bag failed");
@@ -69,6 +80,21 @@ export default function ProductDetail() {
         Swal.fire("Warning", "Add Product To Bag Failed", "error");
       });
   };
+
+  // const [category, setCategory] = useState([]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_API}/category`)
+  //     .then((res) => {
+  //       console.log("Get category success");
+  //       console.log(res.data);
+  //       res.data && setCategory(res.data.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Get category fail");
+  //       console.log(err);
+  //     });
+  // }, []);
   return (
     <div>
       <NavbarComponent />
@@ -76,7 +102,7 @@ export default function ProductDetail() {
         <div className="container py-3">
           <div className="row py-4">
             <div className="col-1">
-              <Link to="/Home" className="link-title-detail">
+              <Link to="/Home" className="detail">
                 <h6 className="color-font myfont3">Home</h6>
               </Link>
             </div>
@@ -85,12 +111,14 @@ export default function ProductDetail() {
                 <FaChevronRight />
                 category
               </h6>
-            </div> */}
-            {/* <div className="col-1">
-              <h6 className="myfont3 color-font">
-                <FaChevronRight />
-                T-Shirt
-              </h6>
+            </div>
+            <div className="col-1">
+              {category.map((item) => (
+                <h6 className="myfont3 color-font">
+                  <FaChevronRight />
+                  {item.name}
+                </h6>
+              ))}
             </div> */}
           </div>
           <div className="row">
@@ -101,15 +129,15 @@ export default function ProductDetail() {
                   alt=""
                   style={{
                     borderRadius: "15px",
-                    width: "360px",
+                    width: "24rem",
                     height: "500px",
                   }}
                 />
               </div>
             </div>
             <div className="col-md-8">
-              <div className="ml-2">
-                <h3 className="myfont">{dataProduct.name}</h3>
+              <div className="ml-2" style={{ textDecoration: "none" }}>
+                <h3 className="myfont text-dark">{dataProduct.name}</h3>
                 <h6 className="myfont3 color-font">{dataProduct.brand}</h6>
                 <h6 className="mb-5">
                   <FaStar className="fastar" />
@@ -139,7 +167,7 @@ export default function ProductDetail() {
                   style={{ borderRadius: "50px", marginLeft: "10px" }}
                 ></button>
                 <div className="row mt-5 mb-3">
-                  <div className="col-md-6">
+                  {/* <div className="col-md-6">
                     <h6 className="myfont" style={{ marginLeft: "29px" }}>
                       Size
                     </h6>
@@ -156,22 +184,22 @@ export default function ProductDetail() {
                     >
                       +
                     </button>
-                  </div>
+                  </div> */}
                   <div className="col-md-6">
-                    <h6 className="myfont" style={{ marginLeft: "19px" }}>
+                    <h6 className="myfont" style={{ marginLeft: "7px" }}>
                       Jumlah
                     </h6>
                     <button
                       className=" btn-min "
-                      // onClick={() => setQtyTransaction(qty_transaction - 1)}
+                      onClick={() => setQtyTransaction(qty - 1)}
                       style={{ borderRadius: "50%", marginRight: "10px" }}
                     >
                       -
                     </button>
-                    {/* <span className="myfont3">{qty_transaction}</span> */}
+                    <span className="myfont3">{qty}</span>
                     <button
                       className=" btn-plus shadow"
-                      // onClick={() => setQtyTransaction(qty_transaction + 1)}
+                      onClick={() => setQtyTransaction(qty + 1)}
                       style={{ borderRadius: "50%", marginLeft: "10px" }}
                     >
                       +
@@ -201,7 +229,7 @@ export default function ProductDetail() {
                       className="btn btn-danger btn-in-product2 rounded-pill"
                     >
                       <h6 className="myfont3" style={{ marginTop: "5px" }}>
-                        Add bag
+                        Buy Now
                       </h6>
                     </button>
                   </div>
@@ -213,7 +241,6 @@ export default function ProductDetail() {
               <h4 className="myfont3">Condition</h4>
               <h5 className="myfont3 text-danger mb-5">New</h5>
               <h4 className="myfont3">Description</h4>
-              <p className="myfont3 color-font">{dataProduct.description}</p>
               <h3 className="myfont mt-5 mb-5">Product review</h3>
               <div className="row">
                 <div className="col-md-2">
@@ -347,9 +374,12 @@ export default function ProductDetail() {
                         style={{ height: "200px" }}
                         alt=""
                       />
-                      <div className="card-body">
-                        <Link to="/productdetail" className="link-product">
-                          <h3 className="text-product">{item.name}</h3>
+                      <div
+                        className="card-body"
+                        style={{ textDecoration: "none" }}
+                      >
+                        <Link to="/Product-Detail" className="link">
+                          <h3 className="text-dark">{item.name}</h3>
                         </Link>
                         <h4 className="text-price">{item.price}</h4>
                         <h5 className="text-brand">Zalora Cloth</h5>
@@ -365,7 +395,7 @@ export default function ProductDetail() {
                   </div>
                 ))
               ) : (
-                <h1>...Loading</h1>
+                <h1>Please Wait...</h1>
               )}
             </div>
           </div>
