@@ -1,20 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./product.module.css";
-import Alert from "../../Components/alert";
 import { FaTrashAlt } from "react-icons/fa";
 import Table from "react-bootstrap/Table";
 import { Button, Modal, Form } from "react-bootstrap";
 import swal from "sweetalert";
 import NavbarComponent from "../../Components/Navbar";
-import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Product() {
   const [data, setData] = useState([]);
   const token = localStorage.getItem("token");
   const [photo, setPhoto] = useState(null);
-  const { id_product } = useParams();
-
+  const [id_product, setIdProduct] = useState("");
   const user = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -28,14 +28,14 @@ export default function Product() {
   });
   const [messageShow, setMessageShow] = useState(true);
   const [inputData, setInputData] = useState({
-    name: "",
+    name_product: "",
     stock: "",
     price: "",
     brand: "",
-    category_id: "",
+    category_id: "5",
     search: "",
   });
-  const [sortBy, setSortBy] = useState("name");
+  const [sortBy, setSortBy] = useState("name_product");
   const [sort, setSort] = useState("asc");
   const [selected, setSelected] = useState(null);
   const [onedit, setOnedit] = useState(false);
@@ -46,40 +46,13 @@ export default function Product() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // DELETE DATA
-  const deleteData = () => {
-    axios
-      .delete(`${process.env.REACT_APP_API}/product/${id_product}`)
-      .then((res) => {
-        handleClose();
-        console.log("delete data success");
-        console.log(res);
-        setMessageShow(true);
-        swal({
-          title: "success",
-          text: "Delete data success",
-          type: "danger",
-          icon: "success",
-        });
-        messageTime();
-        getData();
-      })
-      .catch((err) => {
-        console.log("Delete data fail");
-        console.log(err);
-        setMessageShow(true);
-        setMessage({ title: "Fail", text: "Delete data fail", type: "danger" });
-        messageTime();
-      });
-  };
-
   // EDIT DATA
   const editForm = (item) => {
     console.log(item);
     setTemp(item);
     setInputData({
       ...inputData,
-      name: item.name,
+      name_product: item.name_product,
       stock: item.stock,
       price: item.price,
       brand: item.brand,
@@ -92,11 +65,11 @@ export default function Product() {
     !selected &&
       setInputData({
         ...inputData,
-        name: "",
+        name_product: "",
         stock: "",
         price: "",
         brand: "",
-        category_id: "",
+        category_id: "5",
       });
     !selected && setPhoto(null);
   }, [selected]);
@@ -124,6 +97,7 @@ export default function Product() {
         console.log("get data success");
         console.log(res.data.data);
         res.data && setData(res.data.data);
+        setIdProduct(res.data.data[0].id_product);
         !selected && setMessageShow(true);
         !selected &&
           setMessage({
@@ -143,22 +117,53 @@ export default function Product() {
         messageTime();
       });
   };
+  useEffect(() => {
+    getData();
+  }, [inputData.search]);
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // DELETE DATA
+  const Delete = () => {
+    axios
+      .delete(`http://localhost:3500/products/${selected}`)
+      .then((res) => {
+        console.log("Delete Product success");
+        console.log(res);
+        setMessageShow(true);
+        swal({
+          title: "success",
+          text: "Delete Product success",
+          type: "danger",
+          icon: "success",
+        });
+        messageTime();
+        getData();
+      })
+      .catch((err) => {
+        console.log("Delete Product failed");
+        console.log(err);
+        setMessageShow(true);
+        Swal.fire("Warning", "Delete Product failed", "error");
+        messageTime();
+      });
+  };
 
   // POST DATA
   const postForm = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("name", inputData.name);
+    formData.append("name_product", inputData.name_product);
     formData.append("stock", inputData.stock);
     formData.append("price", inputData.price);
     formData.append("photo", photo);
     formData.append("brand", inputData.brand);
     formData.append("category_id", inputData.category_id);
-    // formData.append("search", inputData.search);
 
     if (!selected) {
       axios
-        .post(`${process.env.REACT_APP_API}/products/add`, formData, {
+        .post(`${process.env.REACT_APP_API}/products/add`, formData, user, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -178,16 +183,9 @@ export default function Product() {
           getData();
         })
         .catch((err) => {
-          console.log("Post data failed please try again");
+          console.log("Add Product failed please try again");
           console.log(err);
-          setMessageShow(true);
-          setMessage({
-            title: "failed",
-            text: "Post data failed please try again",
-            type: "Danger",
-            icon: "failed",
-          });
-          messageTime();
+          Swal.fire("Warning", "Add Product failed", "error");
         });
     } else {
       axios
@@ -233,13 +231,15 @@ export default function Product() {
     <div>
       <NavbarComponent />
       <Form onSubmit={postForm} className="container mt-4 p-2 border border-3 ">
-        <h5 className="text">Add Product</h5>
+        <h5 className="text" style={{ fontWeight: "bold" }}>
+          Add Product
+        </h5>
         <div className="d-flex flex-row ">
           <input
             className="form-control"
             type="text"
-            value={inputData.name}
-            name="name"
+            value={inputData.name_product}
+            name="name_product"
             onChange={handleChange}
             placeholder="Nama"
           />
@@ -273,15 +273,15 @@ export default function Product() {
             placeholder="Price"
             style={{ marginTop: "10px" }}
           />
-          <input
+          {/* <input
             className="form-control"
             type="text"
-            name="category"
+            name="category_id"
             value={inputData.category_id}
             onChange={handleChange}
             placeholder="Category"
             style={{ marginLeft: "10px", marginTop: "10px" }}
-          />
+          /> */}
           <input
             className="form-control"
             type="file"
@@ -310,7 +310,9 @@ export default function Product() {
 
       {/* filter */}
       <div className="container  mt-2 p-2 rounded container mt-4 p-2 border border-3">
-        <h5 className="text">Filter</h5>
+        <h5 className="text" style={{ fontWeight: "bold" }}>
+          Filter
+        </h5>
         <div className="container d-flex flex-row">
           <div className="">
             <div
@@ -370,15 +372,15 @@ export default function Product() {
         </div>
       </div>
 
-      {/* get data */}
       <div className="container mt-4 p-2 border border-3 ">
-        <h5 className="text">Data Product</h5>
+        <h5 className="text" style={{ fontWeight: "bold" }}>
+          Data Product
+        </h5>
         <Table className="striped bordered hover">
           <thead>
             <tr>
               <th>Number</th>
               <th>Name</th>
-              <th>Category</th>
               <th>Stock</th>
               <th>Price</th>
               <th>Brand</th>
@@ -390,10 +392,9 @@ export default function Product() {
             {data.map((item, index) => (
               <tr key={index + 1}>
                 <td>{index + 1}</td>
-                <td>{item.name}</td>
-                <td>{item.category_id.toLocaleString()}</td>
-                <td>{item.stock.toLocaleString()}</td>
-                <td>{item.price.toLocaleString()}</td>
+                <td>{item.name_product}</td>
+                <td>{item.stock}</td>
+                <td>{item.price?.toLocaleString()}</td>
                 <td>{item.brand}</td>
                 <td>
                   <img src={item.photo} className={styles.photo} alt="" />
@@ -402,7 +403,7 @@ export default function Product() {
                   <FaTrashAlt
                     color="red"
                     onClick={() => {
-                      setSelected(item.id);
+                      setSelected(item.id_product);
                       handleShow();
                     }}
                   />
@@ -412,13 +413,6 @@ export default function Product() {
           </tbody>
         </Table>
       </div>
-
-      {/* alert */}
-      {/* {messageShow && (
-        <Alert title={message.title} text={message.text} type={message.type} />
-      )} */}
-
-      {/* Modal */}
       <div>
         <Modal
           show={show}
@@ -436,7 +430,7 @@ export default function Product() {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="danger" onClick={() => deleteData()}>
+            <Button variant="danger" onClick={() => Delete()}>
               Yes
             </Button>
           </Modal.Footer>

@@ -74,7 +74,12 @@ function Hystory() {
       <div className="container text-start shadow rounded-2 mt-1 bg-white">
         <div className="row align-items-center">
           <div className="col-2">
-            <h4 className="text-secondary pt-4 mb-4 ms-3">My History</h4>
+            <h4
+              className="text-secondary pt-4 mb-4 ms-3"
+              style={{ fontWeight: "bold" }}
+            >
+              My History
+            </h4>
           </div>
         </div>
         <div className="row rounded-3">
@@ -122,8 +127,8 @@ function Hystory() {
                   <tbody className="table-group-divider">
                     {data.map((item, index) => (
                       <tr key={index + 1}>
-                        <td className="myfont3">{item.name}</td>
-                        <td className="myfont3">{item.name}</td>
+                        <td className="myfont3">{item.name_product}</td>
+                        <td className="myfont3">{item.name_status}</td>
                         <td className="myfont3">
                           Rp. {item.total.toLocaleString()}
                         </td>
@@ -140,7 +145,7 @@ function Hystory() {
                         </td>
                         <td>
                           <button
-                            className="btn btn-warning text-white"
+                            className="btn btn-success text-white size-lg"
                             key={item.id_product}
                             onClick={() => navigate(`/checkout`)}
                           >
@@ -190,8 +195,8 @@ function Hystory() {
                   <tbody className="table-group-divider">
                     {dataDone.map((item, index) => (
                       <tr key={index + 1}>
-                        <td className="myfont3">{item.name}</td>
-                        <td className="myfont3">{item.name}</td>
+                        <td className="myfont3">{item.name_product}</td>
+                        <td className="myfont3">{item.name_status}</td>
                         <td className="myfont3">
                           Rp. {item.total.toLocaleString()}
                         </td>

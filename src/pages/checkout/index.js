@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./checkout.module.css";
-// import { Button, Row, Col } from "react-bootstrap";
-// import Modal from "../../Components/Modal/payment";
 import { Checkbox } from "@mui/material";
 import { red } from "@mui/material/colors";
 import Gopay from "../../img/gopay.png";
@@ -10,7 +8,6 @@ import Card from "../../img/card.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
-// import ModalAddress from "../../Components/Modal/address";
 import NavbarComponent from "../../Components/Navbar";
 
 export default function Checkout() {
@@ -33,7 +30,7 @@ export default function Checkout() {
         setIdCheckout(res.data.data[0].id_checkout);
       })
       .catch((err) => {
-        console.log("Get data checkout success");
+        console.log("Get data checkout failed");
         console.log(err);
       });
   }, []);
@@ -48,9 +45,14 @@ export default function Checkout() {
       .then((res) => {
         console.log("Checkout success");
         console.log(res);
-        Swal.fire("Success", "Checkout success", "success");
+        Swal.fire({
+          title: "Success",
+          text: "Checkout success, Tap Ok To Hystory.",
+          icon: "success",
+        });
         navigate("/Hystory");
       })
+
       .catch((err) => {
         console.log("Checkout failed");
         console.log(err);
@@ -62,7 +64,9 @@ export default function Checkout() {
       <NavbarComponent />
       <div className="container-fluid bg-new">
         <div className="container py-3">
-          <h1 className="myfont text-title">Checkout</h1>
+          <h2 className="myfont text-title" style={{ fontWeight: "bold" }}>
+            Checkout
+          </h2>
           <h5 className="text-title myfont3">Shipping Adress</h5>
           <div className="container col-12 row py-3">
             <div className="col col-8 row">
@@ -95,18 +99,16 @@ export default function Checkout() {
                     />
                   </div>
                   <div className="col-4">
-                    <h6 className="myfont">{data?.name}</h6>
-                    <h6 className="myfont3 color-font">
-                      {data?.brand_product}
-                    </h6>
+                    <h4 className="myfont">{data?.name_product}</h4>
+                    <h5 className="myfont3 color-font">{data?.brand}</h5>
                   </div>
                   <div className="col col-2">
-                    <h6 className="myfont">Qty: {data?.qty}</h6>
+                    <h5 className="myfont">Qty: {data?.qty}</h5>
                   </div>
-                  <div className="col col-2 offset-1">
-                    <h6 className="myfont">
-                      Rp. {data?.price.toLocaleString()}
-                    </h6>
+                  <div className="col col-2 offset-">
+                    <h5 className="myfont">
+                      Rp. {data?.price?.toLocaleString()}
+                    </h5>
                   </div>
                 </div>
               </div>
@@ -190,7 +192,7 @@ export default function Checkout() {
                   </div>
                   <div className="col-3 offset-3">
                     <h6 className="myfont text-danger">
-                      Rp.{data?.total.toLocaleString()}
+                      Rp.{data?.total?.toLocaleString()}
                     </h6>
                   </div>
                 </div>

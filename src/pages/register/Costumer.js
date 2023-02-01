@@ -10,6 +10,9 @@ export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [date, setDate] = useState("");
+  const [address, setAddress] = useState("");
+  const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
@@ -20,6 +23,10 @@ export default function Register() {
     let data = {
       name,
       email,
+      phone,
+      date,
+      gender,
+      address,
       password,
     };
     dispatch(registerUserCustomer(data, navigate));
@@ -94,6 +101,36 @@ export default function Register() {
             onChange={(e) => setPhone(e.target.value)}
             placeholder="Phone Number"
             aria-label="phone number"
+            aria-describedby="basic-addon1"
+            style={{ height: "48px", marginTop: "14px", width: "30rem" }}
+          />
+          <input
+            type="text"
+            className="form-control"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            placeholder="Gender"
+            aria-label="gender"
+            aria-describedby="basic-addon1"
+            style={{ height: "48px", marginTop: "14px", width: "30rem" }}
+          />
+          <input
+            type="text"
+            className="form-control"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            placeholder="Date"
+            aria-label="date"
+            aria-describedby="basic-addon1"
+            style={{ height: "48px", marginTop: "14px", width: "30rem" }}
+          />
+          <input
+            type="text"
+            className="form-control"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            placeholder="Address"
+            aria-label="address"
             aria-describedby="basic-addon1"
             style={{ height: "48px", marginTop: "14px", width: "30rem" }}
           />

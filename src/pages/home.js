@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import {
   Container,
@@ -12,18 +13,21 @@ import NavbarComponent from "../Components/Navbar";
 import Trend2 from "../img/trend2.png";
 import Trend3 from "../img/trend3.png";
 import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [sortBy, setSortBy] = useState("name");
   const [sort, setSort] = useState("asc");
   const [data, setData] = useState([]);
-  // const id_product = useParams;
+  const token = localStorage.getItem("token");
 
   const navigate = useNavigate;
 
-  // console.log(process.env.REACT_APP_API, "data");
+  const user = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -37,6 +41,7 @@ export default function Home() {
       }
     };
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [category, setCategory] = useState([]);
   useEffect(() => {
@@ -142,9 +147,9 @@ export default function Home() {
                           direction="horizontal"
                           className="h-100 justify-content-center align-items-center"
                           gap={5}
-                          // onClick={() =>
-                          //   navigate(`/Product-Detail/${item.id_product}`)
-                          // }
+                          onClick={() =>
+                            navigate(`/Product-Detail/${item.id_product}`)
+                          }
                         >
                           <Card style={{ width: "18rem" }}>
                             <Card.Img
@@ -192,10 +197,10 @@ export default function Home() {
                     >
                       <Card.Img variant="top" src={item.photo} alt="" />
                       <p className="fs-5">{item.brand}</p>
-                      <p className="fs-4">{item.name}</p>
+                      <p className="fs-4">{item.name_product}</p>
                     </Link>
                     <p className="text-danger fs-4">
-                      Rp. {item.price.toLocaleString()}
+                      Rp. {item.price?.toLocaleString()}
                     </p>
                     <p className="fs-6">{item.stock}</p>
                   </Card>
@@ -232,10 +237,10 @@ export default function Home() {
                     >
                       <Card.Img variant="top" src={item.photo} alt="" />
                       <p className="fs-5">{item.brand}</p>
-                      <p className="fs-4">{item.name}</p>
+                      <p className="fs-4">{item.name_product}</p>
                     </Link>
                     <p className="text-danger fs-4">
-                      Rp. {item.price.toLocaleString()}
+                      Rp. {item.price?.toLocaleString()}
                     </p>
                     <p className="fs-6">{item.stock}</p>
                   </Card>

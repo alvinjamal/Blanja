@@ -1,14 +1,21 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
+import { Button } from "react-bootstrap";
+import Style from "./profileCust.module.css";
 import { useNavigate } from "react-router-dom";
+import Part from "../../img/troli.png";
+import Order from "../../img/user1.png";
 import Swal from "sweetalert2";
 import NavbarComponent from "../../Components/Navbar";
+import ModalEdit from "../../Components/Modal/edit";
 
 export default function ProfileCustommer() {
   const token = localStorage.getItem("token");
+  // const [photo, setPhoto] = useState("");
   const navigate = useNavigate();
   const user = {
     headers: {
@@ -32,7 +39,7 @@ export default function ProfileCustommer() {
   }, []);
   // const [photo, setPhotoUser] = useState(null);
   const [updateData, setUpdateData] = useState({
-    fullname: data?.fullname,
+    name: data?.name,
     email: data?.email,
     phone: data?.phone,
     gender: data?.gender,
@@ -41,7 +48,7 @@ export default function ProfileCustommer() {
   });
 
   // const handlePhotoChange = (e) => {
-  //   setPhotoUser(e.target.files[0]);
+  //   setPhoto(e.target.files[0]);
   //   console.log(e.target.files[0]);
   // };
 
@@ -64,7 +71,7 @@ export default function ProfileCustommer() {
     formData.append("address", updateData.address);
     console.log(formData);
     axios
-      .put(`${process.env.REACT_APP_API}/users/edit-profile`, formData, user, {
+      .put(`${process.env.REACT_APP_API}/users/profile`, formData, user, {
         "content-type": "multipart/form-data",
       })
       .then((res) => {
@@ -90,14 +97,16 @@ export default function ProfileCustommer() {
           <div className="justify-content-center d-flex flex-row ">
             <div className="d-flex flex-row h-25 justify-content-center ">
               <img
-                src={data?.photo_user}
+                src={data?.photo}
                 alt=""
                 className="img rounded-pill"
                 style={{ height: "110px", width: "110px" }}
               />
               <div className="d-flex flex-column h-50 mt-3 ms-2">
-                <h6 className="myfont ms-3">{data?.fullname_user}</h6>
-                {/* <Modal /> */}
+                <h4 className="myfont ms-3" style={{ fontWeight: "bold" }}>
+                  {data?.name}
+                </h4>
+                <ModalEdit />
               </div>
             </div>
           </div>
@@ -113,7 +122,7 @@ export default function ProfileCustommer() {
                     width: "40px",
                   }}
                 >
-                  {/* <img src={cube} alt="" /> */}
+                  <img src={Order} alt="" />
                 </div>
                 History
               </button>
@@ -128,7 +137,7 @@ export default function ProfileCustommer() {
                     width: "40px",
                   }}
                 >
-                  {/* <img src={cart} alt="" /> */}
+                  <img src={Part} alt="" />
                 </div>
                 My Bag
               </button>
@@ -136,7 +145,9 @@ export default function ProfileCustommer() {
           </div>
         </div>
         <div className="container p-5">
-          <h1 className="myfont3">My Profile</h1>
+          <h2 className="myfont3" style={{ fontWeight: "bold" }}>
+            My Profile
+          </h2>
           <h5 className="myfont3 color-font mb-3">
             Manage your profile information
           </h5>
@@ -144,9 +155,9 @@ export default function ProfileCustommer() {
 
           <div className="container col-12 row">
             <div className="col col-8 row">
-              <div className="col col-12 row ">
-                <div className="col col-3 myfont3">Name</div>
-                <div className="col col-9">
+              <div className="col-12 row ">
+                <div className="col-3 myfont3">Name</div>
+                <div className="col-9">
                   <input
                     type="text"
                     className="form-control mb-3 myfont3"
@@ -157,9 +168,9 @@ export default function ProfileCustommer() {
                   />
                 </div>
               </div>
-              <div className="col col-12 row ">
-                <div className="col col-3 myfont3">Email</div>
-                <div className="col col-9">
+              <div className="col-12 row ">
+                <div className="col-3 myfont3">Email</div>
+                <div className="col-9">
                   <input
                     type="text"
                     className="form-control  mb-3 myfont3"
@@ -170,9 +181,9 @@ export default function ProfileCustommer() {
                   />
                 </div>
               </div>
-              <div className="col col-12 row ">
-                <div className="col col-3 myfont3">Address</div>
-                <div className="col col-9">
+              <div className="col-12 row ">
+                <div className="col-3 myfont3">Address</div>
+                <div className="col-9">
                   <input
                     type="text"
                     className="form-control  mb-3 myfont3"
@@ -183,9 +194,9 @@ export default function ProfileCustommer() {
                   />
                 </div>
               </div>
-              <div className="col col-12 row ">
-                <div className="col col-3 myfont3">Phone Number</div>
-                <div className="col col-9">
+              <div className="col-12 row ">
+                <div className="col-3 myfont3">Phone Number</div>
+                <div className="col-9">
                   <input
                     type="text"
                     className="form-control  mb-3 myfont3"
@@ -196,23 +207,23 @@ export default function ProfileCustommer() {
                   />
                 </div>
               </div>
-              <div className="col col-12 row ">
-                <div className="col col-3 myfont3">Gender</div>
-                <div className="col col-9 row mb-3">
+              <div className="col-12 row ">
+                <div className="col-3 myfont3">Gender</div>
+                <div className="col-9 row mb-1">
                   <input
                     type="text"
-                    className="form-control  mb-3 myfont3 ms-2"
+                    className="form-control  mb-2 myfont3 ms-2"
                     name="gender"
                     placeholder={data?.gender}
                     onChange={(e) => handleChange(e)}
                     value={updateData.gender}
                   />
                 </div>
-                <div className="col col-12 row  mt-3">
-                  <div className="col col-3 myfont3">Date of birth</div>
-                  <div className="col col-9">
+                <div className="col-12 row  mt-3">
+                  <div className=" col-3 myfont3">Date of birth</div>
+                  <div className=" col-9">
                     <input
-                      type="date"
+                      type="text"
                       className="form-control  mb-3 myfont3"
                       name="date"
                       placeholder={data?.date}
@@ -222,9 +233,18 @@ export default function ProfileCustommer() {
                   </div>
                 </div>
               </div>
+              <div className="col col-12 row mb-3 mt-2">
+                <Button
+                  className="col col-3 btn-danger rounded-pill"
+                  style={{ marginLeft: "10rem", width: "14rem" }}
+                  onClick={(e) => handleData(e)}
+                >
+                  <h6 className="myfont3 mt-1">Save</h6>
+                </Button>
+              </div>
             </div>
             <div className="col col-4">
-              {/* <img src={data?.photo} className={styles.image} alt="..." /> */}
+              <img src={data?.photo} className={Style.img} alt="..." />
             </div>
           </div>
         </div>

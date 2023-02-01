@@ -5,7 +5,7 @@ import RegisterCustomer from "./pages/Register/Costumer";
 import Login from "./pages/Login/index";
 import Profile from "./pages/Profile/profile";
 import ProfileCust from "./pages/Profile-Cust/index";
-import MyBag from "./pages/My-Bag";
+import MyBag from "./pages/My-Bag/bag";
 import ProductDetail from "./pages/Product-Detail/index";
 import Checkout from "./pages/Checkout/index";
 import Selling from "./pages/Selling/index";
@@ -17,6 +17,8 @@ import VerifyOtp from "./pages/Verif-Otp";
 import Order from "./pages/Order";
 import DetailOrder from "./pages/Detail-Order";
 import Hystory from "./pages/Hystory";
+import EditProduct from "./pages/Product/edit";
+import EditCategory from "./pages/Category/edit";
 
 function App() {
   return (
@@ -32,7 +34,16 @@ function App() {
           <Route path="/Verif-Otp" element={<VerifyOtp />} />
           <Route path="/Forgot" element={<Forgot />} />
           <Route path="/Change-Password/:token" element={<ChangePassword />} />
-          <Route path="/Order" element={<Order />} />
+          {
+            <Route
+              path="/Order"
+              element={
+                <AuthChecker>
+                  <Order />
+                </AuthChecker>
+              }
+            />
+          }
           {
             <Route
               path="/Product-Detail/:id_product"
@@ -105,10 +116,40 @@ function App() {
           }
           {
             <Route
+              path="/Profile-Cust"
+              element={
+                <AuthChecker>
+                  <ProfileCust />
+                </AuthChecker>
+              }
+            />
+          }
+          {
+            <Route
               path="/Product"
               element={
                 <AuthChecker>
                   <Product />
+                </AuthChecker>
+              }
+            />
+          }
+          {
+            <Route
+              path="/Edit-Category"
+              element={
+                <AuthChecker>
+                  <EditCategory />
+                </AuthChecker>
+              }
+            />
+          }
+          {
+            <Route
+              path="/Edit-Product"
+              element={
+                <AuthChecker>
+                  <EditProduct />
                 </AuthChecker>
               }
             />

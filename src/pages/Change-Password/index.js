@@ -8,20 +8,20 @@ import { ChangePW } from "../../redux/actions/users";
 import { Form } from "react-bootstrap";
 
 export default function ChangePassword() {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  // const postData = (e) => {
-  //   e.preventDefault();
-  //   let data = {
-  //     email,
-  //     password,
-  //   };
-  //   dispatch(ChangePW(data, navigate));
-  // };
+  const postData = (e) => {
+    e.preventDefault();
+    let data = {
+      email,
+      password,
+    };
+    dispatch(ChangePW(data, navigate));
+  };
   return (
     <div>
       <div className="container column mt-5">
@@ -44,50 +44,50 @@ export default function ChangePassword() {
       >
         You need to change your password to activate your account
       </p>
-      {/* <Form onSubmit={postData}> */}
-      <div
-        className="d-flex justify-content-center container flex-column input-wrap"
-        style={{ marginTop: "40px" }}
-      >
-        <input
-          type="email"
-          className="form-control d-flex justify-content-center container flex-column input-wrap"
-          placeholder="Email"
-          // value={email}
-          name="email"
-          // onChange={(e) => setEmail(e.target.value)}
-          aria-label="email"
-          aria-describedby="basic-addon1"
-          style={{ height: "48px", marginTop: "14px", width: "30rem" }}
-        />
-
-        <input
-          type="password"
-          className="form-control"
-          // value={password}
-          name="password"
-          // onChange={(e) => setPassword(e.target.value)}
-          placeholder="New Password"
-          aria-label="password"
-          aria-describedby="basic=addon1"
-          id="input-margin"
-        />
-      </div>
-      <div
-        className="d-flex justify-content-center container flex-column"
-        style={{ width: "30%", marginTop: "40px" }}
-      >
-        <Button
-          type="submit"
-          className="btn3 btn-lg btn-round text-light"
-          style={{ borderRadius: "15px", height: "50px", width: "31rem" }}
-          variant="danger"
+      <Form onSubmit={postData}>
+        <div
+          className="d-flex justify-content-center container flex-column input-wrap"
+          style={{ marginTop: "40px" }}
         >
-          {" "}
-          Confirmation
-        </Button>
-      </div>
-      {/* </Form> */}
+          <input
+            type="email"
+            className="form-control d-flex justify-content-center container flex-column input-wrap"
+            placeholder="Email"
+            value={email}
+            name="email"
+            onChange={(e) => setEmail(e.target.value)}
+            aria-label="email"
+            aria-describedby="basic-addon1"
+            style={{ height: "48px", marginTop: "14px", width: "30rem" }}
+          />
+
+          <input
+            type="password"
+            className="form-control"
+            value={password}
+            name="password"
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="New Password"
+            aria-label="password"
+            aria-describedby="basic=addon1"
+            id="input-margin"
+          />
+        </div>
+        <div
+          className="d-flex justify-content-center container flex-column"
+          style={{ width: "30%", marginTop: "40px" }}
+        >
+          <Button
+            type="submit"
+            className="btn3 btn-lg btn-round text-light"
+            style={{ borderRadius: "15px", height: "50px", width: "31rem" }}
+            variant="danger"
+          >
+            {" "}
+            Confirmation
+          </Button>
+        </div>
+      </Form>
     </div>
   );
 }

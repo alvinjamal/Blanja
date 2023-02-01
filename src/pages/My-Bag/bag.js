@@ -1,8 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-// import Payment from "../../components/Modal/payment";
 import axios from "axios";
 import Swal from "sweetalert2";
-// import "./style.css";
 import { useNavigate } from "react-router-dom";
 import NavbarComponent from "../../Components/Navbar";
 
@@ -34,9 +33,13 @@ function MyBag() {
         console.log(err);
       });
   }, []);
+
   const DeleteMyBag = (id_transaction) => {
     axios
-      .delete(`${process.env.REACT_APP_API}/transaction/${id_transaction}`)
+      .delete(
+        `${process.env.REACT_APP_API}/transaction/${id_transaction}`,
+        user
+      )
       .then((res) => {
         console.log("Delete MyBag success");
         console.log(res.data);
@@ -61,8 +64,13 @@ function MyBag() {
       .then((res) => {
         console.log("Checkout success");
         console.log(res);
-        Swal.fire("Success", "Checkout success", "success");
-        navigate("/Checkout");
+        Swal.fire({
+          title: "Success",
+          text: "Transaction success, Tap Ok To Checkout.",
+          icon: "success",
+        }).then(() => {
+          navigate("/Checkout");
+        });
       })
       .catch((err) => {
         console.log("Checkout failed");
@@ -97,22 +105,22 @@ function MyBag() {
                           />
                         </div>
                         <div className="col-2 offset-1">
-                          <h6 className="myfont">{item.name}</h6>
+                          <h5 className="myfont">{item.name_product}</h5>
 
                           <div className="col-6">
-                            {/* <h6 className="myfont3 color-font">{item.brand}</h6> */}
+                            <h6 className="myfont3 color-font">{item.brand}</h6>
                           </div>
                         </div>
-                        <div className=" col-1 ">
+                        <div className=" col-1 offset-1">
                           <span className="myfont3">{item.qty}</span>
                         </div>
-                        <div className=" col-3 ">
+                        <div className=" col-3 offset-1">
                           <h6 className="myfont">
                             Rp.{item.total.toLocaleString()}
                           </h6>
                         </div>
                         <div
-                          className=" col-1 offset-2 text-danger btn "
+                          className=" col-1 offset- text-danger btn "
                           key={item.id_transaction}
                           onClick={() => DeleteMyBag(item.id_transaction)}
                         >

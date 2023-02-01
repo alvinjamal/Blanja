@@ -23,8 +23,11 @@ export const loginUser = (data, navigate) => async (dispact) => {
     });
     console.log("User Login Success");
   } catch (err) {
-    console.log("User Login Err");
-    console.log(err);
+    swal({
+      title: "Please Try Again Login",
+      text: `${err.response.data.message}`,
+      icon: "error",
+    });
   }
 };
 
@@ -33,7 +36,7 @@ export const registerUserCustomer =
     try {
       dispatch({ type: "USER_REGISTER_PENDING" });
       const result = await axios.post(
-        `http://localhost:3500/users/register/customer`,
+        `http://localhost:3500/users/register/Customer`,
         dataForm
       );
       const user = result.data.data;
@@ -62,7 +65,7 @@ export const registerUserSeller = (dataForm, navigate) => async (dispatch) => {
   try {
     dispatch({ type: "USER_REGISTER_PENDING" });
     const result = await axios.post(
-      `http://localhost:3500/users/register/seller`,
+      `http://localhost:3500/users/register/Seller`,
       dataForm
     );
     const user = result.data.data;

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import NavbarComponent from "../../Components/Navbar";
+import { Button } from "react-bootstrap";
 
 export default function DetailOrder() {
   const [data, setData] = useState([]);
@@ -31,27 +32,53 @@ export default function DetailOrder() {
       <NavbarComponent />
       <div
         className="container mt-5 shadow"
-        style={{ width: "500px", height: "430px" }}
+        style={{ width: "500px", height: "49rem" }}
       >
-        <h4 className="myfont3 my-4 py-4">Detail Order</h4>
+        <Button className=" offset-7 btn btn-danger" href="/Hystory">
+          <h5>Back To Hystory</h5>
+        </Button>
+        <h4 className="myfont3 my-2 py-4" style={{ fontWeight: "bold" }}>
+          Detail Order
+        </h4>
         <div className="btn border mb-3" style={{ width: "470px" }}>
-          <h6 className="text-start pt-1">Name Product : {data?.name}</h6>
+          <h6 className="text-start pt-1">
+            Name Product : {data?.name_product}
+          </h6>
         </div>
         <div className="btn border mb-3" style={{ width: "470px" }}>
           <h6 className="text-start pt-1">Qty : {data?.qty}</h6>
         </div>
         <div className="btn border mb-3" style={{ width: "470px" }}>
           <h6 className="text-start pt-1">
-            Total Price : {data?.total.toLocaleString()}
+            Price : {data?.price?.toLocaleString()}
           </h6>
         </div>
         <div className="btn border mb-3" style={{ width: "470px" }}>
-          <h6 className="text-start pt-1">Status : {data?.name}</h6>
+          <h6 className="text-start pt-1">
+            Total Price : {data?.total?.toLocaleString()}
+          </h6>
+        </div>
+        <div className="btn border mb-3" style={{ width: "470px" }}>
+          <h6 className="text-start pt-1">Status : {data?.name_status}</h6>
         </div>
         <div className="btn border mb-3" style={{ width: "470px" }}>
           <h6 className="text-start pt-1">
             Order : {data?.name} - {data?.address}
           </h6>
+        </div>
+        <div
+          className="btn shadow mb-3 p-2 offset-1"
+          style={{ width: "400px" }}
+        >
+          <img
+            src={data?.photo}
+            alt=""
+            style={{
+              borderRadius: "15px",
+              width: "20rem",
+              height: "13rem",
+            }}
+          />
         </div>
       </div>
     </div>

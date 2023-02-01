@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -66,16 +67,15 @@ export default function ProductDetail() {
       .then((res) => {
         console.log("Add product To Bag Success");
         console.log(res);
-
-        Swal.fire(
-          "Success",
-          "Add product To bag success",
-          "success",
-          navigate("/My-Bag")
-        );
+        Swal.fire({
+          title: "Success",
+          text: "Add product To My Bag success, Tap Ok To My Bag.",
+          icon: "success",
+        });
+        navigate("/My-Bag");
       })
       .catch((err) => {
-        console.log("Add product To bag failed");
+        console.log("Add product To My Bag failed");
         console.log(err);
         Swal.fire("Warning", "Add Product To Bag Failed", "error");
       });
@@ -137,7 +137,7 @@ export default function ProductDetail() {
             </div>
             <div className="col-md-8">
               <div className="ml-2" style={{ textDecoration: "none" }}>
-                <h3 className="myfont text-dark">{dataProduct.name}</h3>
+                <h3 className="myfont text-dark">{dataProduct.name_product}</h3>
                 <h6 className="myfont3 color-font">{dataProduct.brand}</h6>
                 <h6 className="mb-5">
                   <FaStar className="fastar" />
@@ -148,7 +148,9 @@ export default function ProductDetail() {
                   <span className="myfont3 color-font">(10)</span>
                 </h6>
                 <h6 className="color-font myfont3">Price</h6>
-                <h3 className="myfont mb-5">Rp.{dataProduct.price}</h3>
+                <h3 className="myfont mb-5">
+                  Rp.{dataProduct.price?.toLocaleString()}
+                </h3>
                 <h6 className="myfont">Color</h6>
                 <button
                   className="btn btn-dark button-color"
@@ -379,9 +381,11 @@ export default function ProductDetail() {
                         style={{ textDecoration: "none" }}
                       >
                         <Link to="/Product-Detail" className="link">
-                          <h3 className="text-dark">{item.name}</h3>
+                          <h3 className="text-dark">{item.name_product}</h3>
                         </Link>
-                        <h4 className="text-price">{item.price}</h4>
+                        <h4 className="text-price">
+                          {item.price?.toLocaleString()}
+                        </h4>
                         <h5 className="text-brand">Zalora Cloth</h5>
                         <h6>
                           <FaStar className="fastar" />
