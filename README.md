@@ -76,9 +76,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## Screenshots
 
-| Register Page                                                                                                                                                                                                                                                                                                                                  | Verification Page |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| ![Register](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Register.PNG "Register Page") <hr /> ![Verification](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Verification.PNG "Verification Page") <hr /> ![Fotgot](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Forgot.PNG "Forgot Password Page") |
+| Register Page                                                                                         | Verification Page Page                                                                                            |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| ![Register](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Register.PNG "Register Page") | ![Verification](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Verification.PNG "Verification Page") | ![Fotgot](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Forgot.PNG "Forgot Password Page") |
 
 <hr />
 
@@ -86,22 +86,32 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | ![Login](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Login.PNG "Login") | ![Landing Page](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Landing-Page.PNG "Landing Page") |
 
+<hr />
+
 | Category                                                                                         | Product Detail                                                                                                  |
 | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
 | ![Category](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Category.PNG "Category") | ![Product Detail](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Prod-Detail.PNG "Product Detail") |
+
+<hr />
 
 | My Bag                                                                                     | Checkout/Payment                                                                                 |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | ![My Bag](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/My-bag.PNG "My Bag") | ![Checkout](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Checkout.PNG "Checkout") |
 
+<hr />
+
 | History                                                                                       | My Product                                                                                          |
 | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | ![History](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Hystory.PNG "History") | ![Products](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Add-product.PNG "Products") |
+
+<hr />
 
 | Detail Order |
 | ------------ |
 
 | ![Detail Order](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/detail-order.PNG "Detail Order")
+
+<hr />
 
 | Profile Custommer                                                                                                      | Profile Seller                                                                                                     |
 | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
