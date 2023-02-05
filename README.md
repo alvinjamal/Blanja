@@ -77,8 +77,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ## Screenshots
 
 | Register Page                                                                                         | Verification Page                                                                                                 |
-| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| ![Register](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Register.PNG "Register Page") | ![Verification](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Verification.PNG "Verification Page") | ![Fotgot](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Forgot.PNG "Forgot Password Page") |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| ![Register](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Register.PNG "Register Page") | ![Verification](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Verification.PNG "Verification Page") |
+
+<hr />
+
+| ![Fotgot](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Forgot.PNG "Forgot Password Page") |
 
 <hr />
 
