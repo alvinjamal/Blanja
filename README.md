@@ -81,7 +81,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 | ![Register](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Register.PNG "Register Page") | ![Verification](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Verification.PNG "Verification Page") |
 
 <hr />
------------------------------------------------| Forgot Password |
+
+| Forgot Password
 Page
 
 | ![Forgot Password](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Forgot.PNG "Forgot Password")
@@ -112,7 +113,7 @@ Page
 
 <hr />
 
------------------------------------------------| Detail Order |
+| Detail Order
 Page
 
 | ![Detail Order](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/detail-order.PNG "Detail Order")
