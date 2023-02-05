@@ -1,3 +1,8 @@
+# Store.id
+
+<p align='center'>
+<img height='150' src='https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Vector(22).png' />
+<p>
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +73,34 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Screenshots
+
+| Register Page                                                                                         | Verification Page                                                                                                 |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| ![Register](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Register.PNG "Register Page") | ![Verification](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Verification.PNG "Verification Page") | ![Fotgot](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Forgot.PNG "Forgot Password Page") |
+
+| Login                                                                                   | Landing Page                                                                                                 |
+| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| ![Login](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Login.PNG "Login") | ![Landing Page](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Landing-Page.PNG "Landing Page") |
+
+| Category                                                                                         | Product Detail                                                                                                  |
+| ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| ![Category](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Category.PNG "Category") | ![Product Detail](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Prod-Detail.PNG "Product Detail") |
+
+| My Bag                                                                                     | Checkout/Payment                                                                                 |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| ![My Bag](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/My-bag.PNG "My Bag") | ![Checkout](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Checkout.PNG "Checkout") |
+
+| History                                                                                       | My Product                                                                                          |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| ![History](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Hystory.PNG "History") | ![Products](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Add-product.PNG "Products") |
+
+| Detail Order |
+| ------------ |
+
+| ![Detail Order](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/detail-order.PNG "Detail Order")
+
+| Profile Custommer                                                                                                      | Profile Seller                                                                                                     |
+| ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| ![Profile Custommer](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Profile-Cust.PNG "Profile Custommer") | ![Profile Seller](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Profile-Seller.PNG "Profile Seller") |
