@@ -82,7 +82,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 <hr />
 
-| ![Fotgot](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Forgot.PNG "Forgot Password Page") |
+| ![Fotgot](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Forgot.PNG "Forgot Password Page")
 
 <hr />
 
