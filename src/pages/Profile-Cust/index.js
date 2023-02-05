@@ -23,12 +23,12 @@ export default function ProfileCustommer() {
     },
   };
   const [data, setData] = useState(null);
-  let users = `${process.env.REACT_APP_API}/users/profile`;
+  let users = `${process.env.REACT_APP_API}/users/user`;
   useEffect(() => {
     axios
       .get(users, user)
       .then((res) => {
-        console.log("get data success");
+        console.log("Get data success");
         console.log(res.data.data[0]);
         res.data && setData(res.data.data[0]);
       })

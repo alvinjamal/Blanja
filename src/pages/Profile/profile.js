@@ -21,7 +21,7 @@ export default function ProfileSeller() {
   };
 
   const [data, setData] = useState(null);
-  let users = `${process.env.REACT_APP_API}/users/profile`;
+  let users = `${process.env.REACT_APP_API}/users/user`;
   useEffect(() => {
     axios
       .get(users, user)
