@@ -76,7 +76,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## Screenshots
 
-| Register Page                                                                                         | Verification Page Page                                                                                            |
+| Register Page                                                                                         | Verification Page                                                                                                 |
 | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | ![Register](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Register.PNG "Register Page") | ![Verification](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Verification.PNG "Verification Page") | ![Fotgot](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Forgot.PNG "Forgot Password Page") |
 
@@ -94,7 +94,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 <hr />
 
-| My Bag                                                                                     | Checkout/Payment                                                                                 |
+| My Bag                                                                                     | Checkout                                                                                         |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
 | ![My Bag](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/My-bag.PNG "My Bag") | ![Checkout](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Checkout.PNG "Checkout") |
 
