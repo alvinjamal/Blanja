@@ -18,7 +18,6 @@ This app was built with some technologies below:
 - [react-icons](https://www.npmjs.com/package/react-icons) 
 - [React-redux](https://www.npmjs.com/package/react-redux)
 - [Redux-logger](https://www.npmjs.com/package/redux-logger)
-- [Socket.io](https://socket.io)
 - [Sweetalert2](https://www.npmjs.com/package/sweetalert2)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS?retiredLocale=id)
 - [Javascript](https://www.javascript.com/)
