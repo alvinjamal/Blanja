@@ -7,6 +7,27 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Built With
+
+This app was built with some technologies below:
+
+- [React Js](https://reactjs.org)
+- [axios](https://www.npmjs.com/package/axios) 
+- [Bootstrap](https://www.npmjs.com/package/bootstrap)
+- [react-bootstrap](https://www.npmjs.com/package/react-bootstrap)
+- [react-icons](https://www.npmjs.com/package/react-icons) 
+- [React-redux](https://www.npmjs.com/package/react-redux)
+- [Redux-logger](https://www.npmjs.com/package/redux-logger)
+- [Socket.io](https://socket.io)
+- [Sweetalert2](https://www.npmjs.com/package/sweetalert2)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS?retiredLocale=id)
+- [Javascript](https://www.javascript.com/)
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [Redux](https://www.npmjs.com/package/redux)
+- [Redux-thunk](https://www.npmjs.com/search?q=redux-thunk)
+
+  
+  
 ## Available Scripts
 
 In the project directory, you can run:
