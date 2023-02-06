@@ -12,9 +12,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This app was built with some technologies below:
 
 - [React Js](https://reactjs.org)
-- [axios](https://www.npmjs.com/package/axios) 
+- [Axios](https://www.npmjs.com/package/axios) 
 - [Bootstrap](https://www.npmjs.com/package/bootstrap)
-- [react-bootstrap](https://www.npmjs.com/package/react-bootstrap)
+- [React-bootstrap](https://www.npmjs.com/package/react-bootstrap)
 - [react-icons](https://www.npmjs.com/package/react-icons) 
 - [React-redux](https://www.npmjs.com/package/react-redux)
 - [Redux-logger](https://www.npmjs.com/package/redux-logger)
