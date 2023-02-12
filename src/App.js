@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/home";
 import RegisterSeller from "./pages/Register/Seller";
-import RegisterCustomer from "./pages/Register/Costumer";
+import RegisterCustomer from "./pages/Register-Customer/Costumer";
 import Login from "./pages/Login/index";
 import Profile from "./pages/Profile/profile";
 import ProfileCust from "./pages/Profile-Cust/index";
@@ -17,7 +17,6 @@ import VerifyOtp from "./pages/Verif-Otp";
 import Order from "./pages/Order";
 import DetailOrder from "./pages/Detail-Order";
 import Hystory from "./pages/Hystory";
-import EditProduct from "./pages/Product/edit";
 import EditCategory from "./pages/Category/edit";
 
 function App() {
@@ -29,6 +28,7 @@ function App() {
           <Route path="/Home" element={<Home />} />
           <Route path="/Register-Seller" element={<RegisterSeller />} />
           <Route path="/Register-Customer" element={<RegisterCustomer />} />
+          <Route path="/Category/:id_category" element={<EditCategory />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Selling" element={<Selling />} />
           <Route path="/Verif-Otp" element={<VerifyOtp />} />
@@ -140,16 +140,6 @@ function App() {
               element={
                 <AuthChecker>
                   <EditCategory />
-                </AuthChecker>
-              }
-            />
-          }
-          {
-            <Route
-              path="/Edit-Product"
-              element={
-                <AuthChecker>
-                  <EditProduct />
                 </AuthChecker>
               }
             />

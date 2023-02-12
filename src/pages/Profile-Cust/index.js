@@ -11,7 +11,7 @@ import Part from "../../img/troli.png";
 import Order from "../../img/user1.png";
 import Swal from "sweetalert2";
 import NavbarComponent from "../../Components/Navbar";
-import ModalEdit from "../../Components/Modal/edit";
+import ModalEdit from "../../Components/Modal/editProfile";
 
 export default function ProfileCustommer() {
   const token = localStorage.getItem("token");

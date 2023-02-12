@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import {
@@ -41,12 +42,11 @@ export default function Home() {
       }
     };
     getData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [category, setCategory] = useState([]);
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API}/category`)
+      .get(`${process.env.REACT_APP_API}/category/`, user)
       .then((res) => {
         console.log("Get category success");
         console.log(res.data);
@@ -124,11 +124,24 @@ export default function Home() {
                         direction="horizontal"
                         className="h-100 justify-content-center align-items-center"
                         gap={5}
+                        onClick={() =>
+                          navigate(`/Category/${item.id_category}`)
+                        }
                       >
-                        <Card style={{ width: "18rem" }}>
-                          <Card.Img variant="top" src={item.photo} alt="Jas" />
-                          <p className="fs-4 p-2">{item.name}</p>
-                        </Card>
+                        <Link
+                          style={{ textDecoration: "none", color: "#000000" }}
+                          to={`/Category/${item.id_category}`}
+                        >
+                          <Card style={{ width: "18rem" }}>
+                            <Card.Img
+                              variant="top"
+                              src={item.photo}
+                              alt="jas"
+                            />
+                            <p className="fs-4 p-2">{item.name}</p>
+                            {/* <p className="fs-4 p-2">{item.id_category}</p> */}
+                          </Card>
+                        </Link>
                       </Stack>
                     </Col>
                   ))}
@@ -148,18 +161,23 @@ export default function Home() {
                           className="h-100 justify-content-center align-items-center"
                           gap={5}
                           onClick={() =>
-                            navigate(`/Product-Detail/${item.id_product}`)
+                            navigate(`/Category/${item.id_category}`)
                           }
                         >
-                          <Card style={{ width: "18rem" }}>
-                            <Card.Img
-                              variant="top"
-                              src={item.photo}
-                              alt="jas"
-                            />
-                            <p className="fs-4 p-2">{item.name}</p>
-                            {/* <p className="fs-4 p-2">{item.id_category}</p> */}
-                          </Card>
+                          <Link
+                            style={{ textDecoration: "none", color: "#000000" }}
+                            to={`/Category/${item.id_category}`}
+                          >
+                            <Card style={{ width: "18rem" }}>
+                              <Card.Img
+                                variant="top"
+                                src={item.photo}
+                                alt="jas"
+                              />
+                              <p className="fs-4 p-2">{item.name}</p>
+                              {/* <p className="fs-4 p-2">{item.id_category}</p> */}
+                            </Card>
+                          </Link>
                         </Stack>
                       </Col>
                     ))}

@@ -37,8 +37,7 @@ function MyBag() {
   const DeleteMyBag = (id_transaction) => {
     axios
       .delete(
-        `${process.env.REACT_APP_API}/transaction/${id_transaction}`,
-        user
+        `${process.env.REACT_APP_API}/transaction/delete/${id_transaction}`
       )
       .then((res) => {
         console.log("Delete MyBag success");

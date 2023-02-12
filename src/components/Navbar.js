@@ -155,7 +155,7 @@ function NavbarComponent() {
                   style={{ marginLeft: "3px" }}
                 />
               </Button>
-              <Button variant="light">
+              <Button variant="light" href={"/Edit-Product"}>
                 <img
                   src={Bell}
                   alt=""

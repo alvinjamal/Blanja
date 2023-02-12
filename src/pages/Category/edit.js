@@ -1,125 +1,88 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState } from "react";
-import axios from "axios";
-import { Form } from "react-bootstrap";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-const EditCategory = () => {
-  const [data] = useState(null);
-  const token = localStorage.getItem("token");
-  const [photo, setPhoto] = useState("");
-  const navigate = useNavigate();
-  const { id_category } = useParams();
-  console.log(id_category);
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
+import NavbarComponent from "../../Components/Navbar";
 
-  const user = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-  const [postData, setPostData] = useState({
-    name: data?.name,
-  });
-  const handleChange = (e) => {
-    setPostData({
-      ...postData,
-      [e.target.name]: e.target.value,
-    });
-    console.log(data);
-  };
-  const handleData = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", postData.name);
-    formData.append("photo", photo);
-    console.log(formData);
+function Category() {
+  // const token = localStorage.getItem("token");
+  const [data, setData] = useState([]);
+  const { id_category } = useParams();
+  const navigate = useNavigate();
+  useEffect(() => {
     axios
-      .put(
-        `${process.env.REACT_APP_API}/category/${id_category}`,
-        formData,
-        user
-      )
+      .get(`${process.env.REACT_APP_API}/products/${id_category}`)
       .then((res) => {
-        console.log("Put category success");
-        console.log(res);
-        Swal.fire("Success", "Put category success", "success");
-        navigate(`/product`);
+        console.log("Get product by category success");
+        console.log(res.data);
+        res.data && setData(res.data.data);
       })
       .catch((err) => {
-        console.log("Put category failed");
+        console.log("Get product by category fail");
         console.log(err);
-        Swal.fire("Warning", "Put category failed", "error");
       });
-  };
-  const handlePhotoChange = (e) => {
-    setPhoto(e.target.files[0]);
-    console.log(e.target.files[0]);
-  };
+  }, []);
   return (
     <div>
-      <div className="container mt-2 p-2 rounded container mt-4 p-2 border border-3">
-        <div className="row">
-          <div className="col-lg-12">
-            <h3 className="myfont4 mt-4" style={{ fontWeight: "bold" }}>
-              Category
-            </h3>
+      <NavbarComponent />
+      <div className="container-fluid bg-new">
+        <div className="container py-3">
+          <div className="row py-3">
+            <div className="col-1">
+              <Link to="/home" className="link-title-detail">
+                <h6 className="color-font myfont3">Home</h6>
+              </Link>
+            </div>
           </div>
-          <hr />
+          <h1 className="myfont text-title">{data[0]?.category_id}</h1>
+          <div className="container">
+            <div
+              className="row row-cols-1 row-cols-md-5 g-4"
+              style={{ marginTop: "8px" }}
+            >
+              {data ? (
+                data.map((item) => (
+                  <div className="col-2" key={item.id_product}>
+                    <div
+                      className="card"
+                      style={{ width: "210px" }}
+                      onClick={() =>
+                        navigate(`/Product-Detail/${item.id_product}`)
+                      }
+                    >
+                      <img
+                        src={item.photo}
+                        style={{ height: "200px" }}
+                        alt=""
+                      />
+                      <div className="card-body">
+                        <Link to="/Product-Detail" className="link-product">
+                          <h3 className="text-product">{item.name_product}</h3>
+                        </Link>
+                        <h4 className="text-price">{item.price}</h4>
+                        <h5 className="text-brand">{item.brand}</h5>
+                        <h6>
+                          <FaStar className="fastar" />
+                          <FaStar className="fastar" />
+                          <FaStar className="fastar" />
+                          <FaStar className="fastar" />
+                          <FaStar className="fastar" />
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <h1>...Loading</h1>
+              )}
+            </div>
+          </div>
         </div>
-        <Form>
-          <div className="row">
-            <div className="col-lg-12">
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>
-                  <h6 className="myfont3 color-font">Name category</h6>
-                </Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder={data?.name}
-                  className="myfont3"
-                  name="name"
-                  onChange={(e) => handleChange(e)}
-                  value={postData.name}
-                />
-              </Form.Group>
-            </div>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>
-                <h6 className="myfont3 color-font">Upload gambar</h6>
-              </Form.Label>
-              <div className="row">
-                <div className="col-lg-12">
-                  <Form.Control
-                    type="file"
-                    className="myfont3"
-                    name="photo_category"
-                    onChange={handlePhotoChange}
-                  />
-                </div>
-              </div>
-            </Form.Group>
-            <hr className="mt-1" />
-            <div className="col-lg-12 align-items-center mb-5 mt-1">
-              <button
-                className="btn btn-danger text-white"
-                type="submit"
-                onClick={(e) => handleData(e)}
-                style={{
-                  width: "1230px",
-                  marginLeft: "26px",
-                }}
-              >
-                Update category
-              </button>
-            </div>
-          </div>
-        </Form>
       </div>
     </div>
   );
-};
-export default EditCategory;
+}
+export default Category;

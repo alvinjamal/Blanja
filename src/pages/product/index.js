@@ -9,6 +9,7 @@ import { Button, Modal, Form } from "react-bootstrap";
 import swal from "sweetalert";
 import NavbarComponent from "../../Components/Navbar";
 import Swal from "sweetalert2";
+import ModalEditProduct from "../../Components/Modal/edit";
 
 export default function Product() {
   const [data, setData] = useState([]);
@@ -32,7 +33,7 @@ export default function Product() {
     stock: "",
     price: "",
     brand: "",
-    category_id: "5",
+    category_id: "3",
     search: "",
   });
   const [sortBy, setSortBy] = useState("name_product");
@@ -69,7 +70,7 @@ export default function Product() {
         stock: "",
         price: "",
         brand: "",
-        category_id: "5",
+        category_id: "3",
       });
     !selected && setPhoto(null);
   }, [selected]);
@@ -127,7 +128,7 @@ export default function Product() {
   // DELETE DATA
   const Delete = () => {
     axios
-      .delete(`http://localhost:3500/products/${selected}`)
+      .delete(`http://localhost:3500/products/delete/${selected}`)
       .then((res) => {
         console.log("Delete Product success");
         console.log(res);
@@ -188,32 +189,6 @@ export default function Product() {
           Swal.fire("Warning", "Add Product failed", "error");
         });
     } else {
-      axios
-        .put(`${process.env.REACT_APP_API_PRODUCT}/${selected}`, formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((res) => {
-          console.log("input data success");
-          console.log(res);
-          setMessageShow(true);
-          setMessage({
-            title: "success",
-            text: "update data success",
-            type: "success",
-            icon: "success",
-          });
-          messageTime();
-          getData();
-        })
-        .catch((err) => {
-          console.log("input data fail");
-          setMessageShow(true);
-          setMessage({ title: "fail", text: "post data fail", type: "danger" });
-          messageTime();
-          console.log(err);
-        });
     }
   };
   const handlePhoto = (e) => {
@@ -386,6 +361,7 @@ export default function Product() {
               <th>Brand</th>
               <th>Photo</th>
               <th>Action</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -407,6 +383,9 @@ export default function Product() {
                       handleShow();
                     }}
                   />
+                </td>
+                <td>
+                  <ModalEditProduct item={item} />
                 </td>
               </tr>
             ))}

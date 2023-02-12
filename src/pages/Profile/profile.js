@@ -8,7 +8,7 @@ import Order from "../../img/user1.png";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import NavbarComponent from "../../Components/Navbar";
-import ModalEdit from "../../Components/Modal/edit";
+import ModalEdit from "../../Components/Modal/editProfile";
 import { Button } from "react-bootstrap";
 
 export default function ProfileSeller() {
