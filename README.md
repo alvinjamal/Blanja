@@ -7,6 +7,26 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Built With
+
+This app was built with some technologies below:
+
+- [React Js](https://reactjs.org)
+- [Axios](https://www.npmjs.com/package/axios) 
+- [Bootstrap](https://www.npmjs.com/package/bootstrap)
+- [React-bootstrap](https://www.npmjs.com/package/react-bootstrap)
+- [react-icons](https://www.npmjs.com/package/react-icons) 
+- [React-redux](https://www.npmjs.com/package/react-redux)
+- [Redux-logger](https://www.npmjs.com/package/redux-logger)
+- [Sweetalert2](https://www.npmjs.com/package/sweetalert2)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS?retiredLocale=id)
+- [Javascript](https://www.javascript.com/)
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [Redux](https://www.npmjs.com/package/redux)
+- [Redux-thunk](https://www.npmjs.com/search?q=redux-thunk)
+
+  
+  
 ## Available Scripts
 
 In the project directory, you can run:
@@ -123,3 +143,7 @@ Page
 | Profile Custommer                                                                                                      | Profile Seller                                                                                                     |
 | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | ![Profile Custommer](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Profile-Cust.PNG "Profile Custommer") | ![Profile Seller](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Profile-Seller.PNG "Profile Seller") |
+
+### References Backend Blanja
+
+be-blanja : https://github.com/alvinjamal/be-blanja
