@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/home";
-import RegisterSeller from "./pages/Register/Seller";
-import RegisterCustomer from "./pages/Register-Customer/Costumer";
+import RegisterSeller from "./pages/Register";
+import RegisterCustomer from "./pages/Register-Customer";
 import Login from "./pages/Login/index";
 import Profile from "./pages/Profile/profile";
 import ProfileCust from "./pages/Profile-Cust/index";
