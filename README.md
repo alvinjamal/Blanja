@@ -12,10 +12,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This app was built with some technologies below:
 
 - [React Js](https://reactjs.org)
-- [Axios](https://www.npmjs.com/package/axios) 
+- [Axios](https://www.npmjs.com/package/axios)
 - [Bootstrap](https://www.npmjs.com/package/bootstrap)
 - [React-bootstrap](https://www.npmjs.com/package/react-bootstrap)
-- [react-icons](https://www.npmjs.com/package/react-icons) 
+- [react-icons](https://www.npmjs.com/package/react-icons)
 - [React-redux](https://www.npmjs.com/package/react-redux)
 - [Redux-logger](https://www.npmjs.com/package/redux-logger)
 - [Sweetalert2](https://www.npmjs.com/package/sweetalert2)
@@ -25,8 +25,6 @@ This app was built with some technologies below:
 - [Redux](https://www.npmjs.com/package/redux)
 - [Redux-thunk](https://www.npmjs.com/search?q=redux-thunk)
 
-  
-  
 ## Available Scripts
 
 In the project directory, you can run:
@@ -133,10 +131,12 @@ Page
 
 <hr />
 
-| Detail Order
+| Detail Order | Edit Product |
+| ------------ | ------------ |
+
 Page
 
-| ![Detail Order](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/detail-order.PNG "Detail Order")
+| ![Detail Order](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/detail-order.PNG "Detail Order") | ![Edit Product](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Modal-Product.PNG "Edit Product") |
 
 <hr />
 
