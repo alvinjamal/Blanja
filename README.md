@@ -131,12 +131,9 @@ Page
 
 <hr />
 
-| Detail Order | Edit Product |
-| ------------ | ------------ |
-
-Page
-
-| ![Detail Order](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/detail-order.PNG "Detail Order") | ![Edit Product](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Modal-Product.PNG "Edit Product") |
+| Detail Prder                                                                                       | Edit Product                                                                                                  |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| ![History](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/detail-order.PNG "History") | ![Edit Product](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Modal-Product.PNG "Edit Product") |
 
 <hr />
 
