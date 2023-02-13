@@ -113,9 +113,9 @@ Page
 
 <hr />
 
-| Category                                                                                         | Product Detail                                                                                                  |
-| ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
-| ![Category](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Category.PNG "Category") | ![Product Detail](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Prod-Detail.PNG "Product Detail") |
+| Category                                                                                                | Product Detail                                                                                                  |
+| ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| ![Category](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Page%20Category.PNG "Category") | ![Product Detail](https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Prod-Detail.PNG "Product Detail") |
 
 <hr />
 
