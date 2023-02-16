@@ -1,15 +1,14 @@
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/home";
-import RegisterSeller from "./pages/Profile/profile";
-import RegisterCustomer from "./pages/Register-Customer";
-import Login from "./pages/Login/index";
+import RegisterSeller from "./pages/register/index";
+import RegisterCustomer from "./pages/Register-Customer/index";
+import Login from "./pages/login/index";
 import Profile from "./pages/Profile/profile";
 import ProfileCust from "./pages/Profile-Cust/index";
 import MyBag from "./pages/My-Bag/bag";
 import ProductDetail from "./pages/Product-Detail/index";
-import Checkout from "./pages/Checkout/index";
-// import Selling from "./pages/Selling/index";
-import Product from "./pages/Product/index";
+import Checkout from "./pages/checkout/index";
+import Product from "./pages/product/index";
 import Forgot from "./pages/Forgot/index";
 import ChangePassword from "./pages/Change-Password/index";
 import AuthChecker from "./Components/AuthChecker";
@@ -30,7 +29,6 @@ function App() {
           <Route path="/Register-Customer" element={<RegisterCustomer />} />
           <Route path="/Category/:id_category" element={<EditCategory />} />
           <Route path="/Login" element={<Login />} />
-          {/* <Route path="/Selling" element={<Selling />} /> */}
           <Route path="/Verif-Otp" element={<VerifyOtp />} />
           <Route path="/Forgot" element={<Forgot />} />
           <Route path="/Change-Password/:token" element={<ChangePassword />} />
