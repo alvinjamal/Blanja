@@ -104,7 +104,7 @@ export default function ProfileSeller() {
             </div>
           </div>
           <div className="w-50 justify-content-center d-flex flex-column mt-5 ms-5">
-            <Link to="/Product">
+            <Link to="/product">
               <button className="myfont3 btn">
                 <div
                   className="btn mx-2"
@@ -122,7 +122,7 @@ export default function ProfileSeller() {
                 Product
               </button>
             </Link>
-            <Link to="/Order">
+            <Link to="/order">
               <button className="myfont3 btn">
                 <div
                   className="btn mx-2"

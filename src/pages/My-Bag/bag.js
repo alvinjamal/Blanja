@@ -42,8 +42,16 @@ function MyBag() {
       .then((res) => {
         console.log("Delete MyBag success");
         console.log(res.data);
-        Swal.fire("Success", "Delete MyBag success", "success");
-        window.location.reload(false);
+        Swal.fire({
+          title: "Success",
+          icon: "success",
+          text: "Delete MyBag success",
+          type: "success",
+          timer: 3000,
+          showConfirmButton: false,
+        }).then(() => {
+          window.location.reload(false);
+        });
       })
       .catch((err) => {
         console.log("Delete MyBag failed");
@@ -65,10 +73,12 @@ function MyBag() {
         console.log(res);
         Swal.fire({
           title: "Success",
-          text: "Transaction success, Tap Ok To Checkout.",
+          text: "Transaction success, Wait, To Checkout.",
           icon: "success",
+          timer: 3000,
+          showConfirmButton: false,
         }).then(() => {
-          navigate("/Checkout");
+          navigate("/checkout");
         });
       })
       .catch((err) => {

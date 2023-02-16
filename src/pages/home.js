@@ -125,12 +125,12 @@ export default function Home() {
                         className="h-100 justify-content-center align-items-center"
                         gap={5}
                         onClick={() =>
-                          navigate(`/Category/${item.id_category}`)
+                          navigate(`/category/${item.id_category}`)
                         }
                       >
                         <Link
                           style={{ textDecoration: "none", color: "#000000" }}
-                          to={`/Category/${item.id_category}`}
+                          to={`/category/${item.id_category}`}
                         >
                           <Card style={{ width: "18rem" }}>
                             <Card.Img
@@ -161,12 +161,12 @@ export default function Home() {
                           className="h-100 justify-content-center align-items-center"
                           gap={5}
                           onClick={() =>
-                            navigate(`/Category/${item.id_category}`)
+                            navigate(`/category/${item.id_category}`)
                           }
                         >
                           <Link
                             style={{ textDecoration: "none", color: "#000000" }}
-                            to={`/Category/${item.id_category}`}
+                            to={`/category/${item.id_category}`}
                           >
                             <Card style={{ width: "18rem" }}>
                               <Card.Img
@@ -206,12 +206,12 @@ export default function Home() {
                       marginBottom: "2rem",
                     }}
                     onClick={() =>
-                      navigate(`/Product-Detail/${item.id_product}`)
+                      navigate(`/product-detail/${item.id_product}`)
                     }
                   >
                     <Link
                       style={{ textDecoration: "none", color: "#000000" }}
-                      to={`/Product-Detail/${item.id_product}`}
+                      to={`/product-detail/${item.id_product}`}
                     >
                       <Card.Img variant="top" src={item.photo} alt="" />
                       <p className="fs-5 m-2">{item.brand}</p>
@@ -246,12 +246,12 @@ export default function Home() {
                       marginBottom: "2rem",
                     }}
                     onClick={() =>
-                      navigate(`/Product-Detail/${item.id_product}`)
+                      navigate(`/product-detail/${item.id_product}`)
                     }
                   >
                     <Link
                       style={{ textDecoration: "none", color: "#000000" }}
-                      to={`/Product-Detail/${item.id_product}`}
+                      to={`/product-detail/${item.id_product}`}
                     >
                       <Card.Img variant="top" src={item.photo} alt="" />
                       <p className="fs-5 m-2">{item.brand}</p>

@@ -29,7 +29,7 @@ function NavbarComponent() {
       timer: 3000,
       showConfirmButton: false,
     }).then(() => {
-      navigate("/Login");
+      navigate("/login");
     });
     localStorage.clear();
   };
@@ -149,7 +149,7 @@ function NavbarComponent() {
                   style={{ marginLeft: "3px" }}
                 />
               </Button>
-              <Button variant="light" href="/My-Bag">
+              <Button variant="light" href="/my-bag">
                 <img
                   src={Troli}
                   alt=""
@@ -175,11 +175,11 @@ function NavbarComponent() {
               </Button>
               <>
                 {data.role === "Seller" ? (
-                  <Link to="/Profile">
+                  <Link to="/profile">
                     <Avatar alt="Remy Sharp" src={User} />
                   </Link>
                 ) : (
-                  <Link to="/Profile-Cust">
+                  <Link to="/profile-Cust">
                     <Avatar alt="Remy Sharp" src={User} />
                   </Link>
                 )}
@@ -211,22 +211,22 @@ function NavbarComponent() {
               >
                 Login
               </Button>
-              <Dropdown
+              <Button
+                href="/register-seller"
+                id="responsive-navbar-nav"
                 style={{
-                  marginleft: "10rem",
+                  justifyContent: "end",
                   borderRadius: "7px",
+                  marginLeft: "5px",
+                  marginRight: "3px",
+                  height: "36px",
                 }}
+                className="btn-1"
+                variant="outline-danger"
+                size="sm"
               >
-                <Dropdown.Toggle variant="outline-danger" id="dropdown-basic">
-                  Register
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="/Register-Seller">Seller</Dropdown.Item>
-                  <Dropdown.Item href="Register-Customer">
-                    Customer
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                Register
+              </Button>
             </>
           )}
         </Navbar.Collapse>

@@ -23,18 +23,18 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="/Home" />} replace="true" />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/Register-Seller" element={<RegisterSeller />} />
-          <Route path="/Register-Customer" element={<RegisterCustomer />} />
-          <Route path="/Category/:id_category" element={<EditCategory />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Verif-Otp" element={<VerifyOtp />} />
-          <Route path="/Forgot" element={<Forgot />} />
-          <Route path="/Change-Password/:token" element={<ChangePassword />} />
+          <Route path="/" element={<Navigate to="/home" />} replace="true" />
+          <Route path="/home" element={<Home />} />
+          <Route path="/register-seller" element={<RegisterSeller />} />
+          <Route path="/register-customer" element={<RegisterCustomer />} />
+          <Route path="/category/:id_category" element={<EditCategory />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/verif-Otp" element={<VerifyOtp />} />
+          <Route path="/forgot" element={<Forgot />} />
+          <Route path="/change-password/:token" element={<ChangePassword />} />
           {
             <Route
-              path="/Order"
+              path="/order"
               element={
                 <AuthChecker>
                   <Order />
@@ -44,7 +44,7 @@ function App() {
           }
           {
             <Route
-              path="/Product-Detail/:id_product"
+              path="/product-detail/:id_product"
               element={
                 <AuthChecker>
                   <ProductDetail />
@@ -54,7 +54,7 @@ function App() {
           }
           {
             <Route
-              path="/Detail-Order/:id_checkout"
+              path="/detail-order/:id_checkout"
               element={
                 <AuthChecker>
                   <DetailOrder />
@@ -64,7 +64,7 @@ function App() {
           }
           {
             <Route
-              path="/Hystory"
+              path="/hystory"
               element={
                 <AuthChecker>
                   <Hystory />
@@ -74,7 +74,7 @@ function App() {
           }
           {
             <Route
-              path="/Checkout"
+              path="/checkout"
               element={
                 <AuthChecker>
                   <Checkout />
@@ -84,7 +84,7 @@ function App() {
           }
           {
             <Route
-              path="/My-Bag"
+              path="/my-bag"
               element={
                 <AuthChecker>
                   <MyBag />
@@ -94,7 +94,7 @@ function App() {
           }
           {
             <Route
-              path="/Profile"
+              path="/profile"
               element={
                 <AuthChecker>
                   <Profile />
@@ -104,7 +104,7 @@ function App() {
           }
           {
             <Route
-              path="/Profile-Cust"
+              path="/profile-cust"
               element={
                 <AuthChecker>
                   <ProfileCust />
@@ -114,17 +114,7 @@ function App() {
           }
           {
             <Route
-              path="/Profile-Cust"
-              element={
-                <AuthChecker>
-                  <ProfileCust />
-                </AuthChecker>
-              }
-            />
-          }
-          {
-            <Route
-              path="/Product"
+              path="/product"
               element={
                 <AuthChecker>
                   <Product />
@@ -134,7 +124,7 @@ function App() {
           }
           {
             <Route
-              path="/Edit-Category"
+              path="/edit-category"
               element={
                 <AuthChecker>
                   <EditCategory />

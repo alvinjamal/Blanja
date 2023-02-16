@@ -50,7 +50,7 @@ function Category() {
                       className="card"
                       style={{ width: "210px" }}
                       onClick={() =>
-                        navigate(`/Product-Detail/${item.id_product}`)
+                        navigate(`/product-detail/${item.id_product}`)
                       }
                     >
                       <img
@@ -59,7 +59,7 @@ function Category() {
                         alt=""
                       />
                       <div className="card-body">
-                        <Link to="/Product-Detail" className="link-product">
+                        <Link to="/product-detail" className="link-product">
                           <h3 className="text-product">{item.name_product}</h3>
                         </Link>
                         <h4 className="text-price">{item.price}</h4>

@@ -47,7 +47,7 @@ function Hystory() {
   useEffect(() => {
     getDataDone();
   }, []);
-  let getCheckoutDone = `${process.env.REACT_APP_API}/checkout/done?search=${inputData.search}`;
+  let getCheckoutDone = `${process.env.REACT_APP_API}/checkout/done`;
   const getDataDone = () => {
     axios
       .get(getCheckoutDone, user)
@@ -137,7 +137,7 @@ function Hystory() {
                             className="btn btn-danger"
                             key={item.id_product}
                             onClick={() =>
-                              navigate(`/Detail-Order/${item.id_checkout}`)
+                              navigate(`/detail-order/${item.id_checkout}`)
                             }
                           >
                             Detail Order
@@ -205,7 +205,7 @@ function Hystory() {
                             className="btn btn-danger"
                             key={item.id_product}
                             onClick={() =>
-                              navigate(`/Detail-Order/${item.id_checkout}`)
+                              navigate(`/detail-order/${item.id_checkout}`)
                             }
                           >
                             Detail Order

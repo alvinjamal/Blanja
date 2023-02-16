@@ -12,7 +12,7 @@ export const loginUser = (data, navigate) => async (dispact) => {
       title: "Good job!",
       text: `${result.data.message}`,
       icon: "success",
-      timer: 3000,
+      timer: 2000,
       showConfirmButton: false,
     }).then(() => {
       if (user.role === "seller") {
@@ -20,7 +20,7 @@ export const loginUser = (data, navigate) => async (dispact) => {
         navigate("/Profile");
       } else {
         console.log("Customer");
-        navigate("/Home");
+        navigate("/home");
       }
     });
     console.log("User Login Success");
@@ -49,10 +49,10 @@ export const registerUserCustomer =
         title: "Good job!",
         text: `${result.data.message}`,
         icon: "success",
-        timer: 3000,
+        timer: 2000,
         showConfirmButton: false,
       }).then(() => {
-        navigate("/Verif-Otp");
+        navigate("/verif-otp");
       });
     } catch (error) {
       console.log(error);
@@ -79,10 +79,10 @@ export const registerUserSeller = (dataForm, navigate) => async (dispatch) => {
       title: "Good job!",
       text: `${result.data.message}`,
       icon: "success",
-      timer: 3000,
+      timer: 2000,
       showConfirmButton: false,
     }).then(() => {
-      navigate("/Verif-Otp");
+      navigate("/verif-otp");
     });
   } catch (error) {
     console.log(error);
@@ -109,10 +109,10 @@ export const VerifOtp = (data, navigate) => async (dispacth) => {
       title: "Good job!",
       text: `${result.data.message}`,
       icon: "success",
-      timer: 3000,
+      timer: 2000,
       showConfirmButton: false,
     }).then(() => {
-      navigate("/Login");
+      navigate("/login");
     });
     console.log("User Verification Success");
   } catch (err) {
@@ -138,10 +138,10 @@ export const ForgotPw = (data, navigate) => async (dispatch) => {
       title: "Good job!",
       text: `${result.data.message}`,
       icon: "success",
-      timer: 3000,
+      timer: 2000,
       showConfirmButton: false,
     }).then(() => {
-      navigate("/Change-Password");
+      navigate("/change-password");
     });
   } catch (error) {
     console.log(error);
@@ -171,10 +171,10 @@ export const ChangePW = (data, navigate) => async (dispatch) => {
       title: "Good job!",
       text: `${result.data.message}`,
       icon: "success",
-      timer: 3000,
+      timer: 2000,
       showConfirmButton: false,
     }).then(() => {
-      navigate("/Login");
+      navigate("/login");
     });
   } catch (error) {
     console.log(error);

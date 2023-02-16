@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import ModalNewAddress from "./new";
 
 function ModalAddress() {

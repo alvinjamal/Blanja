@@ -50,7 +50,7 @@ export default function Register() {
       </div>
       <div className="d-flex mt-3 justify-content-center container ">
         <Button
-          href="/Register-Customer"
+          href="/register-customer"
           className="btn-light btn-block btn-lg"
           variant="outline-danger"
           id="cust"

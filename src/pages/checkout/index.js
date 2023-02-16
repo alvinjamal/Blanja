@@ -48,10 +48,13 @@ export default function Checkout() {
         console.log(res);
         Swal.fire({
           title: "Success",
-          text: "Checkout success, Tap Ok To Hystory.",
+          text: "Checkout success, Wait, To Hystory.",
           icon: "success",
+          timer: 3000,
+          showConfirmButton: false,
+        }).then(() => {
+          navigate("/hystory");
         });
-        navigate("/Hystory");
       })
 
       .catch((err) => {

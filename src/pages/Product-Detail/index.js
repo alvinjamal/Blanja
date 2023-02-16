@@ -69,10 +69,14 @@ export default function ProductDetail() {
         console.log(res);
         Swal.fire({
           title: "Success",
-          text: "Add product To My Bag success, Tap Ok To My Bag.",
           icon: "success",
+          text: "Add product To My Bag success, Tap Ok To My Bag.",
+          type: "success",
+          timer: 3000,
+          showConfirmButton: false,
+        }).then(() => {
+          navigate("/my-bag");
         });
-        navigate("/My-Bag");
       })
       .catch((err) => {
         console.log("Add product To My Bag failed");

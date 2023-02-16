@@ -59,7 +59,7 @@ export default function Register() {
           Customer
         </Button>
         <Button
-          href="/Register-Seller"
+          href="/register-seller"
           className="btn-light btn-block btn-lg"
           variant="outline-danger"
           id="cust"

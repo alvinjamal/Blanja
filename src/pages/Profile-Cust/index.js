@@ -112,7 +112,7 @@ export default function ProfileCustommer() {
           </div>
 
           <div className="w-50 justify-content-center d-flex flex-column mt-5 ms-5">
-            <Link to="/history">
+            <Link to="/hystory">
               <button className="myfont3 btn">
                 <div
                   className="btn mx-2"
@@ -131,7 +131,7 @@ export default function ProfileCustommer() {
                 History
               </button>
             </Link>
-            <Link to="/mybag">
+            <Link to="/my-bag">
               <button className="myfont3 btn mb-5">
                 <div
                   className="btn mx-2"
