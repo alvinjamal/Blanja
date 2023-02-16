@@ -7,7 +7,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Tab } from "react-bootstrap";
 import { Tabs } from "react-bootstrap";
-import NavbarComponent from "../../Components/Navbar";
+import NavbarComponent from "../../components/Navbar";
 
 function Order() {
   const [data, setData] = useState([]);

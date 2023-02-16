@@ -7,9 +7,9 @@ import { FaTrashAlt } from "react-icons/fa";
 import Table from "react-bootstrap/Table";
 import { Button, Modal, Form } from "react-bootstrap";
 import swal from "sweetalert";
-import NavbarComponent from "../../Components/Navbar";
+import NavbarComponent from "../../components/Navbar";
 import Swal from "sweetalert2";
-import ModalEditProduct from "../../Components/Modal/edit";
+import ModalEditProduct from "../../components/Modal/edit";
 
 export default function Product() {
   const [data, setData] = useState([]);

@@ -9,7 +9,7 @@ import Card from "../../img/card.png";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
-import NavbarComponent from "../../Components/Navbar";
+import NavbarComponent from "../../components/Navbar";
 
 export default function Checkout() {
   const [data, setData] = useState([]);

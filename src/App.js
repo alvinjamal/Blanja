@@ -11,7 +11,7 @@ import Checkout from "./pages/checkout/index";
 import Product from "./pages/product/index";
 import Forgot from "./pages/Forgot/index";
 import ChangePassword from "./pages/Change-Password/index";
-import AuthChecker from "./Components/AuthChecker";
+import AuthChecker from "./components/AuthChecker";
 import VerifyOtp from "./pages/Verif-Otp";
 import Order from "./pages/Order";
 import DetailOrder from "./pages/Detail-Order";

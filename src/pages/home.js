@@ -10,7 +10,7 @@ import {
   Carousel,
   Stack,
 } from "react-bootstrap";
-import NavbarComponent from "../Components/Navbar";
+import NavbarComponent from "../components/Navbar";
 import Trend2 from "../img/trend2.png";
 import Trend3 from "../img/trend3.png";
 import axios from "axios";

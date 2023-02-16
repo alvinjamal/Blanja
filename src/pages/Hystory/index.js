@@ -5,7 +5,7 @@ import axios from "axios";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { useNavigate } from "react-router-dom";
-import NavbarComponent from "../../Components/Navbar";
+import NavbarComponent from "../../components/Navbar";
 
 function Hystory() {
   const [data, setData] = useState([]);

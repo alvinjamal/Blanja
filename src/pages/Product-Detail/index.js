@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
-import NavbarComponent from "../../Components/Navbar";
+import NavbarComponent from "../../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";

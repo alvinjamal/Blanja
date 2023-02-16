@@ -10,8 +10,8 @@ import { useNavigate } from "react-router-dom";
 import Part from "../../img/troli.png";
 import Order from "../../img/user1.png";
 import Swal from "sweetalert2";
-import NavbarComponent from "../../Components/Navbar";
-import ModalEdit from "../../Components/Modal/editProfile";
+import NavbarComponent from "../../components/Navbar";
+import ModalEdit from "../../components/Modal/editProfile";
 
 export default function ProfileCustommer() {
   const token = localStorage.getItem("token");
