@@ -163,7 +163,7 @@ function NavbarComponent() {
                   style={{ marginLeft: "3px" }}
                 />
               </Button>
-              <Button variant="light" href={"/Product"}>
+              <Button variant="light">
                 <img
                   src={Mail}
                   alt=""
@@ -194,7 +194,7 @@ function NavbarComponent() {
           ) : (
             <>
               <Button
-                href="/Login"
+                href="/login"
                 id="responsive-navbar-nav"
                 style={{
                   justifyContent: "end",

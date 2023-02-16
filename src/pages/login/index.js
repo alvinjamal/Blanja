@@ -3,7 +3,7 @@ import "./login.module.css";
 import { loginUser } from "../../redux/actions/users";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Dropdown, Button, Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import Toko from "../../img/toko.png";
 
 export default function Login() {
@@ -84,9 +84,9 @@ export default function Login() {
           >
             Login
           </Button>
-
-          <div
-            className="text-dark text-center mt-2"
+          <h5
+            href="/Register-Customer"
+            className="input-wrap btn-lg text-center mt-3"
             style={{
               borderRadius: "15px",
               marginLeft: "27rem",
@@ -94,22 +94,11 @@ export default function Login() {
               width: "28rem",
             }}
           >
-            Done have a Store.id account?
-            <Dropdown
-              style={{
-                marginleft: "10rem",
-                borderRadius: "7px",
-              }}
-            >
-              <Dropdown.Toggle variant="outline-danger" id="dropdown-basic">
-                Register
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="/Register-Seller">Seller</Dropdown.Item>
-                <Dropdown.Item href="Register-Customer">Customer</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
+            Don't have a Store.id account?
+            <a href="/Register-Customer" className="text2 text-danger">
+              Register
+            </a>
+          </h5>
         </div>
       </Form>
       {/* </Container> */}
