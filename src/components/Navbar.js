@@ -23,9 +23,11 @@ function NavbarComponent() {
   const token = localStorage.getItem("token");
   const logout = () => {
     Swal.fire({
-      title: "Logout Success",
-      text: `Tap To Login`,
+      title: "Logout Success!",
+      text: "Logout Success",
       icon: "success",
+      timer: 3000,
+      showConfirmButton: false,
     }).then(() => {
       navigate("/Login");
     });

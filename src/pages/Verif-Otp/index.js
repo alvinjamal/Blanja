@@ -40,10 +40,10 @@ const VerifyOtp = () => {
           Please verification with your account
         </h4>
       </div>
-      <Form onSubmit={postData} className="input-wrap container mt-5 col-3">
+      <Form onSubmit={postData} className="input-wrap container mt-5 col-8">
         <div
           className="d-flex justify-content-center container flex-column input-wrap"
-          id="input-wrp"
+          style={{ marginTop: "40px", width: "30rem" }}
         >
           <input
             type="email"
@@ -78,7 +78,8 @@ const VerifyOtp = () => {
             style={{
               borderRadius: "15px",
               height: "50px",
-              width: "31rem",
+              width: "26rem",
+              marginLeft: "20rem",
             }}
             variant="danger"
           >

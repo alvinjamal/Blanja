@@ -64,8 +64,13 @@ export default function ProfileSeller() {
       .then((res) => {
         console.log("Update profile succes");
         console.log(res);
-        window.location.reload(false);
-        Swal.fire("Success", "Update profile success", "success");
+        Swal.fire({
+          title: "Nice, Good Job!",
+          text: "Update Photo Success",
+          type: "success",
+          timer: 4000,
+          showConfirmButton: false,
+        });
       })
       .catch((err) => {
         console.log("Update data profile failed");
@@ -105,8 +110,11 @@ export default function ProfileSeller() {
                   className="btn mx-2"
                   style={{
                     backgroundColor: "#F36F45",
-                    borderRadius: "50px",
+                    borderRadius: "50%",
                     width: "40px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
                   <img src={Part} alt="" />
@@ -120,8 +128,11 @@ export default function ProfileSeller() {
                   className="btn mx-2"
                   style={{
                     backgroundColor: "#F3456F",
-                    borderRadius: "50px",
+                    borderRadius: "50%",
                     width: "40px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
                   <img src={Order} alt="" />
@@ -156,7 +167,7 @@ export default function ProfileSeller() {
                   />
                 </div>
               </div>
-              <div className="col col-12 row ">
+              {/* <div className="col col-12 row ">
                 <div className="col col-3 myfont3">Email</div>
                 <div className="col col-9">
                   <input
@@ -168,7 +179,7 @@ export default function ProfileSeller() {
                     value={updateData.email}
                   />
                 </div>
-              </div>
+              </div> */}
               <div className="col col-12 row ">
                 <div className="col col-3 myfont3">Phone Number</div>
                 <div className="col col-9">

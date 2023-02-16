@@ -195,13 +195,13 @@ export default function Home() {
           <div>
             <Row>
               {data.map((item) => (
-                <Col className="mb-2 p-1">
+                <Col className="mb-2 ">
                   <Card
-                    className="p-2"
+                    className=""
                     style={{
                       width: "18rem",
                       color: "#000000",
-                      padding: " 5px",
+                      // padding: " 5px",
                       textDecoration: "none",
                       marginBottom: "2rem",
                     }}
@@ -214,13 +214,13 @@ export default function Home() {
                       to={`/Product-Detail/${item.id_product}`}
                     >
                       <Card.Img variant="top" src={item.photo} alt="" />
-                      <p className="fs-5">{item.brand}</p>
-                      <p className="fs-4">{item.name_product}</p>
+                      <p className="fs-5 m-2">{item.brand}</p>
+                      <p className="fs-4 m-2">{item.name_product}</p>
                     </Link>
-                    <p className="text-danger fs-4">
+                    <p className="text-danger fs-4 m-2">
                       Rp. {item.price?.toLocaleString()}
                     </p>
-                    <p className="fs-6">{item.stock}</p>
+                    <p className="fs-6 m-2">{item.stock}</p>
                   </Card>
                 </Col>
               ))}
@@ -235,13 +235,13 @@ export default function Home() {
           <div>
             <Row>
               {data.map((item) => (
-                <Col className="mb-2 p-1">
+                <Col className="mb-2">
                   <Card
-                    className="p-2"
+                    className=""
                     style={{
                       width: "18rem",
                       color: "#000000",
-                      padding: " 5px",
+                      // padding: " 5px",
                       textDecoration: "none",
                       marginBottom: "2rem",
                     }}
@@ -254,13 +254,13 @@ export default function Home() {
                       to={`/Product-Detail/${item.id_product}`}
                     >
                       <Card.Img variant="top" src={item.photo} alt="" />
-                      <p className="fs-5">{item.brand}</p>
-                      <p className="fs-4">{item.name_product}</p>
+                      <p className="fs-5 m-2">{item.brand}</p>
+                      <p className="fs-4 m-2">{item.name_product}</p>
                     </Link>
-                    <p className="text-danger fs-4">
+                    <p className="text-danger fs-4 m-2">
                       Rp. {item.price?.toLocaleString()}
                     </p>
-                    <p className="fs-6">{item.stock}</p>
+                    <p className="fs-6 m-2">{item.stock}</p>
                   </Card>
                 </Col>
               ))}

@@ -33,8 +33,16 @@ function ModalEdit() {
       .then((res) => {
         console.log("Update photo succes");
         console.log(res);
-        window.location.reload(false);
-        Swal.fire("Success", "Update photo profile success", "success");
+        Swal.fire({
+          title: "Nice, Good Job!",
+          icon: "success",
+          text: "Update Photo Success",
+          type: "success",
+          timer: 4000,
+          showConfirmButton: false,
+        }).then(() => {
+          window.location.reload(false);
+        });
       })
       .catch((err) => {
         console.log("Update photo profile failed");

@@ -73,12 +73,12 @@ export default function Login() {
         <div className="input-wrap d-flex justify-content-center flex-column mt-3">
           <Button
             type="submit"
-            className="input-wrap btn-lg text-light"
+            className="input-wrap btn-lg text-center text-light"
             style={{
               borderRadius: "15px",
-              marginLeft: "27rem",
+              marginLeft: "24rem",
               height: "50px",
-              width: "28rem",
+              width: "27rem",
             }}
             variant="danger"
           >
@@ -89,7 +89,7 @@ export default function Login() {
             className="input-wrap btn-lg text-center mt-3"
             style={{
               borderRadius: "15px",
-              marginLeft: "27rem",
+              marginLeft: "24rem",
               height: "50px",
               width: "28rem",
             }}

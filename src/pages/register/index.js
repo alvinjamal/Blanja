@@ -134,12 +134,11 @@ export default function Register() {
           <Button
             type="submit"
             className="btn3 btn-lg btn-round text-light mb-3"
-            // onClick={handleLogin}
             style={{
               borderRadius: "15px",
               height: "50px",
-              width: "31rem",
-              marginLeft: "10%",
+              width: "26rem",
+              marginLeft: "7%",
             }}
             variant="danger"
           >

@@ -153,12 +153,11 @@ export default function Register() {
           <Button
             type="submit"
             className="btn3 btn-lg btn-round text-light mb-1"
-            // onClick={handleLogin}
             style={{
               borderRadius: "15px",
               height: "50px",
               width: "26rem",
-              marginLeft: "13%",
+              marginLeft: "7%",
             }}
             variant="danger"
           >
