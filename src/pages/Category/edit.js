@@ -14,7 +14,7 @@ function Category() {
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API}/products/${id_category}`)
+      .get(`${process.env.REACT_APP_API}/products/category/${id_category}`)
       .then((res) => {
         console.log("Get product by category success");
         console.log(res.data);

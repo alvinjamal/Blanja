@@ -40,7 +40,7 @@ export default function ProfileCustommer() {
   // const [photo, setPhotoUser] = useState(null);
   const [updateData, setUpdateData] = useState({
     name: data?.name,
-    email: data?.email,
+    // email: data?.email,
     phone: data?.phone,
     gender: data?.gender,
     date: data?.date,
@@ -64,7 +64,7 @@ export default function ProfileCustommer() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("name", updateData.name);
-    formData.append("email", updateData.email);
+    // formData.append("email", updateData.email);
     formData.append("phone", updateData.phone);
     formData.append("gender", updateData.gender);
     formData.append("date", updateData.date);
@@ -77,7 +77,7 @@ export default function ProfileCustommer() {
       .then((res) => {
         console.log("Update profile succes");
         console.log(res);
-        window.location.reload(false);
+        // window.location.reload(false);
         Swal.fire("Success", "Update profile success", "success");
       })
       .catch((err) => {
@@ -118,8 +118,12 @@ export default function ProfileCustommer() {
                   className="btn mx-2"
                   style={{
                     backgroundColor: "#F36F45",
-                    borderRadius: "50px",
+                    borderRadius: "50%",
                     width: "40px",
+                    height: "40px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
                   <img src={Order} alt="" />
@@ -133,8 +137,12 @@ export default function ProfileCustommer() {
                   className="btn mx-2"
                   style={{
                     backgroundColor: "#F3456F",
-                    borderRadius: "50px",
+                    borderRadius: "50%",
                     width: "40px",
+                    height: "40px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
                   <img src={Part} alt="" />
@@ -168,7 +176,7 @@ export default function ProfileCustommer() {
                   />
                 </div>
               </div>
-              <div className="col-12 row ">
+              {/* <div className="col-12 row ">
                 <div className="col-3 myfont3">Email</div>
                 <div className="col-9">
                   <input
@@ -180,7 +188,7 @@ export default function ProfileCustommer() {
                     value={updateData.email}
                   />
                 </div>
-              </div>
+              </div> */}
               <div className="col-12 row ">
                 <div className="col-3 myfont3">Address</div>
                 <div className="col-9">
