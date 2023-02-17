@@ -255,6 +255,7 @@ export default function Home() {
                       // padding: " 5px",
                       textDecoration: "none",
                       marginBottom: "2rem",
+                      borderRadius: "15px",
                     }}
                     onClick={() =>
                       navigate(`/product-detail/${item.id_product}`)
@@ -264,7 +265,19 @@ export default function Home() {
                       style={{ textDecoration: "none", color: "#000000" }}
                       to={`/product-detail/${item.id_product}`}
                     >
-                      <Card.Img variant="top" src={item.photo} alt="" />
+                      <div style={{ height: "178px", borderRadius: "15px" }}>
+                        <Card.Img
+                          variant="top"
+                          src={item.photo}
+                          alt=""
+                          style={{
+                            height: "100%",
+                            width: "100%",
+                            objectFit: "cover",
+                            borderRadius: "15px",
+                          }}
+                        />
+                      </div>
                       <p className="fs-5 m-2">{item.brand}</p>
                       <p className="fs-4 m-2">{item.name_product}</p>
                     </Link>

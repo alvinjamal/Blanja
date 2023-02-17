@@ -85,7 +85,6 @@ export default function Login() {
             Login
           </Button>
           <h5
-            href="/Register-Customer"
             className="input-wrap btn-lg text-center mt-3"
             style={{
               borderRadius: "15px",
@@ -95,7 +94,7 @@ export default function Login() {
             }}
           >
             Don't have a Store.id account?
-            <Link href="/Register-Customer" className="text2 text-danger">
+            <Link to="/register-customer" className="text2 text-danger">
               Register
             </Link>
           </h5>

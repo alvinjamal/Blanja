@@ -176,7 +176,7 @@ function NavbarComponent() {
                 />
               </Button>
               <>
-                {data.role === "Seller" ? (
+                {token.role === "Seller" ? (
                   <Link to="/profile">
                     <Avatar alt="Remy Sharp" src={User} />
                   </Link>
