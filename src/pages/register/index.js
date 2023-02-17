@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./style.css";
 import Button from "react-bootstrap/Button";
 import { registerUserSeller } from "../../redux/actions/users";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Logo from "../../img/toko.png";
 import { Form } from "react-bootstrap";
@@ -148,10 +148,10 @@ export default function Register() {
       </Form>
       <p className="text-dark text-center" style={{ margin: "26px" }}>
         Already have a Store.id account?
-        <a href="/login" className="text2 text-danger">
+        <Link href="/login" className="text2 text-danger">
           {" "}
           Login{" "}
-        </a>
+        </Link>
       </p>
     </header>
   );

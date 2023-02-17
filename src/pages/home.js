@@ -14,6 +14,7 @@ import NavbarComponent from "../components/Navbar";
 import Trend2 from "../img/trend2.png";
 import Trend3 from "../img/trend3.png";
 import axios from "axios";
+import { FaStar } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -221,6 +222,16 @@ export default function Home() {
                       Rp. {item.price?.toLocaleString()}
                     </p>
                     <p className="fs-6 m-2">{item.stock}</p>
+                    <div className="row-cols-1 row-cols-md-8 m-2 g-4">
+                      <h3 className="myfont">5.0</h3>
+                      <h5 className="mt-2">
+                        <FaStar className="fastar" />
+                        <FaStar className="fastar" />
+                        <FaStar className="fastar" />
+                        <FaStar className="fastar" />
+                        <FaStar className="fastar" />
+                      </h5>
+                    </div>
                   </Card>
                 </Col>
               ))}
@@ -261,6 +272,16 @@ export default function Home() {
                       Rp. {item.price?.toLocaleString()}
                     </p>
                     <p className="fs-6 m-2">{item.stock}</p>
+                    <div className="row-cols-1 row-cols-md-8 m-2 g-4">
+                      <h3 className="myfont">5.0</h3>
+                      <h5 className="mt-2">
+                        <FaStar className="fastar" />
+                        <FaStar className="fastar" />
+                        <FaStar className="fastar" />
+                        <FaStar className="fastar" />
+                        <FaStar className="fastar" />
+                      </h5>
+                    </div>
                   </Card>
                 </Col>
               ))}

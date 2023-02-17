@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./login.module.css";
 import { loginUser } from "../../redux/actions/users";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Button, Form } from "react-bootstrap";
 import Toko from "../../img/toko.png";
@@ -66,9 +66,9 @@ export default function Login() {
             aria-describedby="basic-addon1"
             style={{ height: "48px", marginTop: "14px", width: "30rem" }}
           />
-          <a href={"/Forgot"} className="text-danger text-end mt-3" id="text1">
+          <Link to={"/Forgot"} className="text-danger text-end mt-3" id="text1">
             Forgot password?{" "}
-          </a>
+          </Link>
         </div>
         <div className="input-wrap d-flex justify-content-center flex-column mt-3">
           <Button
@@ -95,9 +95,9 @@ export default function Login() {
             }}
           >
             Don't have a Store.id account?
-            <a href="/Register-Customer" className="text2 text-danger">
+            <Link href="/Register-Customer" className="text2 text-danger">
               Register
-            </a>
+            </Link>
           </h5>
         </div>
       </Form>

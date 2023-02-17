@@ -149,14 +149,16 @@ function NavbarComponent() {
                   style={{ marginLeft: "3px" }}
                 />
               </Button>
-              <Button variant="light" href="/my-bag">
-                <img
-                  src={Troli}
-                  alt=""
-                  className="nav-1"
-                  style={{ marginLeft: "3px" }}
-                />
-              </Button>
+              <Link to="/my-bag">
+                <Button variant="light">
+                  <img
+                    src={Troli}
+                    alt=""
+                    className="nav-1"
+                    style={{ marginLeft: "3px" }}
+                  />
+                </Button>
+              </Link>
               <Button variant="light">
                 <img
                   src={Bell}
@@ -195,38 +197,40 @@ function NavbarComponent() {
             </>
           ) : (
             <>
-              <Button
-                href="/login"
-                id="responsive-navbar-nav"
-                style={{
-                  justifyContent: "end",
-                  borderRadius: "7px",
-                  marginLeft: "14rem",
-                  marginRight: "3px",
-                  height: "36px",
-                }}
-                className="btn-1"
-                variant="danger"
-                size="sm"
-              >
-                Login
-              </Button>
-              <Button
-                href="/register-seller"
-                id="responsive-navbar-nav"
-                style={{
-                  justifyContent: "end",
-                  borderRadius: "7px",
-                  marginLeft: "5px",
-                  marginRight: "3px",
-                  height: "36px",
-                }}
-                className="btn-1"
-                variant="outline-danger"
-                size="sm"
-              >
-                Register
-              </Button>
+              <Link to="/login">
+                <Button
+                  id="responsive-navbar-nav"
+                  style={{
+                    justifyContent: "end",
+                    borderRadius: "7px",
+                    marginLeft: "14rem",
+                    marginRight: "3px",
+                    height: "36px",
+                  }}
+                  className="btn-1"
+                  variant="danger"
+                  size="sm"
+                >
+                  Login
+                </Button>
+              </Link>
+              <Link to="/register-seller">
+                <Button
+                  id="responsive-navbar-nav"
+                  style={{
+                    justifyContent: "end",
+                    borderRadius: "7px",
+                    marginLeft: "5px",
+                    marginRight: "3px",
+                    height: "36px",
+                  }}
+                  className="btn-1"
+                  variant="outline-danger"
+                  size="sm"
+                >
+                  Register
+                </Button>
+              </Link>
             </>
           )}
         </Navbar.Collapse>

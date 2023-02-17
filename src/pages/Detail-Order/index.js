@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import NavbarComponent from "../../components/Navbar";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function DetailOrder() {
   const [data, setData] = useState([]);
@@ -34,9 +35,11 @@ export default function DetailOrder() {
         className="container mt-5 shadow"
         style={{ width: "500px", height: "49rem" }}
       >
-        <Button className=" offset-7 btn btn-danger" href="/Hystory">
-          <h5>Back To Hystory</h5>
-        </Button>
+        <Link to="/hystory">
+          <Button className=" offset-7 btn btn-danger">
+            <h5>Back To Hystory</h5>
+          </Button>
+        </Link>
         <h4 className="myfont3 my-2 py-4" style={{ fontWeight: "bold" }}>
           Detail Order
         </h4>

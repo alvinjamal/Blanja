@@ -3,7 +3,7 @@ import "./style.css";
 import { Button, Form } from "react-bootstrap";
 import Logo from "../../img/toko.png";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { registerUserCustomer } from "../../redux/actions/users";
 
 export default function Register() {
@@ -58,15 +58,16 @@ export default function Register() {
         >
           Customer
         </Button>
-        <Button
-          href="/register-seller"
-          className="btn-light btn-block btn-lg"
-          variant="outline-danger"
-          id="cust"
-          style={{ marginLeft: "10px", borderRadius: "13px" }}
-        >
-          Seller
-        </Button>
+        <Link href="/register-seller">
+          <Button
+            className="btn-light btn-block btn-lg"
+            variant="outline-danger"
+            id="cust"
+            style={{ marginLeft: "10px", borderRadius: "13px" }}
+          >
+            Seller
+          </Button>
+        </Link>
       </div>
       <Form onSubmit={postData}>
         <div
@@ -166,9 +167,9 @@ export default function Register() {
 
           <p className="text-dark text-center" style={{ margin: "26px" }}>
             Already have a Store.id account?
-            <a href="/Login" className="text2 text-danger">
+            <Link to="/Login" className="text2 text-danger">
               Login
-            </a>
+            </Link>
           </p>
         </div>
       </Form>

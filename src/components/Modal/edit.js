@@ -55,6 +55,16 @@ function ModalEditProduct(props) {
         console.log("Update product success");
         console.log(res);
         Swal.fire("Success", "Update product success", "success");
+        Swal.fire({
+          title: "Success",
+          icon: "success",
+          text: "Update product success",
+          type: "success",
+          timer: 3000,
+          showConfirmButton: false,
+        }).then(() => {
+          window.location.reload(false);
+        });
       })
       .catch((err) => {
         console.log("Update product failed");

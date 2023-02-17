@@ -38,7 +38,7 @@ export default function ProfileSeller() {
 
   const [updateData, setUpdateData] = useState({
     store: data?.store,
-    email: data?.email,
+    address: data?.address,
     phone: data?.phone,
   });
 
@@ -54,7 +54,7 @@ export default function ProfileSeller() {
     e.preventDefault();
     const formData = new FormData();
     formData.append("store", updateData.store);
-    formData.append("email", updateData.email);
+    formData.append("address", updateData.address);
     formData.append("phone", updateData.phone);
     console.log(formData);
     axios
@@ -66,10 +66,13 @@ export default function ProfileSeller() {
         console.log(res);
         Swal.fire({
           title: "Nice, Good Job!",
-          text: "Update Photo Success",
+          text: "Update Profile Success",
           type: "success",
+          icon: "success",
           timer: 4000,
           showConfirmButton: false,
+        }).then(() => {
+          window.location.reload(false);
         });
       })
       .catch((err) => {
@@ -95,7 +98,7 @@ export default function ProfileSeller() {
                 className="img rounded-pill"
                 style={{ height: "140px", width: "140px" }}
               />
-              <div className="d-flex flex-column h-50 mt-3 ms-2">
+              <div className="d-flex flex-column h-40 mt-3 ms-1">
                 <h5 style={{ fontWeight: "bold" }} className="myfont ms-3">
                   {data?.name}
                 </h5>
@@ -112,6 +115,7 @@ export default function ProfileSeller() {
                     backgroundColor: "#F36F45",
                     borderRadius: "50%",
                     width: "40px",
+                    height: "40px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -130,6 +134,7 @@ export default function ProfileSeller() {
                     backgroundColor: "#F3456F",
                     borderRadius: "50%",
                     width: "40px",
+                    height: "40px",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -167,19 +172,19 @@ export default function ProfileSeller() {
                   />
                 </div>
               </div>
-              {/* <div className="col col-12 row ">
-                <div className="col col-3 myfont3">Email</div>
+              <div className="col col-12 row ">
+                <div className="col col-3 myfont3">Address</div>
                 <div className="col col-9">
                   <input
                     type="text"
                     className="form-control  mb-3 myfont3"
-                    name="email"
-                    placeholder={data?.email}
+                    name="address"
+                    placeholder={data?.address}
                     onChange={(e) => handleChange(e)}
-                    value={updateData.email}
+                    value={updateData.address}
                   />
                 </div>
-              </div> */}
+              </div>
               <div className="col col-12 row ">
                 <div className="col col-3 myfont3">Phone Number</div>
                 <div className="col col-9">

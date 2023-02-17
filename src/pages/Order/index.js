@@ -11,19 +11,15 @@ import NavbarComponent from "../../components/Navbar";
 
 function Order() {
   const [data, setData] = useState([]);
+  // console.log("ini data check", data);
   const [dataDelivery, setDataDelivery] = useState([]);
+  // console.log("ini data ", dataDelivery);
   const token = localStorage.getItem("token");
-  const [id_checkout, setIdCheckout] = useState();
+  // const [id_checkout, setIdCheckout] = useState();
   const navigate = useNavigate();
   const [inputData, setInputData] = useState({
     search: "",
   });
-  useEffect(() => {
-    getData();
-  }, [inputData.search]);
-  useEffect(() => {
-    getData();
-  }, []);
 
   const user = {
     headers: {
@@ -31,12 +27,12 @@ function Order() {
     },
   };
   let users = `${process.env.REACT_APP_API}/checkout/all?search=${inputData.search}`;
-  const getData = () => {
+  const getCheckout = () => {
     axios
       .get(users, user)
       .then((res) => {
         console.log(res.data.data);
-        res.data && setData(res.data.data);
+        setData(res.data.data);
       })
       .catch((err) => {
         console.log("Get Data Fail");
@@ -44,19 +40,21 @@ function Order() {
         setData([]);
       });
   };
+
   useEffect(() => {
-    getDelivery();
+    getCheckout();
   }, [inputData.search]);
   useEffect(() => {
-    getDelivery();
+    getCheckout();
   }, []);
-  let archived = `${process.env.REACT_APP_API}/checkout/delivery?search=${inputData.search}`;
+
+  let deliv = `${process.env.REACT_APP_API}/checkout/done`;
   const getDelivery = () => {
     axios
-      .get(archived, user)
+      .get(deliv, user)
       .then((res) => {
         console.log(res.data.data);
-        res.data && setDataDelivery(res.data.data);
+        setDataDelivery(res.data.data);
       })
       .catch((err) => {
         console.log("Get Data Fail");
@@ -64,6 +62,13 @@ function Order() {
         setDataDelivery([]);
       });
   };
+
+  useEffect(() => {
+    getDelivery();
+  }, [inputData.search]);
+  useEffect(() => {
+    getDelivery();
+  }, []);
 
   const handleChange = (e) => {
     setInputData({
@@ -150,9 +155,9 @@ function Order() {
                   </thead>
                   <tbody className="table-group-divider">
                     {data.map((item, index) => (
-                      <tr key={index + 1}>
-                        <td className="myfont3">{item?.name}</td>
-                        <td className="myfont3">{item?.name}</td>
+                      <tr key={index + 2}>
+                        <td className="myfont3">{item?.name_product}</td>
+                        <td className="myfont3">{item?.name_status}</td>
                         <td className="myfont3">
                           Rp.{item?.total?.toLocaleString()}
                         </td>
@@ -162,7 +167,7 @@ function Order() {
                             className="btn btn-danger text-white"
                             key={item.id_checkout}
                             onClick={() =>
-                              navigate(`/Detail-Order/${item.id_checkout}`)
+                              navigate(`/detail-order/${item.id_checkout}`)
                             }
                           >
                             Detail Order
@@ -214,15 +219,15 @@ function Order() {
                       <th className="myfont3">Name Product</th>
                       <th className="myfont3">Status</th>
                       <th className="myfont3">Price Total</th>
-                      <th className="myfont3">QTY</th>
+                      <th className="myfont3">Qty</th>
                       <th className="myfont3">Action</th>
                     </tr>
                   </thead>
                   <tbody className="table-group-divider">
                     {dataDelivery.map((item, index) => (
                       <tr key={index + 1}>
-                        <td className="myfont3">{item?.name}</td>
-                        <td className="myfont3">{item?.name}</td>
+                        <td className="myfont3">{item?.name_product}</td>
+                        <td className="myfont3">{item?.name_status}</td>
                         <td className="myfont3">
                           Rp.{item?.total?.toLocaleString()}
                         </td>

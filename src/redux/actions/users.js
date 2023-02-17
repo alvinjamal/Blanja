@@ -12,8 +12,6 @@ export const loginUser = (data, navigate) => async (dispact) => {
       title: "Good job!",
       text: `${result.data.message}`,
       icon: "success",
-      timer: 2000,
-      showConfirmButton: false,
     }).then(() => {
       if (user.role === "seller") {
         console.log("Seller");
@@ -79,8 +77,6 @@ export const registerUserSeller = (dataForm, navigate) => async (dispatch) => {
       title: "Good job!",
       text: `${result.data.message}`,
       icon: "success",
-      timer: 2000,
-      showConfirmButton: false,
     }).then(() => {
       navigate("/verif-otp");
     });
@@ -109,8 +105,6 @@ export const VerifOtp = (data, navigate) => async (dispacth) => {
       title: "Good job!",
       text: `${result.data.message}`,
       icon: "success",
-      timer: 2000,
-      showConfirmButton: false,
     }).then(() => {
       navigate("/login");
     });
@@ -138,8 +132,6 @@ export const ForgotPw = (data, navigate) => async (dispatch) => {
       title: "Good job!",
       text: `${result.data.message}`,
       icon: "success",
-      timer: 2000,
-      showConfirmButton: false,
     }).then(() => {
       navigate("/change-password");
     });
@@ -171,8 +163,6 @@ export const ChangePW = (data, navigate) => async (dispatch) => {
       title: "Good job!",
       text: `${result.data.message}`,
       icon: "success",
-      timer: 2000,
-      showConfirmButton: false,
     }).then(() => {
       navigate("/login");
     });
