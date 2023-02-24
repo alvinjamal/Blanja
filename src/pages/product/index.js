@@ -128,7 +128,7 @@ export default function Product() {
   // DELETE DATA
   const Delete = () => {
     axios
-      .delete(`http://localhost:3500/products/delete/${selected}`)
+      .delete(`${process.env.REACT_APP_API}/products/delete/${selected}`)
       .then((res) => {
         console.log("Delete Product success");
         console.log(res);

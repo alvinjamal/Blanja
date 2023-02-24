@@ -4,7 +4,10 @@ import swal from "sweetalert";
 export const loginUser = (data, navigate) => async (dispact) => {
   try {
     dispact({ type: "USER_LOGIN_PENDING" });
-    const result = await axios.post(`http://localhost:3500/users/login`, data);
+    const result = await axios.post(
+      `${process.env.REACT_APP_API}/users/login`,
+      data
+    );
     const user = result.data.data;
     localStorage.setItem("token", user.token);
     dispact({ type: "USER_LOGIN_SUCCESS", payload: user });
@@ -36,7 +39,7 @@ export const registerUserCustomer =
     try {
       dispatch({ type: "USER_REGISTER_PENDING" });
       const result = await axios.post(
-        `http://localhost:3500/users/register/customer`,
+        `${process.env.REACT_APP_API}/users/register/customer`,
         dataForm
       );
       const user = result.data.data;
@@ -67,7 +70,7 @@ export const registerUserSeller = (dataForm, navigate) => async (dispatch) => {
   try {
     dispatch({ type: "USER_REGISTER_PENDING" });
     const result = await axios.post(
-      `http://localhost:3500/users/register/seller`,
+      `${process.env.REACT_APP_API}/users/register/seller`,
       dataForm
     );
     const user = result.data.data;
@@ -94,7 +97,7 @@ export const registerUserSeller = (dataForm, navigate) => async (dispatch) => {
 export const VerifOtp = (data, navigate) => async (dispacth) => {
   try {
     const result = await axios.post(
-      `http://localhost:3500/users/verification`,
+      `${process.env.REACT_APP_API}/users/verification`,
       data
     );
     const user = result.data.data;
@@ -123,7 +126,10 @@ export const VerifOtp = (data, navigate) => async (dispacth) => {
 export const ForgotPw = (data, navigate) => async (dispatch) => {
   try {
     dispatch({ type: "USER_FORGOT_PW_PENDING" });
-    const result = await axios.post(`http://localhost:3500/users/forgot`, data);
+    const result = await axios.post(
+      `${process.env.REACT_APP_API}/users/forgot`,
+      data
+    );
     const user = result.data.data;
     console.log(user);
     console.log(result.data.data);
@@ -152,7 +158,7 @@ export const ChangePW = (data, navigate) => async (dispatch) => {
     const token = localStorage.et("token");
     console.log(token);
     const result = await axios.post(
-      `http://localhost:3500/users/forgot/${token}`,
+      `${process.env.REACT_APP_API}/users/forgot/${token}`,
       data
     );
     const user = result.data.data;
