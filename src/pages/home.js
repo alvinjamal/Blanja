@@ -136,6 +136,12 @@ export default function Home() {
                               variant="top"
                               src={item.photo}
                               alt="jas"
+                              style={{
+                                height: "100%",
+                                width: "100%",
+                                objectFit: "cover",
+                                borderRadius: "15px",
+                              }}
                             />
                             <p className="fs-4 p-2">{item.name}</p>
                             {/* <p className="fs-4 p-2">{item.id_category}</p> */}
@@ -212,7 +218,17 @@ export default function Home() {
                       style={{ textDecoration: "none", color: "#000000" }}
                       to={`/product-detail/${item.id_product}`}
                     >
-                      <Card.Img variant="top" src={item.photo} alt="" />
+                      <Card.Img
+                        variant="top"
+                        src={item.photo}
+                        alt=""
+                        style={{
+                          height: "100%",
+                          width: "100%",
+                          objectFit: "cover",
+                          borderRadius: "15px",
+                        }}
+                      />
                       <p className="fs-5 m-2">{item.brand}</p>
                       <p className="fs-4 m-2">{item.name_product}</p>
                     </Link>
