@@ -21,11 +21,9 @@ export const loginUser = (data, navigate) => async (dispact) => {
       if (user.role === "seller") {
         console.log("Seller");
         navigate("/Profile");
-        window.location.reload(false);
       } else {
         console.log("Customer");
         navigate("/home");
-        window.location.reload(false);
       }
     });
     console.log("User Login Success");
