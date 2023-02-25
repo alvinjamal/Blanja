@@ -34,9 +34,7 @@ export default function Home() {
   useEffect(() => {
     const getData = async () => {
       try {
-        let result = await axios.get(
-          `${process.env.REACT_APP_API}/products?sortby=${sortBy}&sort=${sort}`
-        );
+        let result = await axios.get(`${process.env.REACT_APP_API}/products`);
         setData(result.data.data);
       } catch (error) {
         console.log(error);
