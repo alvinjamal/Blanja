@@ -33,7 +33,7 @@ export default function Product() {
     stock: "",
     price: "",
     brand: "",
-    category_id: "3",
+    category_id: "1",
     search: "",
   });
   const [sortBy, setSortBy] = useState("name_product");
@@ -70,7 +70,7 @@ export default function Product() {
         stock: "",
         price: "",
         brand: "",
-        category_id: "3",
+        category_id: "1",
       });
     !selected && setPhoto(null);
   }, [selected]);
