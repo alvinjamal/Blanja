@@ -138,6 +138,8 @@ export default function Product() {
           text: "Delete Product success",
           type: "danger",
           icon: "success",
+        }).then(() => {
+          window.location.reload(false);
         });
         messageTime();
         getData();

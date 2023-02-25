@@ -15,13 +15,17 @@ export const loginUser = (data, navigate) => async (dispact) => {
       title: "Good job!",
       text: `${result.data.message}`,
       icon: "success",
+      timer: "2000",
+      showConfirmButton: false,
     }).then(() => {
       if (user.role === "seller") {
         console.log("Seller");
         navigate("/Profile");
+        window.location.reload(false);
       } else {
         console.log("Customer");
         navigate("/home");
+        window.location.reload(false);
       }
     });
     console.log("User Login Success");
