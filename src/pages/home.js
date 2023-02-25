@@ -35,7 +35,7 @@ export default function Home() {
     const getData = async () => {
       try {
         let result = await axios.get(
-          `${process.env.REACT_APP_API_PRODUCT}?sortby=${sortBy}&sort=${sort}`
+          `${process.env.REACT_APP_API}/products?sortby=${sortBy}&sort=${sort}`
         );
         setData(result.data.data);
       } catch (error) {
