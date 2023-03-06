@@ -1,4 +1,4 @@
-# Store.id
+<h1 align="center">Store.id</h1>
 
 <p align='center'>
 <img height='150' src='https://github.com/alvinjamal/Blanja/blob/main/Image-Blanja/Vector(22).png' />
