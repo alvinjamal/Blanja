@@ -148,7 +148,7 @@ export default function Register() {
       </Form>
       <p className="text-dark text-center" style={{ margin: "26px" }}>
         Already have a Store.id account?
-        <Link href="/login" className="text2 text-danger">
+        <Link to="/login" className="text2 text-danger">
           {" "}
           Login{" "}
         </Link>
