@@ -222,20 +222,10 @@ export default function ProductDetail() {
                     </button>
                   </div>
                   <div className="col-md-3">
-                    <button className="btn btn-outline-secondary btn-in-product rounded-pill">
+                    <button className="btn btn-outline-secondary btn-in-product rounded-pill" type="submit"
+                      onClick={postData}>
                       <h6 className="myfont3" style={{ marginTop: "5px" }}>
                         Add bag
-                      </h6>
-                    </button>
-                  </div>
-                  <div className="col-md-6">
-                    <button
-                      type="submit"
-                      onClick={postData}
-                      className="btn btn-danger btn-in-product2 rounded-pill"
-                    >
-                      <h6 className="myfont3" style={{ marginTop: "5px" }}>
-                        Buy Now
                       </h6>
                     </button>
                   </div>
