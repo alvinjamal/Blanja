@@ -138,7 +138,7 @@ export default function Register() {
               borderRadius: "15px",
               height: "50px",
               width: "26rem",
-              marginLeft: "7%",
+              marginLeft: "6%",
             }}
             variant="danger"
           >
@@ -149,8 +149,7 @@ export default function Register() {
       <p className="text-dark text-center" style={{ margin: "26px" }}>
         Already have a Store.id account?
         <Link to="/login" className="text2 text-danger">
-          {" "}
-          Login{" "}
+          Login
         </Link>
       </p>
     </header>
