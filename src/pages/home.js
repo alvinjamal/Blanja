@@ -45,7 +45,7 @@ export default function Home() {
   const [category, setCategory] = useState([]);
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API}/category/`, user)
+      .get(`${process.env.REACT_APP_API}/category`)
       .then((res) => {
         console.log("Get category success");
         console.log(res.data);
