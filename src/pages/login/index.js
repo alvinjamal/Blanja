@@ -23,7 +23,6 @@ export default function Login() {
   };
   return (
     <div>
-      {/* <Container> */}
       <div className="container mt-5 d">
         <div className="d-flex mt-5 justify-content-center row mx-auto">
           <img
@@ -66,8 +65,8 @@ export default function Login() {
             aria-describedby="basic-addon1"
             style={{ height: "48px", marginTop: "14px", width: "30rem" }}
           />
-          <Link to={"/Forgot"} className="text-danger text-end mt-3" id="text1">
-            Forgot password?{" "}
+          <Link to={"/Forgot"} className="text-danger text-end mt-3" id="text1" style={{ textDecoration: "none" }}>
+            Forgot password?
           </Link>
         </div>
         <div className="input-wrap d-flex justify-content-center flex-column mt-3">
@@ -76,9 +75,9 @@ export default function Login() {
             className="input-wrap btn-lg text-center text-light"
             style={{
               borderRadius: "15px",
-              marginLeft: "24rem",
+              marginLeft: "21rem",
               height: "50px",
-              width: "27rem",
+              width: "30rem",
             }}
             variant="danger"
           >
@@ -94,13 +93,12 @@ export default function Login() {
             }}
           >
             Don't have a Store.id account?
-            <Link to="/register-customer" className="text2 text-danger">
+            <Link to="/register-customer" className="text2 text-danger" style={{ textDecoration: "none" }}>
               Register
             </Link>
           </h5>
         </div>
       </Form>
-      {/* </Container> */}
     </div>
   );
 }
