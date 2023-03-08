@@ -26,7 +26,6 @@ export const loginUser = (data, navigate) => async (dispact) => {
         navigate("/home");
       }
     });
-    console.log("User Login Success");
   } catch (err) {
     swal({
       title: "Please Try Again Login",
